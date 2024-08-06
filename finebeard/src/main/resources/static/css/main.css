@@ -1,0 +1,64 @@
+/* styles.css */
+.hero-section {
+    background: url('img/hero-bg.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-section .container {
+    max-width: 600px;
+}
+
+.hero-section .btn {
+    margin-top: 20px;
+}
+
+/* Products Section */
+#products .card {
+    margin-bottom: 30px;
+}
+
+#products .card-title {
+    font-size: 1.25rem;
+}
+
+#products .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* About Section */
+#about p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Contact Section */
+#contact form {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Login Section */
+.login-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.login-section .card {
+    margin-top: 30px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+}
+
+footer p {
+    margin: 0;
+    color: #fff;
+}
