@@ -6,9 +6,7 @@ spring:
     password: ${MYSQL_PASSWORD:1234567}
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
-    defer-datasource-initialization: true
-    properties:
-      hibernate:
-        format_sql: true
     hibernate:
       ddl-auto: update
+    defer-datasource-initialization: true
+
