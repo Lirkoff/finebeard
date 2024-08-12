@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/head}"> </head>
+<body>
+<div>
+    <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+<div class="container my-5">
+    <h1 class="text-center mb-5">Beard Grooming Products</h1>
+    <div class="row">
+        <div class="col-md-4 mb-4" v-for="product in products">
+            <div class="card">
+                <img src="path/to/product-image.jpg" class="card-img-top" alt="Product Name">
+                <div class="card-body">
+                    <h5 class="card-title">Product Name</h5>
+                    <p class="card-text">$XX.XX</p>
+                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
+</div>
+
+
+
+</body>
+</html>
