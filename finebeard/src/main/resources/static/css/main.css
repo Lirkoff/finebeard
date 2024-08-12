@@ -1,3 +1,7 @@
+@import url('reset.css');
+@import url('typography.css');
+
+
 /* styles.css */
 .hero-section {
     background-image: src('D:/Java/WEB/Fine Beard Project/finebeard/finebeard/src/main/resources/static/img/beard.jpg') no-repeat center center;
