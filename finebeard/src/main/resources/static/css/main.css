@@ -1,6 +1,6 @@
 /* styles.css */
 .hero-section {
-    background: url('img/hero-bg.jpg') no-repeat center center;
+    background-image: src('D:/Java/WEB/Fine Beard Project/finebeard/finebeard/src/main/resources/static/img/beard.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh;
     display: flex;

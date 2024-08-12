@@ -15,6 +15,7 @@
     <header class="hero-section text-white text-center">
         <div class="container">
             <h1 class="display-4">Welcome to FineBeard</h1>
+<!--            <th:block th:if="${}"-->
             <p class="lead">Premium Grooming Products for the Modern Beardsman</p>
             <a href="#products" class="btn btn-primary btn-lg">Shop Now</a>
         </div>
@@ -91,12 +92,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-4 bg-dark text-white text-center">
-        <div class="container">
-            <p>&copy; 2024 BeardCare. All rights reserved.</p>
-        </div>
-    </footer>
+    <div>
+        <nav th:replace="~{fragments/footer}"></nav>
+    </div>
 
 
 </body>
