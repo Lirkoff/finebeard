@@ -12,3 +12,11 @@ spring:
   sql:
     init:
       mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+#logging:
+#  level:
+#    org.springframework: DEBUG
+
