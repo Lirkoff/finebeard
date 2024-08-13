@@ -1,10 +1,10 @@
-# BeardCare - E-Commerce Website for Beard Care Products
+# FineBeard - E-Commerce Website for Beard Care Products
 
 
 
 ## Project Overview
 
-**BeardCare** is an e-commerce website dedicated to selling premium beard care products. This project was developed as part of the Java Web / Spring Advanced course at SoftUni. The website provides users with a seamless shopping experience, offering a wide range of beard care products, including oils, balms, and grooming tools.
+**FineBeard** is an e-commerce website dedicated to selling premium beard care products. This project was developed as part of the Java Web / Spring Advanced course at SoftUni. The website provides users with a seamless shopping experience, offering a wide range of beard care products, including oils, balms, and grooming tools.
 
 The project demonstrates proficiency in Java, the Spring Framework, and modern web development practices, incorporating essential features such as user authentication, product management, and order processing. It also integrates MySQL for data storage and uses Thymeleaf for server-side rendering of dynamic content.
 
