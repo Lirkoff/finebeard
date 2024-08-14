@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products in Category</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Assuming you have a separate CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="container my-5">
     <h1 class="text-center mb-5">Category: {{categoryName}}</h1>
     <div class="row">
-        <!-- Loop through products in the category -->
+
         <div class="col-md-4 mb-4" v-for="product in products">
             <div class="card">
                 <img src="{{product.imageUrl}}" class="card-img-top" alt="{{product.name}}">
@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<!-- Bootstrap JS, Popper.js, and jQuery -->
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
