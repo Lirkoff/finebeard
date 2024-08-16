@@ -1,15 +1,24 @@
 package bg.softuni.finebeard.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
 
-
+    @Column(unique = true)
     private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<UserRolesEntity> roles;
 
     private String password;
 
@@ -19,10 +28,20 @@ public class UserEntity extends BaseEntity {
 
     private boolean active;
 
+    public Set<UserRolesEntity> getRoles() {
+        return this.roles;
+    }
 
+    public UserEntity setRoles(UserRolesEntity role) {
+        this.roles = new HashSet<>();
+
+        this.roles.add(role);
+
+        return this;
+    }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public UserEntity setEmail(String email) {
@@ -31,7 +50,7 @@ public class UserEntity extends BaseEntity {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public UserEntity setPassword(String password) {
@@ -40,7 +59,7 @@ public class UserEntity extends BaseEntity {
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public UserEntity setFirstName(String firstName) {
@@ -49,7 +68,7 @@ public class UserEntity extends BaseEntity {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public UserEntity setLastName(String lastName) {
@@ -58,7 +77,7 @@ public class UserEntity extends BaseEntity {
     }
 
     public boolean isActive() {
-        return active;
+        return this.active;
     }
 
     public UserEntity setActive(boolean active) {
