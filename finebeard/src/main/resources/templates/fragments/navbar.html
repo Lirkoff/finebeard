@@ -12,6 +12,7 @@
         class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#">FineBeard</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,8 +32,15 @@
                 </li>
 
                 <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
+                    <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" sec:authorize="hasRole('MASTER')" href="/roles/management">User role management</a>
+<!--                            <a class="dropdown-item" href="/profile/edit_profile">Edit profile</a>-->
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Profile</a>
