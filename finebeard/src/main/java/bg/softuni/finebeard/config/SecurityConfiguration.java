@@ -1,10 +1,13 @@
 package bg.softuni.finebeard.config;
 
 
+import bg.softuni.finebeard.repository.UserRepository;
+import bg.softuni.finebeard.service.impl.FinebeardUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -17,7 +20,7 @@ public class SecurityConfiguration {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/","/shop/categories","/about", "/users/login","/users/login-error","/users/register").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {
@@ -25,7 +28,7 @@ public class SecurityConfiguration {
                             .loginPage("/users/login")
                             .usernameParameter("email")
                             .passwordParameter("password")
-                            .defaultSuccessUrl("/")
+                            .defaultSuccessUrl("/",true)
                             .failureForwardUrl("/users/login-error");
                 }
         ).logout(
@@ -36,6 +39,11 @@ public class SecurityConfiguration {
                             .invalidateHttpSession(true);
                 }
         ).build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService(UserRepository userRepository) {
+        return new FinebeardUserDetailsService(userRepository);
     }
 
 
