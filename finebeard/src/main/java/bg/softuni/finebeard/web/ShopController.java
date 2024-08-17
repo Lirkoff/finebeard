@@ -42,15 +42,6 @@ public class ShopController {
 
 
 
-    @GetMapping("/add")
-    public String add() {
-        return "product-add";
-    }
-
-    @PostMapping()
-    public String add(AddProductDTO addProductDTO) {
-        return "index";
-    }
 
 
 }

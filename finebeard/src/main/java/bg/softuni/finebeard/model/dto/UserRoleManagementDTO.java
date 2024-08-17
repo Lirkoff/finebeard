@@ -1,4 +1,6 @@
 package bg.softuni.finebeard.model.dto;
 
-public record UserRoleManagementDTO(String username) {
+import jakarta.validation.constraints.Email;
+
+public record UserRoleManagementDTO(@Email String username) {
 }

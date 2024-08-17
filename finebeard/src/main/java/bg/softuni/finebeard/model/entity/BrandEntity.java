@@ -1,5 +1,6 @@
 package bg.softuni.finebeard.model.entity;
 
+import bg.softuni.finebeard.model.enums.BrandEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,13 +10,13 @@ import jakarta.persistence.Table;
 public class BrandEntity extends BaseEntity {
 
     @Column(unique = true, nullable = false)
-    private String brand;
+    private BrandEnum brand;
 
-    public String getBrand() {
+    public BrandEnum getBrand() {
         return brand;
     }
 
-    public BrandEntity setBrand(String brand) {
+    public BrandEntity setBrand(BrandEnum brand) {
         this.brand = brand;
         return this;
     }

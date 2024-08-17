@@ -12,9 +12,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Optional<UserEntity> findByEmail(String email);
 
-//    @Query("SELECT u.email, u.roles FROM UserEntity u ORDER BY u.email")
-//    Map<String, Set<UserRolesEntity>> findAllUserEntityEmailsAndRoles();
-
-
     List<UserEntity> findAll();
 }

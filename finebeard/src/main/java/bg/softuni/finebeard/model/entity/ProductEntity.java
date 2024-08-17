@@ -1,10 +1,11 @@
 package bg.softuni.finebeard.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 
+import java.math.BigDecimal;
 import java.sql.Types;
 import java.util.UUID;
 
@@ -12,19 +13,38 @@ import java.util.UUID;
 @Table(name = "products")
 public class ProductEntity extends BaseEntity {
     @JdbcTypeCode(Types.VARCHAR)
+    @NotNull
     private UUID uuid;
-    private String name;
+
+    @NotNull
+    @ManyToOne
+    private CategoryEntity category;
+
+    @NotNull
+    @ManyToOne
+    private BrandEntity brand;
+
+    @NotNull
+    @OneToOne
+    private ModelEntity model;
+
+    @NotEmpty
+    @Column(columnDefinition = "TEXT")
     private String description;
-    private double price;
+
+    @NotNull
+    private BigDecimal price;
+
+    @NotEmpty
     private String imageUrl;
 
 
-    public String getName() {
-        return name;
+    public BrandEntity getBrand() {
+        return this.brand;
     }
 
-    public ProductEntity setName(String name) {
-        this.name = name;
+    public ProductEntity setBrand(BrandEntity brand) {
+        this.brand = brand;
         return this;
     }
 
@@ -37,11 +57,11 @@ public class ProductEntity extends BaseEntity {
         return this;
     }
 
-    public double getPrice() {
-        return price;
+    public BigDecimal getPrice() {
+        return this.price;
     }
 
-    public ProductEntity setPrice(double price) {
+    public ProductEntity setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -52,6 +72,33 @@ public class ProductEntity extends BaseEntity {
 
     public ProductEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public ProductEntity setUuid(UUID uuid) {
+        this.uuid = uuid;
+        return this;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public ProductEntity setCategory(CategoryEntity category) {
+        this.category = category;
+        return this;
+    }
+
+    public ModelEntity getModel() {
+        return model;
+    }
+
+    public ProductEntity setModel(ModelEntity model) {
+        this.model = model;
         return this;
     }
 }

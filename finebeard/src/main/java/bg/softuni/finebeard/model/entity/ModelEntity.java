@@ -1,19 +1,14 @@
 package bg.softuni.finebeard.model.entity;
 
-import bg.softuni.finebeard.model.enums.ModelCategory;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "models")
 public class ModelEntity extends BaseEntity {
 
+    @NotBlank
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    private ModelCategory modelCategory;
-
-    @ManyToOne
-    private CategoryEntity category;
 
 
     public String getName() {
