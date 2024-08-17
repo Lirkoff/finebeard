@@ -14,14 +14,14 @@ public class CategoryEntity extends BaseEntity{
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private ProductCategoryEnum category;
+    private ProductCategoryEnum name;
 
-    public ProductCategoryEnum getCategory() {
-        return category;
+    public ProductCategoryEnum getName() {
+        return name;
     }
 
-    public CategoryEntity setCategory(ProductCategoryEnum category) {
-        this.category = category;
+    public CategoryEntity setName(ProductCategoryEnum name) {
+        this.name = name;
         return this;
     }
 }

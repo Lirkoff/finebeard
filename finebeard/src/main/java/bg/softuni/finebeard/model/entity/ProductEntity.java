@@ -24,9 +24,6 @@ public class ProductEntity extends BaseEntity {
     @ManyToOne
     private BrandEntity brand;
 
-    @NotNull
-    @OneToOne
-    private ModelEntity model;
 
     @NotEmpty
     @Column(columnDefinition = "TEXT")
@@ -93,12 +90,5 @@ public class ProductEntity extends BaseEntity {
         return this;
     }
 
-    public ModelEntity getModel() {
-        return model;
-    }
 
-    public ProductEntity setModel(ModelEntity model) {
-        this.model = model;
-        return this;
-    }
 }

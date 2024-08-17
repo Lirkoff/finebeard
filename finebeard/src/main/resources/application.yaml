@@ -20,7 +20,7 @@ spring:
       filter:
         enabled: true
 finebeard:
-  remember.me.key: ${REMEMBER_ME_KEY:}
+  remember.me.key: ${REMEMBER_ME_KEY}
   thymeleaf: # Thymeleaf
     cache: false
     mode: HTML

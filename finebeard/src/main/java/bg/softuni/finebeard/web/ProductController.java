@@ -3,6 +3,7 @@ package bg.softuni.finebeard.web;
 import bg.softuni.finebeard.model.dto.AddProductDTO;
 import bg.softuni.finebeard.model.dto.ProductDetailDTO;
 import bg.softuni.finebeard.service.BrandService;
+import bg.softuni.finebeard.service.CategoryService;
 import bg.softuni.finebeard.service.ProductService;
 import bg.softuni.finebeard.service.exception.ObjectNotFoundException;
 import jakarta.validation.Valid;
@@ -24,10 +25,12 @@ import java.util.UUID;
 public class ProductController {
     private final BrandService brandService;
     private final ProductService productService;
+    private final CategoryService categoryService;
 
-    public ProductController(BrandService brandService, ProductService productService) {
+    public ProductController(BrandService brandService, ProductService productService, CategoryService categoryService) {
         this.brandService = brandService;
         this.productService = productService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/add")
@@ -37,27 +40,28 @@ public class ProductController {
         }
 
         model.addAttribute("brands", brandService.getAllBrands());
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         return "product-add";
     }
 
-//    @PostMapping("/add")
-//    public String add(
-//            @Valid AddProductDTO addProductDTO,
-//            BindingResult bindingResult,
-//            RedirectAttributes rAtt) {
-//
-//        if (bindingResult.hasErrors()) {
-//            rAtt.addFlashAttribute("addProductDTO", addProductDTO);
-//            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.addProductDTO", bindingResult);
-//            return "redirect:/product/add";
-//        }
-//
-//
-//        UUID newProductUUID = productService.addProduct(addProductDTO);
-//
-//        return "redirect:/product/" + newProductUUID;
-//    }
+    @PostMapping("/add")
+    public String add(
+            @Valid AddProductDTO addProductDTO,
+            BindingResult bindingResult,
+            RedirectAttributes rAtt) {
+
+        if (bindingResult.hasErrors()) {
+            rAtt.addFlashAttribute("addProductDTO", addProductDTO);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.addProductDTO", bindingResult);
+            return "redirect:/product/add";
+        }
+
+
+        UUID newProductUUID = productService.addProduct(addProductDTO);
+
+        return "redirect:/product/" + newProductUUID;
+    }
 
 
 
