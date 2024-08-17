@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="~{fragments/head}">
+</head>
+
+<body>
+
+<div>
+    <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<div class="container-fluid">
+    <h5 class="text-center text-black mt-5">Upps, you've entered the dark!!!</h5>
+    <h5 class="text-center text-black mt-5" >
+        <a th:href="@{/}">Return to the path to Lightness...</a></h5>
+    <img id="error" th:src="@{/images/404.jpg}" alt="darkness2light">
+
+
+
+</div>
+
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
+</div>
+
+</body>
+</html>
