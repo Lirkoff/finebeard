@@ -19,6 +19,13 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+finebeard:
+  remember.me.key: ${REMEMBER_ME_KEY:test}
+  thymeleaf: # Thymeleaf
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
 logging:
   level:
     org.springframework: DEBUG

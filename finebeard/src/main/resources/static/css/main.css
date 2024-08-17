@@ -2,9 +2,11 @@
 @import url('typography.css');
 
 
+
+
 /* styles.css */
 .hero-section {
-    background-image: src('') no-repeat center center;
+    background: url('../images/beard.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -20,6 +22,10 @@
 .hero-section .btn {
     margin-top: 20px;
 }
+
+.content {
+    flex: 1 0 auto;
+ }
 
 /* Products Section */
 #products .card {
@@ -60,6 +66,9 @@
 /* Footer */
 footer {
     background-color: #333;
+    flex-shrink: 0;
+    padding: 1rem;
+    text-align: center;
 }
 
 footer p {
@@ -67,21 +76,11 @@ footer p {
     color: #fff;
 }
 
-/*Logout*/
-
-.logout-form {
-    display: inline;
+.error-404 {
+    background: url('../images/404.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
 }
 
-.logout-form .btn {
-    padding: 0;
-    border: none;
-    background: none;
-    text-decoration: none;
-    cursor: pointer;
-}
 
-.logout-form .btn:hover {
-    text-decoration: none;
-    color: #0056b3;
-}

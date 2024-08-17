@@ -11,7 +11,7 @@
         th:fragment="navbar"
         class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">FineBeard</a>
+        <a class="navbar-brand" href="/">FineBeard</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,10 +47,12 @@
                     </li>
 
                     <li class="nav-item">
+
                         <form th:method="post"
                               th:action="@{/users/logout}" class="logout-form">
                             <input type="submit" class="btn btn-link nav-link" value="Logout"/>
                         </form>
+
                     </li>
 
                 </th:block>
