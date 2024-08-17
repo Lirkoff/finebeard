@@ -3,6 +3,7 @@ package bg.softuni.finebeard.config;
 
 import bg.softuni.finebeard.repository.UserRepository;
 import bg.softuni.finebeard.service.impl.FinebeardUserDetailsService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,13 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfiguration {
+
+    private final String rememberMeKey;
+
+    public SecurityConfiguration(@Value("${finebeard.remember.me.key}") String rememberMeKey) {
+        this.rememberMeKey = rememberMeKey;
+    }
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -38,7 +46,13 @@ public class SecurityConfiguration {
                             .logoutSuccessUrl("/")
                             .invalidateHttpSession(true);
                 }
-        ).build();
+        ).rememberMe(
+                rememberMe ->
+                        rememberMe
+                                .key(rememberMeKey)
+                                .rememberMeParameter("rememberme")
+                                .rememberMeCookieName("rememberme")
+                ).build();
     }
 
     @Bean

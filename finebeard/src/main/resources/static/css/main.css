@@ -63,6 +63,23 @@
     margin-top: 30px;
 }
 
+
+.container .form-check-label {
+    margin-left: 5px;
+}
+.container .form-check {
+    margin-bottom: 20px;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+
 /* Footer */
 footer {
     background-color: #333;
@@ -77,10 +94,24 @@ footer p {
 }
 
 .error-404 {
-    background: url('../images/404.jpg');
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
+        height: 100vh;
+        margin: 0;
+        background-image: url('../images/404.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
 }
+
+.error-message {
+    z-index: 1;
+}
+
+
 
 

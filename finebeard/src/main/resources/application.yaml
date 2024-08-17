@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/finebeard?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://${MYSQL_HOST:}:3306/finebeard?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD:}
   jpa:
@@ -20,7 +20,7 @@ spring:
       filter:
         enabled: true
 finebeard:
-  remember.me.key: ${REMEMBER_ME_KEY:test}
+  remember.me.key: ${REMEMBER_ME_KEY:}
   thymeleaf: # Thymeleaf
     cache: false
     mode: HTML
