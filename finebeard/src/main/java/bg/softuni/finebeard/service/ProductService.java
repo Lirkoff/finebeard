@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface ProductService {
     UUID addProduct(AddProductDTO addProductDTO);
 
-    ProductDetailDTO getProductDetail(UUID uuid);
+    Optional<ProductDetailDTO> getProductDetail(UUID productUUID);
 
     void deleteProduct(UUID uuid);
 }

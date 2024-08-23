@@ -33,12 +33,12 @@ public class ShopController {
         return "category-products";
     }
 
-    @GetMapping("/categories/{categoryName}/products/{uuid}")
-    public String categoryProducts(@PathVariable("categoryName") String categoryName,
-                                   @PathVariable("uuid") UUID uuid) {
-
-        return "product-details";
-    }
+//    @GetMapping("/categories/{categoryName}/products/{uuid}")
+//    public String categoryProducts(@PathVariable("categoryName") String categoryName,
+//                                   @PathVariable("uuid") UUID uuid) {
+//
+//        return "product-details";
+//    }
 
 
 

@@ -28,6 +28,14 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="model">Model:</label>
+            <input type="text" class="form-control" id="model" name="model"
+                   th:field="*{model}" th:errorclass="bg-danger"
+                   placeholder="Enter model" required>
+            <small th:if="${#fields.hasErrors('model')}"
+                   th:errors="*{model}" class="text-danger"></small>
+        </div>
+        <div class="form-group">
             <label for="categoryId">Category:</label>
             <select class="form-control"
                     id="categoryId"

@@ -14,15 +14,7 @@ public class ShopServiceImpl implements ShopService {
         this.productRepository = productRepository;
     }
 
-    @Override
-    public void addProduct(ProductEntity product) {
-        productRepository.save(product);
-    }
 
-    @Override
-    public void removeProduct(ProductEntity product) {
-        productRepository.delete(product);
-    }
 
 
 

@@ -9,6 +9,7 @@ import bg.softuni.finebeard.repository.CategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 @Component
@@ -24,17 +25,20 @@ public class AppInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        for (ProductCategoryEnum productCategoryEnum : ProductCategoryEnum.values()) {
-            CategoryEntity category = new CategoryEntity();
-            category.setName(productCategoryEnum);
-            categoryRepository.save(category);
+        if (brandRepository.count() == 0 && categoryRepository.count() == 0) {
+            for (ProductCategoryEnum productCategoryEnum : ProductCategoryEnum.values()) {
+                CategoryEntity category = new CategoryEntity();
+                category.setName(productCategoryEnum);
+                categoryRepository.save(category);
+            }
+
+            for (BrandEnum brand : BrandEnum.values()) {
+                BrandEntity brandEntity = new BrandEntity();
+                brandEntity.setBrand(brand);
+                brandEntity.setModel(null);
+                brandRepository.save(brandEntity);
+            }
         }
 
-        for (BrandEnum brand : BrandEnum.values()) {
-            BrandEntity brandEntity = new BrandEntity();
-            brandEntity.setBrand(brand);
-            brandEntity.setModels(new HashSet<>());
-            brandRepository.save(brandEntity);
-        }
     }
 }
