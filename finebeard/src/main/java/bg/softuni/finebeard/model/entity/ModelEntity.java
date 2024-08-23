@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name = "models")
 public class ModelEntity extends BaseEntity {
 
-
+    @NotBlank
     private String name;
 
 

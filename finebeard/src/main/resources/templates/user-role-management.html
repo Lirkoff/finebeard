@@ -29,15 +29,15 @@
                 <td th:text="${user.value}">role</td>
                 <td>
                         <form th:method="POST" th:action="@{/roles/management/addAdmin}">
-                            <input type="hidden" id="username" brand="username" th:value="${user.key}">
+                            <input type="hidden" id="username" name="username" th:value="${user.key}">
 
-                            <button type="submit" brand="action" class="btn btn-danger btn-sm">Make Admin</button>
+                            <button type="submit" name="action" class="btn btn-danger btn-sm">Make Admin</button>
                         </form>
                 </td>
                 <td>
                         <form th:method="POST" th:action="@{/roles/management/removeAdmin}" >
-                            <input type="hidden" id="usernameRemove" brand="username" th:value="${user.key}">
-                            <button type="submit" brand="action" class="btn btn-primary btn-sm">Remove Admin</button>
+                            <input type="hidden" id="usernameRemove" name="username" th:value="${user.key}">
+                            <button type="submit" name="action" class="btn btn-primary btn-sm">Remove Admin</button>
                         </form>
                 </td>
 

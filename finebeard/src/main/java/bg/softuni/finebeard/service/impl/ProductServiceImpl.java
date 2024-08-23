@@ -8,6 +8,7 @@ import bg.softuni.finebeard.model.entity.ModelEntity;
 import bg.softuni.finebeard.model.entity.ProductEntity;
 import bg.softuni.finebeard.repository.BrandRepository;
 import bg.softuni.finebeard.repository.CategoryRepository;
+import bg.softuni.finebeard.repository.ModelRepository;
 import bg.softuni.finebeard.repository.ProductRepository;
 import bg.softuni.finebeard.service.ProductService;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,14 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final BrandRepository brandRepository;
     private final CategoryRepository categoryRepository;
+    private final ModelRepository modelRepository;
 
 
-    public ProductServiceImpl(ProductRepository productRepository, BrandRepository brandRepository, CategoryRepository categoryRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, BrandRepository brandRepository, CategoryRepository categoryRepository, ModelRepository modelRepository) {
         this.productRepository = productRepository;
         this.brandRepository = brandRepository;
         this.categoryRepository = categoryRepository;
+        this.modelRepository = modelRepository;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
         return new ProductDetailDTO(
                 productEntity.getUuid().toString(),
                 productEntity.getDescription(),
-                productEntity.getBrand().getBrand().name(),
+                productEntity.getBrand().getName().name(),
                 productEntity.getBrand().getModel().getName(),
                 productEntity.getImageUrl(),
                 productEntity.getPrice()
@@ -65,10 +68,17 @@ public class ProductServiceImpl implements ProductService {
 
     private ProductEntity map(AddProductDTO addProductDTO) {
         BrandEntity brand = brandRepository.findById(addProductDTO.brandId()).get();
-        ModelEntity model = new ModelEntity().setName(addProductDTO.model());
+
+        ModelEntity model = modelRepository.findByName(addProductDTO.model())
+                .orElse(new ModelEntity().setName(addProductDTO.model()));
+        modelRepository.save(model);
+
+
         CategoryEntity category = categoryRepository.findById(addProductDTO.categoryId()).get();
 
         brand.setModel(model);
+        brand.setCategory(category);
+        brandRepository.save(brand);
 
         return new ProductEntity()
                 .setUuid(UUID.randomUUID())

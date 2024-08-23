@@ -2,10 +2,8 @@ package bg.softuni.finebeard.model.entity;
 
 import bg.softuni.finebeard.model.enums.BrandEnum;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "brands")
@@ -13,18 +11,21 @@ public class BrandEntity extends BaseEntity {
 
     @Column(unique = true, nullable = false)
     @Enumerated(EnumType.STRING)
-    private BrandEnum brand;
+    private BrandEnum name;
 
     @OneToOne
     private ModelEntity model;
 
+    @ManyToOne
+    private CategoryEntity category;
 
-    public BrandEnum getBrand() {
-        return brand;
+
+    public BrandEnum getName() {
+        return name;
     }
 
-    public BrandEntity setBrand(BrandEnum brand) {
-        this.brand = brand;
+    public BrandEntity setName(BrandEnum name) {
+        this.name = name;
         return this;
     }
 
@@ -34,6 +35,15 @@ public class BrandEntity extends BaseEntity {
 
     public BrandEntity setModel(ModelEntity model) {
         this.model = model;
+        return this;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public BrandEntity setCategory(CategoryEntity category) {
+        this.category = category;
         return this;
     }
 }

@@ -9,9 +9,6 @@ import bg.softuni.finebeard.repository.CategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 @Component
 public class AppInit implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
@@ -34,7 +31,7 @@ public class AppInit implements CommandLineRunner {
 
             for (BrandEnum brand : BrandEnum.values()) {
                 BrandEntity brandEntity = new BrandEntity();
-                brandEntity.setBrand(brand);
+                brandEntity.setName(brand);
                 brandEntity.setModel(null);
                 brandRepository.save(brandEntity);
             }

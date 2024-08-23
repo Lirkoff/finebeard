@@ -18,10 +18,10 @@
                     id="brandId"
                     name="brandId">
                 <option
-                        th:each="brand: ${brands}"
-                        th:label="${brand.brand}"
-                        th:value="${brand.id}"
-                        th:selected="brandId == ${brand.id}">
+                        th:each="name: ${brands}"
+                        th:label="${name.name}"
+                        th:value="${name.id}"
+                        th:selected="brandId == ${name.id}">
                     Select Brand
                 </option>
 
