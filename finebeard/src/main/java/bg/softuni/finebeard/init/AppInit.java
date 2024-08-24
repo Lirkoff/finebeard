@@ -23,7 +23,7 @@ public class AppInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        //DB init
         if (brandRepository.count() == 0 && categoryRepository.count() == 0) {
             for (ProductCategoryEnum productCategoryEnum : ProductCategoryEnum.values()) {
                 CategoryEntity category = new CategoryEntity();
@@ -34,7 +34,7 @@ public class AppInit implements CommandLineRunner {
             for (BrandEnum brand : BrandEnum.values()) {
                 BrandEntity brandEntity = new BrandEntity();
                 brandEntity.setName(brand);
-                brandEntity.setModel(null);
+                brandEntity.setModels(new ArrayList<>());
                 brandRepository.save(brandEntity);
             }
         }

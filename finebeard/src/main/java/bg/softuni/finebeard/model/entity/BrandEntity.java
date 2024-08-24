@@ -13,8 +13,8 @@ public class BrandEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private BrandEnum name;
 
-    @OneToOne
-    private ModelEntity model;
+    @OneToMany
+    private List<ModelEntity> models;
 
     public BrandEnum getName() {
         return name;
@@ -25,13 +25,12 @@ public class BrandEntity extends BaseEntity {
         return this;
     }
 
-    public ModelEntity getModel() {
-        return model;
+    public List<ModelEntity> getModels() {
+        return models;
     }
 
-    public BrandEntity setModel(ModelEntity model) {
-        this.model = model;
+    public BrandEntity setModels(List<ModelEntity> models) {
+        this.models = models;
         return this;
     }
-
 }

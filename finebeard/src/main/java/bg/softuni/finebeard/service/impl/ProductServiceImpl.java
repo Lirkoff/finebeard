@@ -44,9 +44,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<ProductDetailDTO> getProductDetail(UUID uuid) {
-        return productRepository
-                .findByUuid(uuid)
-                .map(this::mapAsDetails);
+//        return productRepository
+//                .findByUuid(uuid)
+//                .map(this::mapAsDetails);
+        return Optional.empty();
     }
 
     @Override
@@ -54,17 +55,17 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-    private ProductDetailDTO mapAsDetails(ProductEntity productEntity) {
-        return new ProductDetailDTO(
-                productEntity.getUuid().toString(),
-                productEntity.getDescription(),
-                productEntity.getBrand().getName().name(),
-                productEntity.getBrand().getModel().getName(),
-                productEntity.getImageUrl(),
-                productEntity.getPrice()
-
-        );
-    }
+//    private ProductDetailDTO mapAsDetails(ProductEntity productEntity) {
+//        return new ProductDetailDTO(
+//                productEntity.getUuid().toString(),
+//                productEntity.getDescription(),
+//                productEntity.getBrand().getName().name(),
+//                productEntity.getBrand().getModel().getName(),
+//                productEntity.getImageUrl(),
+//                productEntity.getPrice()
+//
+//        );
+//    }
 
     private ProductEntity map(AddProductDTO addProductDTO) {
         BrandEntity brand = brandRepository.findById(addProductDTO.brandId()).get();
@@ -73,10 +74,9 @@ public class ProductServiceImpl implements ProductService {
                 .orElse(new ModelEntity().setName(addProductDTO.model()));
         modelRepository.save(model);
 
-
         CategoryEntity category = categoryRepository.findById(addProductDTO.categoryId()).get();
 
-        brand.setModel(model);
+        brand.getModels().add(model);
 
         brandRepository.save(brand);
 
