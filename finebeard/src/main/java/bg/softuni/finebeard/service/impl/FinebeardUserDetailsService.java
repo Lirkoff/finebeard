@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class FinebeardUserDetailsService implements UserDetailsService {
+public class  FinebeardUserDetailsService implements UserDetailsService {
 
 
     private final UserRepository userRepository;
@@ -28,11 +28,11 @@ public class FinebeardUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User " + email + " not found!"));
     }
 
-    private static UserDetails map(UserEntity user) {
+    private static UserDetails map(UserEntity userEntity) {
         return User
-                .withUsername(user.getEmail())
-                .password(user.getPassword())
-                .authorities(user.getRoles().stream().map(FinebeardUserDetailsService::map).toList())
+                .withUsername(userEntity.getEmail())
+                .password(userEntity.getPassword())
+                .authorities(userEntity.getRoles().stream().map(FinebeardUserDetailsService::map).toList())
                 .build();
     }
 

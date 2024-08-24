@@ -9,6 +9,8 @@ import bg.softuni.finebeard.repository.CategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class AppInit implements CommandLineRunner {
     private final CategoryRepository categoryRepository;

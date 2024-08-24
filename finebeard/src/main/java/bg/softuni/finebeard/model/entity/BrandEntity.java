@@ -16,10 +16,6 @@ public class BrandEntity extends BaseEntity {
     @OneToOne
     private ModelEntity model;
 
-    @ManyToOne
-    private CategoryEntity category;
-
-
     public BrandEnum getName() {
         return name;
     }
@@ -38,12 +34,4 @@ public class BrandEntity extends BaseEntity {
         return this;
     }
 
-    public CategoryEntity getCategory() {
-        return category;
-    }
-
-    public BrandEntity setCategory(CategoryEntity category) {
-        this.category = category;
-        return this;
-    }
 }

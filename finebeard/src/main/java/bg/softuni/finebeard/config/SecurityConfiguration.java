@@ -41,7 +41,7 @@ public class SecurityConfiguration {
                             .loginPage("/users/login")
                             .usernameParameter("email")
                             .passwordParameter("password")
-                            .defaultSuccessUrl("/",true)
+                            .defaultSuccessUrl("/", true)
                             .failureForwardUrl("/users/login-error");
                 }
         ).logout(
@@ -64,7 +64,6 @@ public class SecurityConfiguration {
     public UserDetailsService userDetailsService(UserRepository userRepository) {
         return new FinebeardUserDetailsService(userRepository);
     }
-
 
 
     @Bean

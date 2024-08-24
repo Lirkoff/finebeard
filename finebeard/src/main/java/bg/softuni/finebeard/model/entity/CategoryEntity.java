@@ -15,13 +15,6 @@ public class CategoryEntity extends BaseEntity{
     private ProductCategoryEnum name;
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "categories_brands",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "brand_id"))
-    private List<BrandEntity> brands;
-
     public ProductCategoryEnum getName() {
         return name;
     }
@@ -31,12 +24,5 @@ public class CategoryEntity extends BaseEntity{
         return this;
     }
 
-    public List<BrandEntity> getBrands() {
-        return brands;
-    }
 
-    public CategoryEntity setBrands(List<BrandEntity> brands) {
-        this.brands = brands;
-        return this;
-    }
 }

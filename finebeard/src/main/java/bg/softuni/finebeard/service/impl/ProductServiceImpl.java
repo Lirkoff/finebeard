@@ -77,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
         CategoryEntity category = categoryRepository.findById(addProductDTO.categoryId()).get();
 
         brand.setModel(model);
-        brand.setCategory(category);
+
         brandRepository.save(brand);
 
         return new ProductEntity()
