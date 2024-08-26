@@ -40,3 +40,8 @@ open.exchange.rates:
   symbols: EUR,BGN
   enabled: false
 
+server:
+  error:
+    include-message: always
+
+
