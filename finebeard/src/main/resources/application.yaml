@@ -19,13 +19,8 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-finebeard:
-  remember.me.key: ${REMEMBER_ME_KEY}
-  thymeleaf: # Thymeleaf
-    cache: false
-    mode: HTML
-    encoding: UTF-8
-    prefix: file:src/main/resources/templates/
+
+
 logging:
   level:
     org.springframework: DEBUG
@@ -40,8 +35,26 @@ open.exchange.rates:
   symbols: EUR,BGN
   enabled: false
 
-server:
-  error:
-    include-message: always
+mail:
+  finebeard: "finebeard@example.com"
+  host: "sandbox.smtp.mailtrap.io"
+  port: 2525
+  ssl: no
+  tls: yes
+  username: ${MAIL_USER:c24e9a827da757}
+  password: ${MAIL_PASSWORD:1fe8c84a7085f0}
 
+
+
+finebeard:
+  remember.me.key: ${REMEMBER_ME_KEY}
+  thymeleaf: # Thymeleaf
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+
+#server:
+#  error:
+#    include-message: always
 
