@@ -25,4 +25,11 @@ public class UserActivationServiceImpl implements UserActivationService {
 
         emailService.sendRegistrationEmail(event.getUserEmail(), event.getUserNames());
     }
+
+    @Override
+    public void cleanUpObsoleteActivationLinks() {
+        //TODO: implement
+
+        System.out.println("Cleaning up obsolete activation links");
+    }
 }
