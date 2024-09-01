@@ -41,8 +41,8 @@ mail:
   port: 2525
   ssl: no
   tls: yes
-  username: ${MAIL_USER:c24e9a827da757}
-  password: ${MAIL_PASSWORD:1fe8c84a7085f0}
+  username: ${MAIL_USER}
+  password: ${MAIL_PASSWORD}
 
 
 

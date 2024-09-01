@@ -34,6 +34,7 @@ public class SecurityConfiguration {
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/","/shop/categories","/about", "/users/login","/users/login-error","/users/register").permitAll()
+                        .requestMatchers("/api/currency/convert").permitAll()
 //                        .requestMatchers(HttpMethod.GET, "/shop/**").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
