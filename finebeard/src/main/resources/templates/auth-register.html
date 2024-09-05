@@ -20,7 +20,7 @@
                         <h2>Register</h2>
                     </div>
                     <div class="card-body">
-                        <form
+                        <form   id="registration-form"
                                 th:action="@{/users/register}"
                                 th:method="POST">
                             <div class="form-group">
@@ -58,7 +58,11 @@
                                     Confirm password is required!
                                 </p>
                             </div>
-                            <button type="submit" class="btn btn-dark btn-block">Register</button>
+<!--                            <button type="submit" class="btn btn-dark btn-block">Register</button>-->
+                            <button class="g-recaptcha btn btn-dark btn-block"
+                                    th:attr="data-sitekey=${@reCaptchaConfig.getSite()}"
+                                    data-callback='onSubmit'
+                                    data-action='submit'>Register</button>
 
                         </form>
                     </div>
@@ -72,6 +76,18 @@
     <nav th:replace="~{fragments/footer}"></nav>
 </div>
 
+
+<!--ReCaptcha  -->
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("registration-form").submit();
+    }
+</script>
+
+
+<!--EO: ReCaptcha -->
 
 
 </body>

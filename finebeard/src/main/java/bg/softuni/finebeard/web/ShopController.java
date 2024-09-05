@@ -2,6 +2,7 @@ package bg.softuni.finebeard.web;
 
 import bg.softuni.finebeard.model.dto.AddProductDTO;
 import bg.softuni.finebeard.service.ShopService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +18,14 @@ public class ShopController {
 
     private final ShopService shopService;
 
+
     public ShopController(ShopService shopService) {
         this.shopService = shopService;
     }
 
     @GetMapping("/categories")
-    public String allCategories(Model model) {
-//        model.addAttribute("products", shop.getProducts());
+    public String allCategories(Model model, Pageable pageable) {
+        model.addAttribute("products", shopService.getAllProducts(pageable));
         return "shop";
     }
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 @Component
-public class TestData {
+public class TestDataUtil {
 
     @Autowired
     private ExchangeRateRepository exchangeRateRepository;

@@ -4,6 +4,7 @@ package bg.softuni.finebeard.config;
 import bg.softuni.finebeard.repository.UserRepository;
 import bg.softuni.finebeard.service.impl.FinebeardUserDetailsService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -33,9 +34,10 @@ public class SecurityConfiguration {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                         .requestMatchers("/","/shop/categories","/about", "/users/login","/users/login-error","/users/register").permitAll()
                         .requestMatchers("/api/currency/convert").permitAll()
-//                        .requestMatchers(HttpMethod.GET, "/shop/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/shop/**").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
                 formLogin -> {
@@ -73,11 +75,6 @@ public class SecurityConfiguration {
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
 
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
-        return restTemplateBuilder
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .build();
-    }
+
 
 }

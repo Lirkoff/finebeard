@@ -23,7 +23,7 @@ spring:
 
 logging:
   level:
-    org.springframework: DEBUG
+#    org.springframework: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
 
@@ -35,6 +35,10 @@ open.exchange.rates:
   symbols: EUR,BGN
   enabled: false
 
+google.recaptcha:
+  site: ${RECAPTCHA_SITE_KEY:test}
+  secret: ${RECAPTCHA_SITE_SECRET:test}
+
 mail:
   finebeard: "finebeard@example.com"
   host: "sandbox.smtp.mailtrap.io"
@@ -43,8 +47,6 @@ mail:
   tls: yes
   username: ${MAIL_USER}
   password: ${MAIL_PASSWORD}
-
-
 
 finebeard:
   remember.me.key: ${REMEMBER_ME_KEY}
@@ -57,4 +59,11 @@ finebeard:
 #server:
 #  error:
 #    include-message: always
-
+#management:
+#  server:
+#    port: 8081
+#  endpoints:
+#    web:
+#      base-path: /actuator
+#      exposure:
+#        include: "*"

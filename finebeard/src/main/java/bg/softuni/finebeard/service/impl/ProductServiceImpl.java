@@ -10,8 +10,10 @@ import bg.softuni.finebeard.repository.BrandRepository;
 import bg.softuni.finebeard.repository.CategoryRepository;
 import bg.softuni.finebeard.repository.ModelRepository;
 import bg.softuni.finebeard.repository.ProductRepository;
+import bg.softuni.finebeard.service.MonitoringService;
 import bg.softuni.finebeard.service.ProductService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -26,7 +28,11 @@ public class ProductServiceImpl implements ProductService {
     private final ModelRepository modelRepository;
 
 
-    public ProductServiceImpl(ProductRepository productRepository, BrandRepository brandRepository, CategoryRepository categoryRepository, ModelRepository modelRepository) {
+
+    public ProductServiceImpl(ProductRepository productRepository,
+                              BrandRepository brandRepository,
+                              CategoryRepository categoryRepository,
+                              ModelRepository modelRepository) {
         this.productRepository = productRepository;
         this.brandRepository = brandRepository;
         this.categoryRepository = categoryRepository;
@@ -51,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void deleteProduct(UUID uuid) {
 
     }
