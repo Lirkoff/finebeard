@@ -3,6 +3,7 @@ package bg.softuni.finebeard.config;
 
 import bg.softuni.finebeard.repository.UserRepository;
 import bg.softuni.finebeard.service.impl.FinebeardUserDetailsService;
+import bg.softuni.finebeard.service.oauth.OAuthSuccessHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -23,9 +24,12 @@ import org.springframework.web.client.RestTemplate;
 public class SecurityConfiguration {
 
     private final String rememberMeKey;
+    private final OAuthSuccessHandler successHandler;
 
-    public SecurityConfiguration(@Value("${finebeard.remember.me.key}") String rememberMeKey) {
+    public SecurityConfiguration(@Value("${finebeard.remember.me.key}") String rememberMeKey,
+                                 OAuthSuccessHandler successHandler) {
         this.rememberMeKey = rememberMeKey;
+        this.successHandler = successHandler;
     }
 
 
@@ -62,6 +66,8 @@ public class SecurityConfiguration {
                                 .key(rememberMeKey)
                                 .rememberMeParameter("rememberme")
                                 .rememberMeCookieName("rememberme")
+                ).oauth2Login(
+                        oauth -> oauth.successHandler(successHandler)
                 ).build();
     }
 
