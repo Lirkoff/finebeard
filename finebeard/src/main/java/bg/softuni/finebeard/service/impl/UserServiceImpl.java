@@ -9,6 +9,11 @@ import bg.softuni.finebeard.repository.UserRoleRepository;
 import bg.softuni.finebeard.service.UserService;
 
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +27,18 @@ public class  UserServiceImpl implements UserService {
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
     private final ApplicationEventPublisher appEventPublisher;
+    private final UserDetailsService finebeardUserDetailsService;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, ApplicationEventPublisher appEventPublisher) {
+    public UserServiceImpl(UserRepository userRepository,
+                           UserRoleRepository userRoleRepository,
+                           PasswordEncoder passwordEncoder,
+                           ApplicationEventPublisher appEventPublisher,
+                           UserDetailsService finebeardUserDetailsService) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.appEventPublisher = appEventPublisher;
+        this.finebeardUserDetailsService = finebeardUserDetailsService;
     }
 
     @Override
@@ -73,6 +84,26 @@ public class  UserServiceImpl implements UserService {
         });
 
         return result;
+    }
+
+    @Override
+    public void createUserIfNotExists(String email, String names) {
+        // Create manually user in the DB
+        // password not necessary
+    }
+
+    @Override
+    public Authentication login(String email) {
+        UserDetails userDetails = finebeardUserDetailsService.loadUserByUsername(email);
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities());
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        return auth;
     }
 
     private UserEntity map(UserRegistrationDTO userRegistrationDTO) {

@@ -2,6 +2,7 @@ package bg.softuni.finebeard.config;
 
 
 import bg.softuni.finebeard.repository.UserRepository;
+import bg.softuni.finebeard.service.UserService;
 import bg.softuni.finebeard.service.impl.FinebeardUserDetailsService;
 import bg.softuni.finebeard.service.oauth.OAuthSuccessHandler;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,23 +25,22 @@ import org.springframework.web.client.RestTemplate;
 public class SecurityConfiguration {
 
     private final String rememberMeKey;
-    private final OAuthSuccessHandler successHandler;
 
-    public SecurityConfiguration(@Value("${finebeard.remember.me.key}") String rememberMeKey,
-                                 OAuthSuccessHandler successHandler) {
+    public SecurityConfiguration(@Value("${finebeard.remember.me.key}") String rememberMeKey) {
         this.rememberMeKey = rememberMeKey;
-        this.successHandler = successHandler;
     }
 
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity, OAuthSuccessHandler oAuthSuccessHandler) throws Exception {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/","/shop/categories","/about", "/users/login","/users/login-error","/users/register").permitAll()
+                        .requestMatchers("/", "/users/login","/users/login-error","/users/register").permitAll()
+                        .requestMatchers("/shop/categories").permitAll()
+                        .requestMatchers("/about", "/blog", "/help").permitAll()
                         .requestMatchers("/api/currency/convert/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/shop/**").permitAll()
                         .anyRequest().authenticated()
@@ -67,7 +67,7 @@ public class SecurityConfiguration {
                                 .rememberMeParameter("rememberme")
                                 .rememberMeCookieName("rememberme")
                 ).oauth2Login(
-                        oauth -> oauth.successHandler(successHandler)
+                        oauth -> oauth.successHandler(oAuthSuccessHandler)
                 ).build();
     }
 

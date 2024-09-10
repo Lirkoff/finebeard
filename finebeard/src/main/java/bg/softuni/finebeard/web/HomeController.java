@@ -18,6 +18,14 @@ public class HomeController {
         return "about";
     }
 
+    @GetMapping("/help")
+    public String help() {
+        return "help";
+    }
 
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
 
 }

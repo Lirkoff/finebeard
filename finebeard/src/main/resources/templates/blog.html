@@ -4,6 +4,112 @@
 <head th:replace="~{fragments/head}">
 </head>
 <body>
+<div>
+    <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<section class="blog-intro-section">
+    <div class="container text-center text-white">
+        <h1 class="display-4">FineBeard Blog</h1>
+        <p class="lead">Stay updated with the latest beard care tips, trends, and advice from the experts.</p>
+    </div>
+</section>
+
+<!-- Blog Posts Section -->
+<section class="blog-posts my-5">
+    <div class="container">
+        <div class="row">
+            <!-- Article 1 -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="static/images/beard-care-1.jpg" class="card-img-top" alt="Beard Care Tips">
+                    <div class="card-body">
+                        <h5 class="card-title">Top 5 Beard Care Tips for Beginners</h5>
+                        <p class="card-text">If you're new to beard grooming, these essential tips will get you started on the right foot. Learn how to properly care for your beard to keep it looking sharp.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="static/images/beard-care-2.jpg" class="card-img-top" alt="Beard Oil Benefits">
+                    <div class="card-body">
+                        <h5 class="card-title">The Benefits of Using Beard Oil</h5>
+                        <p class="card-text">Beard oil is more than just a grooming product. Discover how it can transform your beard, from keeping it soft and smooth to promoting healthy growth.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="static/images/beard-care-3.jpg" class="card-img-top" alt="Beard Styles">
+                    <div class="card-body">
+                        <h5 class="card-title">Best Beard Styles for Different Face Shapes</h5>
+                        <p class="card-text">Not all beard styles work for everyone. Find out which beard styles complement your face shape and enhance your overall look.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Article 4 -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="static/images/beard-care-4.jpg" class="card-img-top" alt="Beard Maintenance Routine">
+                    <div class="card-body">
+                        <h5 class="card-title">How to Build a Beard Maintenance Routine</h5>
+                        <p class="card-text">Consistency is key when it comes to beard maintenance. Follow this guide to create a simple and effective beard care routine that fits your lifestyle.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 5 -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="static/images/beard-care-5.jpg" class="card-img-top" alt="Common Beard Problems">
+                    <div class="card-body">
+                        <h5 class="card-title">Common Beard Problems and How to Fix Them</h5>
+                        <p class="card-text">From patchy growth to beard dandruff, every beard comes with its challenges. Learn how to tackle these common issues and keep your beard in top shape.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 6 -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="static/images/beard-care-6.jpg" class="card-img-top" alt="Beard Growth Myths">
+                    <div class="card-body">
+                        <h5 class="card-title">Beard Growth Myths: What’s True and What’s Not</h5>
+                        <p class="card-text">There are a lot of myths surrounding beard growth. We’re breaking down the most common misconceptions and giving you the facts you need to know.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
 
 
 

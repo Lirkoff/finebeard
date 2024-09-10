@@ -2,8 +2,6 @@
 @import url('typography.css');
 
 
-
-
 /* styles.css */
 .hero-section {
     background: url('../images/beard.jpg') no-repeat center center;
@@ -15,6 +13,7 @@
     text-align: center;
 }
 
+
 .hero-section .container {
     max-width: 600px;
 }
@@ -25,7 +24,7 @@
 
 .content {
     flex: 1 0 auto;
- }
+}
 
 /* Products Section */
 #products .card {
@@ -45,6 +44,21 @@
 #about p {
     font-size: 1.1rem;
     color: #333;
+}
+
+/* Help Section*/
+.help-intro-section {
+    background: url('../images/beard-help.webp') no-repeat center center;
+    background-size: cover;
+    padding: 60px 0;
+
+}
+
+/*Blog Section*/
+.blog-intro-section {
+    background-image: url('../images/beard-blog.jpg');
+    background-size: cover;
+    padding: 60px 0;
 }
 
 /* Contact Section */
@@ -67,13 +81,16 @@
 .container .form-check-label {
     margin-left: 5px;
 }
+
 .container .form-check {
     margin-bottom: 20px;
 }
+
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
 }
+
 .btn-primary:hover {
     background-color: #0056b3;
     border-color: #004085;
@@ -94,18 +111,18 @@ footer p {
 }
 
 .error-404 {
-        height: 100vh;
-        margin: 0;
-        background-image: url('../images/404.jpg');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('../images/404.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
 }
 
 .error-message {
