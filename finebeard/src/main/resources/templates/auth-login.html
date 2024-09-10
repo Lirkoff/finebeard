@@ -52,6 +52,11 @@
                             <div class="text-center mt-2">
                                 <a href="/users/register">Create an account</a>
                             </div>
+                            <div class="text-center mt-2">
+                                <a th:href="@{/oauth2/authorization/github}">
+                                    Login with GitHub
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -60,13 +65,7 @@
     </div>
 </section>
 
-<div class="container">
-    <a
-            th:href="@{/oauth2/authorization/github}"
-            class="btn">
-        Login with GitHub
-    </a>
-</div>
+
 
 <div>
     <nav th:replace="~{fragments/footer}"></nav>

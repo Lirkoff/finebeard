@@ -12,6 +12,6 @@ public interface UserService {
     void removeUserRole(String email);
     Map<String, String> getAllUsersNamesAndRoles();
     void createUserIfNotExists(String email, String names);
-
     Authentication login(String email);
+    void changeUsername(String currentUserName, String newUserName);
 }

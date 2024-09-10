@@ -57,8 +57,21 @@
 /*Blog Section*/
 .blog-intro-section {
     background-image: url('../images/beard-blog.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     padding: 60px 0;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Custom styles for blog cards */
+.card img {
+
 }
 
 /* Contact Section */

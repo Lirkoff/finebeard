@@ -106,6 +106,15 @@ public class  UserServiceImpl implements UserService {
         return auth;
     }
 
+    @Override
+    public void changeUsername(String currentUserName, String newUserName) {
+        Optional<UserEntity> user = userRepository.findByEmail(currentUserName);
+
+        user.get().setEmail(newUserName);
+
+        userRepository.save(user.get());
+    }
+
     private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
         return new UserEntity()
                 .setActive(false)
