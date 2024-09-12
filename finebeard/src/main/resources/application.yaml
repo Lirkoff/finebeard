@@ -68,11 +68,11 @@ finebeard:
 #server:
 #  error:
 #    include-message: always
-#management:
-#  server:
-#    port: 8081
-#  endpoints:
-#    web:
-#      base-path: /actuator
-#      exposure:
-#        include: "*"
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
