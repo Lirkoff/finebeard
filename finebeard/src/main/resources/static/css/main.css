@@ -26,6 +26,12 @@
     flex: 1 0 auto;
 }
 
+/*Navigation*/
+.navbar {
+    background-color: #333;
+}
+
+
 /* Products Section */
 #products .card {
     margin-bottom: 30px;
@@ -120,7 +126,7 @@ footer {
 
 footer p {
     margin: 0;
-    color: #fff;
+    color: whitesmoke;
 }
 
 .error-404 {
@@ -134,7 +140,7 @@ footer p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: whitesmoke;
     text-align: center;
 }
 
@@ -142,7 +148,72 @@ footer p {
     z-index: 1;
 }
 
-
-.nav-item:hover .dropdown-menu {
-    display: block;
+#nav {
+    list-style: none inside;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
+
+#nav li {
+    display: block;
+    position: relative;
+    float: left;
+    background: inherit;
+}
+
+#nav li a {
+    display: block;
+    padding: 14px 25px;
+    text-decoration: none;
+    width: inherit;
+    line-height: 35px;
+    color: whitesmoke;
+}
+
+#nav li li a {
+    font-size: 100%;
+}
+
+
+/*#nav li:hover {*/
+/*    background: white;*/
+/*}*/
+
+
+#nav ul {
+    position: absolute;
+    padding: 0;
+    left: 0;
+    display: none;
+}
+
+/*#nav li:hover ul ul {*/
+/*    display: none;*/
+/*}*/
+
+
+#nav li:hover ul {
+    display: block;
+    background: #333;
+
+}
+
+#nav li ul li a {
+    color: whitesmoke;
+}
+
+#nav #logout {
+    display: block;
+    padding: 14px 25px;
+    width: 100%;
+    line-height: 35px;
+    color: whitesmoke;
+}
+
+
+
+
+
+
+
