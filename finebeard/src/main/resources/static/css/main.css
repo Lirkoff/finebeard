@@ -189,7 +189,8 @@ footer p {
 }
 
 /*#nav li:hover ul ul {*/
-/*    display: none;*/
+/*    display: block;*/
+/*    background: #333;*/
 /*}*/
 
 
@@ -201,6 +202,31 @@ footer p {
 
 #nav li ul li a {
     color: whitesmoke;
+}
+
+#nav li ul li ul {
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin: -2.5rem 4rem;
+    left: 2rem;
+    display: none;
+}
+
+#nav li ul li:hover > ul,
+#nav li ul li:focus-within > ul,
+#nav li ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    background: inherit;
+}
+
+#nav ul li ul li {
+    clear: both;
+    width: 100%;
 }
 
 #nav #logout {

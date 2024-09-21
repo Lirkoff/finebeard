@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
     private final BrandService brandService;
     private final ProductService productService;
@@ -31,6 +31,13 @@ public class ProductController {
         this.brandService = brandService;
         this.productService = productService;
         this.categoryService = categoryService;
+    }
+
+    @GetMapping("/management")
+    public String management(Model model) {
+
+
+        return "products-management";
     }
 
     @GetMapping("/add")

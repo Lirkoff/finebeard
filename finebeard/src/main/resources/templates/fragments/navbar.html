@@ -38,15 +38,16 @@
                         <a class="nav-link" href="#" id="navbarDropdown" role="button">Admin</a>
                         <ul>
                             <li><a sec:authorize="hasRole('MASTER')" href="/roles/management">Roles</a></li>
+                            <li><a sec:authorize="hasRole('MASTER')" href="/products/management">Products</a>
+                                <ul>
+                                    <li><a sec:authorize="hasRole('MASTER')" href="/products/add">Create</a></li>
+                                    <li><a sec:authorize="hasRole('MASTER')" href="/products/management">Change</a></li>
+                                    <li><a sec:authorize="hasRole('MASTER')" href="/products/management">Remove</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 
-                    <li>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                            <a class="dropdown-item" href="/profile/edit_profile">Edit profile</a>
-                        </div>
-                    </li>
 
 
                     <li class="nav-item">
