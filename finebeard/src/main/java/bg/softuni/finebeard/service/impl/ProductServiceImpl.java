@@ -12,10 +12,12 @@ import bg.softuni.finebeard.repository.ModelRepository;
 import bg.softuni.finebeard.repository.ProductRepository;
 import bg.softuni.finebeard.service.MonitoringService;
 import bg.softuni.finebeard.service.ProductService;
+import ch.qos.logback.core.model.Model;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -50,10 +52,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<ProductDetailDTO> getProductDetail(UUID uuid) {
-//        return productRepository
-//                .findByUuid(uuid)
-//                .map(this::mapAsDetails);
-        return Optional.empty();
+        return productRepository
+                .findByUuid(uuid)
+                .map(this::mapAsDetails);
+//        return Optional.empty();
     }
 
     @Override
@@ -62,26 +64,30 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-//    private ProductDetailDTO mapAsDetails(ProductEntity productEntity) {
-//        return new ProductDetailDTO(
-//                productEntity.getUuid().toString(),
-//                productEntity.getDescription(),
-//                productEntity.getBrand().getName().name(),
-//                productEntity.getBrand().getModel().getName(),
-//                productEntity.getImageUrl(),
-//                productEntity.getPrice()
-//
-//        );
-//    }
+    private ProductDetailDTO mapAsDetails(ProductEntity productEntity) {
+        ModelEntity model = productEntity.getBrand().getModels().get(productEntity.getBrand().getModels().size() - 1);
+        return new ProductDetailDTO(
+                productEntity.getUuid().toString(),
+                productEntity.getDescription(),
+                productEntity.getBrand().getName().name(),
+                model.getName(),
+                productEntity.getImageUrl(),
+                productEntity.getPrice()
+
+        );
+    }
 
     private ProductEntity map(AddProductDTO addProductDTO) {
-        BrandEntity brand = brandRepository.findById(addProductDTO.brandId()).get();
+        BrandEntity brand = brandRepository.findByName(addProductDTO.name())
+                .orElse(new BrandEntity().setName(addProductDTO.name()).setModels(new ArrayList<>()));
 
         ModelEntity model = modelRepository.findByName(addProductDTO.model())
                 .orElse(new ModelEntity().setName(addProductDTO.model()));
         modelRepository.save(model);
 
-        CategoryEntity category = categoryRepository.findById(addProductDTO.categoryId()).get();
+        CategoryEntity category = categoryRepository.findByName(addProductDTO.category())
+                        .orElse(new CategoryEntity().setName(addProductDTO.category()));
+        categoryRepository.save(category);
 
         brand.getModels().add(model);
 

@@ -4,6 +4,7 @@ import bg.softuni.finebeard.model.enums.BrandEnum;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "brands")
@@ -13,7 +14,8 @@ public class BrandEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private BrandEnum name;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "brand_id")
     private List<ModelEntity> models;
 
     public BrandEnum getName() {

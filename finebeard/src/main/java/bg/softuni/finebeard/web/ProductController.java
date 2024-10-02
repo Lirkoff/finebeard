@@ -2,15 +2,13 @@ package bg.softuni.finebeard.web;
 
 import bg.softuni.finebeard.model.dto.AddProductDTO;
 import bg.softuni.finebeard.model.dto.ProductDetailDTO;
+import bg.softuni.finebeard.model.enums.BrandEnum;
+import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import bg.softuni.finebeard.service.BrandService;
 import bg.softuni.finebeard.service.CategoryService;
 import bg.softuni.finebeard.service.ProductService;
 import bg.softuni.finebeard.service.exception.ObjectNotFoundException;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,22 +21,14 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
-    private final BrandService brandService;
     private final ProductService productService;
     private final CategoryService categoryService;
 
-    public ProductController(BrandService brandService, ProductService productService, CategoryService categoryService) {
-        this.brandService = brandService;
+    public ProductController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/management")
-    public String management(Model model) {
-
-
-        return "products-management";
-    }
 
     @GetMapping("/add")
     public String add(Model model) {
@@ -46,10 +36,10 @@ public class ProductController {
             model.addAttribute("addProductDTO", AddProductDTO.empty());
         }
 
-        model.addAttribute("brands", brandService.getAllBrands());
-        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("brands", BrandEnum.values());
+        model.addAttribute("categories", ProductCategoryEnum.values());
 
-        return "product-add";
+        return "products-add";
     }
 
     @PostMapping("/add")
@@ -61,27 +51,26 @@ public class ProductController {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute("addProductDTO", addProductDTO);
             rAtt.addFlashAttribute("org.springframework.validation.BindingResult.addProductDTO", bindingResult);
-            return "redirect:/product/add";
+            return "redirect:/products/add";
         }
 
 
         UUID newProductUUID = productService.addProduct(addProductDTO);
 
-        return "redirect:/product/" + newProductUUID;
+        return "redirect:/products/" + newProductUUID;
     }
 
 
+    @GetMapping("/{uuid}")
+    public String details(@PathVariable("uuid") UUID uuid, Model model) {
+        ProductDetailDTO productDetailDTO = productService
+                .getProductDetail(uuid)
+                .orElseThrow(() -> new ObjectNotFoundException("Product with uuid " + uuid + " not found!"));
 
-//    @GetMapping("/{uuid}")
-//    public String details(@PathVariable("uuid") UUID uuid, Model model) {
-//        ProductDetailDTO productDetailDTO = productService
-//                .getProductDetail(uuid)
-//                .orElseThrow(() -> new ObjectNotFoundException("Product with uuid " + uuid + " not found!"));
-//
-//        model.addAttribute("productDetailDTO", productDetailDTO);
-//
-//        return "product-details";
-//    }
+        model.addAttribute("productDetailDTO", productDetailDTO);
+
+        return "product-details";
+    }
 
 //    @DeleteMapping("/{uuid}")
 //    public String  delete(@PathVariable("uuid") UUID uuid) {
@@ -91,7 +80,6 @@ public class ProductController {
 //
 //        return "redirect:/products/all";
 //    }
-
 
 
 }

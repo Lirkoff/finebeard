@@ -1,5 +1,7 @@
 package bg.softuni.finebeard.model.enums;
 
+
+
 public enum BrandEnum {
     Beardbrand,
     Honest_Amish,

@@ -2,6 +2,10 @@
 @import url('typography.css');
 
 
+body{
+    background-color: dimgrey;
+}
+
 /* styles.css */
 .hero-section {
     background: url('../images/beard.jpg') no-repeat center center;
@@ -29,6 +33,14 @@
 /*Navigation*/
 .navbar {
     background-color: #333;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.navbar .nav-item {
+    font-size: 25px;
 }
 
 
@@ -50,6 +62,7 @@
 #about p {
     font-size: 1.1rem;
     color: #333;
+
 }
 
 /* Help Section*/
@@ -95,6 +108,11 @@
 .login-section .card {
     margin-top: 30px;
 }
+
+/*.container {*/
+/*    height: 5rem;*/
+
+/*}*/
 
 
 .container .form-check-label {
@@ -164,7 +182,8 @@ footer p {
 
 #nav li a {
     display: block;
-    padding: 14px 25px;
+    font-size: 25px;
+    padding: 14px 50px;
     text-decoration: none;
     width: inherit;
     line-height: 35px;
@@ -235,6 +254,23 @@ footer p {
     width: 100%;
     line-height: 35px;
     color: whitesmoke;
+    font-size: 25px;
+}
+
+
+/* Set the logo container to fix it in the top-left corner */
+.logo-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+}
+
+/* Style the logo itself */
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
 }
 
 

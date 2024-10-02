@@ -10,18 +10,18 @@
 <div class="container my-5">
     <h1 class="text-center mb-5">Add New Product</h1>
     <form th:method="POST"
-          th:action="@{/product/add}"
+          th:action="@{/products/add}"
           th:object="${addProductDTO}">
         <div class="form-group">
-            <label for="brandId">Brand:</label>
+            <label for="name">Brand:</label>
             <select class="form-control"
-                    id="brandId"
-                    name="brandId">
+                    id="name"
+                    name="name">
                 <option
-                        th:each="name: ${brands}"
-                        th:label="${name.name}"
-                        th:value="${name.id}"
-                        th:selected="brandId == ${name.id}">
+                        th:each="brand: ${brands}"
+                        th:label="${brand}"
+                        th:value="${brand}"
+                        th:selected="name == ${brand}">
                     Select Brand
                 </option>
 
@@ -36,15 +36,15 @@
                    th:errors="*{model}" class="text-danger"></small>
         </div>
         <div class="form-group">
-            <label for="categoryId">Category:</label>
+            <label for="category">Category:</label>
             <select class="form-control"
-                    id="categoryId"
-                    name="categoryId">
+                    id="category"
+                    name="category">
                 <option
                         th:each="category: ${categories}"
-                        th:label="${category.name}"
-                        th:value="${category.id}"
-                        th:selected="categoryId == ${category.id}">
+                        th:label="${category}"
+                        th:value="${category}"
+                        th:selected="category == ${category}">
                     Select Category
                 </option>
 

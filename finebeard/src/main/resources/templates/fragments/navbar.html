@@ -11,7 +11,9 @@
         th:fragment="navbar"
         class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-        <a class="navbar-name" href="/">FineBeard</a>
+        <div class="logo-container">
+            <img src="/images/logos/1.webp" alt="Finebeard Logo" class="logo">
+        </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +21,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto" id="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/shop/categories">Shop</a>
                 </li>
@@ -38,7 +43,7 @@
                         <a class="nav-link" href="#" id="navbarDropdown" role="button">Admin</a>
                         <ul>
                             <li><a sec:authorize="hasRole('MASTER')" href="/roles/management">Roles</a></li>
-                            <li><a sec:authorize="hasRole('MASTER')" href="/products/management">Products</a>
+                            <li><a href="#">Products</a>
                                 <ul>
                                     <li><a sec:authorize="hasRole('MASTER')" href="/products/add">Create</a></li>
                                     <li><a sec:authorize="hasRole('MASTER')" href="/products/management">Change</a></li>
