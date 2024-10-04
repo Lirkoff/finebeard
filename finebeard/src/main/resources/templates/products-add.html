@@ -19,7 +19,7 @@
                     name="name">
                 <option
                         th:each="brand: ${brands}"
-                        th:label="${brand}"
+                        th:label="${brand.displayName}"
                         th:value="${brand}"
                         th:selected="name == ${brand}">
                     Select Brand
@@ -42,7 +42,7 @@
                     name="category">
                 <option
                         th:each="category: ${categories}"
-                        th:label="${category}"
+                        th:label="${category.displayName}"
                         th:value="${category}"
                         th:selected="category == ${category}">
                     Select Category

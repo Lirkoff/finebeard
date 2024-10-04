@@ -5,8 +5,7 @@ import bg.softuni.finebeard.repository.CategoryRepository;
 import bg.softuni.finebeard.service.CategoryService;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -19,7 +18,15 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Set<CategoryEntity> getAllCategories() {
-        return new HashSet<>(categoryRepository.findAll());
+    public List<CategoryEntity> getAllCategories() {
+        List<CategoryEntity> categories = categoryRepository.findAll();
+        categories.sort(
+                Comparator.comparing(c -> c.getName().getDisplayName()));
+        return categories;
+    }
+
+    @Override
+    public CategoryEntity getById(Long categoryId) {
+        return categoryRepository.findById(categoryId).orElse(null);
     }
 }

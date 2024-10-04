@@ -31,7 +31,7 @@ public class UserRoleController {
             model.addAttribute("userRoleManagementDTO", new UserRoleManagementDTO(""));
         }
 
-        Map<String,String> usersNamesAndRoles = userService.getAllUsersNamesAndRoles();
+        TreeMap<String,String> usersNamesAndRoles = userService.getAllUsersNamesAndRoles();
 
         model.addAttribute("usersNamesAndRoles", usersNamesAndRoles);
 

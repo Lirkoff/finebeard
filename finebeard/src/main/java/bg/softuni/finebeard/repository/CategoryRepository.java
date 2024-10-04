@@ -16,4 +16,6 @@ import java.util.Set;
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 
     Optional<CategoryEntity> findByName(ProductCategoryEnum category);
+
+
 }

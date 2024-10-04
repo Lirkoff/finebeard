@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -34,8 +37,14 @@ public class ProductController {
             model.addAttribute("addProductDTO", AddProductDTO.empty());
         }
 
-        model.addAttribute("brands", BrandEnum.values());
-        model.addAttribute("categories", ProductCategoryEnum.values());
+        List<BrandEnum> brandEnums = Arrays.asList(BrandEnum.values());
+        brandEnums.sort(Comparator.comparing(BrandEnum::getDisplayName));
+
+        List<ProductCategoryEnum> categoryEnums = Arrays.asList(ProductCategoryEnum.values());
+        categoryEnums.sort(Comparator.comparing(ProductCategoryEnum::getDisplayName));
+
+        model.addAttribute("brands", brandEnums);
+        model.addAttribute("categories", categoryEnums);
 
         return "products-add";
     }

@@ -5,6 +5,7 @@ import bg.softuni.finebeard.model.entity.CategoryEntity;
 import bg.softuni.finebeard.model.entity.ProductEntity;
 import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import bg.softuni.finebeard.repository.CategoryRepository;
+import bg.softuni.finebeard.service.CategoryService;
 import bg.softuni.finebeard.service.ProductService;
 import bg.softuni.finebeard.service.ShopService;
 import jakarta.validation.Valid;
@@ -13,10 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
@@ -26,28 +24,30 @@ import java.util.UUID;
 public class ShopController {
 
     private final ShopService shopService;
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
-
-    public ShopController(ShopService shopService, CategoryRepository categoryRepository) {
+    public ShopController(ShopService shopService, CategoryService categoryService) {
         this.shopService = shopService;
-        this.categoryRepository = categoryRepository;
+        this.categoryService = categoryService;
     }
 
-    @GetMapping("/categories")
+    @GetMapping("")
     public String allCategories(Model model) {
-        model.addAttribute("categories", ProductCategoryEnum.values());
+
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         return "shop";
     }
 
 
+    @PostMapping("/categories/{categoryName}")
+    public String categoryProducts(@PathVariable("categoryName") String categoryName,
+                                   @RequestParam("categoryId") Long categoryId,
+                                   Model model,
+                                   Pageable pageable) {
 
-    @GetMapping("/categories/{categoryName}")
-    public String categoryProducts(@PathVariable("categoryName") String categoryName, Model model, Pageable pageable) {
         try {
-            CategoryEntity category = categoryRepository.findByName(ProductCategoryEnum.valueOf(categoryName)).get();
-            Page<ProductEntity> products = shopService.getAllProducts(category.getId(), pageable);
+            Page<ProductEntity> products = shopService.getAllProducts(categoryId, pageable);
             model.addAttribute("products", products);
 
         } catch (Exception e) {
@@ -69,9 +69,6 @@ public class ShopController {
 //
 //        return "product-details";
 //    }
-
-
-
 
 
 }

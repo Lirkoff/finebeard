@@ -72,13 +72,13 @@ public class  UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, String> getAllUsersNamesAndRoles() {
+    public TreeMap<String, String> getAllUsersNamesAndRoles() {
         List<UserEntity> data = userRepository.findAll();
 
-        Map<String, String> result = new HashMap<>();
+        TreeMap<String, String> result = new TreeMap<>();
 
         data.forEach(e -> {
-            List<String> roles = new ArrayList<>();
+            TreeSet<String> roles = new TreeSet<>();
             e.getRoles().forEach(r -> roles.add(r.getRole().name()));
             result.put(e.getEmail(), String.join(", ", roles));
         });
