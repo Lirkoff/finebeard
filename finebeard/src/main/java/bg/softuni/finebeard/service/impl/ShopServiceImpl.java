@@ -1,5 +1,6 @@
 package bg.softuni.finebeard.service.impl;
 
+import bg.softuni.finebeard.model.entity.CategoryEntity;
 import bg.softuni.finebeard.model.entity.ProductEntity;
 import bg.softuni.finebeard.repository.ProductRepository;
 import bg.softuni.finebeard.service.MonitoringService;
@@ -21,10 +22,10 @@ public class ShopServiceImpl implements ShopService {
 
 
     @Override
-    public Page<ProductEntity> getAllProducts(Pageable pageable) {
+    public Page<ProductEntity> getAllProducts(Long categoryId, Pageable pageable) {
         monitoringService.logProductSearch();
 
         return productRepository
-                .findAll(pageable);
+                .findAllByCategoryId(categoryId,pageable);
     }
 }
