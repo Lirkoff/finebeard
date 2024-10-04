@@ -5,57 +5,58 @@
 
 </head>
 <body>
-<div>
-    <nav th:replace="~{fragments/navbar}"></nav>
-</div>
+<div class="wrapper">
+    <div>
+        <nav th:replace="~{fragments/navbar}"></nav>
+    </div>
 
-<!-- Profile Section -->
-<section class="profile-section py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h2 class="text-center mb-4">Your Profile</h2>
+    <!-- Profile Section -->
+    <section class="profile-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h2 class="text-center mb-4">Your Profile</h2>
 
-                <!-- User Info -->
-                <div class="card mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Profile Information</h5>
+                    <!-- User Info -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Profile Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Username: </strong><span th:text="${#authentication.name}"> JohnDoe123</span></p>
+
+
+                            <!--                        <p><strong>Member since:</strong> January 2022</p>-->
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p><strong>Username: </strong><span th:text="${#authentication.name}"> JohnDoe123</span></p>
 
+                    <!-- Change Username Form -->
+                    <div class="card">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">Change Your Username</h5>
+                        </div>
+                        <div class="card-body">
+                            <form th:method="POST"
+                                  th:action="@{/profile/change-username}"
+                                  th:object="${changeUsernameDTO}">
 
-<!--                        <p><strong>Member since:</strong> January 2022</p>-->
-                    </div>
-                </div>
-
-                <!-- Change Username Form -->
-                <div class="card">
-                    <div class="card-header bg-secondary text-white">
-                        <h5 class="mb-0">Change Your Username</h5>
-                    </div>
-                    <div class="card-body">
-                        <form th:method="POST"
-                              th:action="@{/profile/change-username}"
-                              th:object="${changeUsernameDTO}">
-
-                            <div class="form-group">
-                                <label for="newEmail">New Username</label>
-                                <input type="text" class="form-control" id="newEmail" name="newEmail"
-                                       th:field="*{newEmail}" th:errorclass="bg-danger"
-                                       placeholder="Enter new username" required>
-                                <small th:if="${#fields.hasErrors('newEmail')}"
-                                       th:errors="*{newEmail}" class="text-danger"></small>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Change Username</button>
-                        </form>
+                                <div class="form-group">
+                                    <label for="newEmail">New Username</label>
+                                    <input type="text" class="form-control" id="newEmail" name="newEmail"
+                                           th:field="*{newEmail}" th:errorclass="bg-danger"
+                                           placeholder="Enter new username" required>
+                                    <small th:if="${#fields.hasErrors('newEmail')}"
+                                           th:errors="*{newEmail}" class="text-danger"></small>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Change Username</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
+</div>
 
 <div>
     <nav th:replace="~{fragments/footer}"></nav>

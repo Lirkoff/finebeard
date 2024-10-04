@@ -2,24 +2,33 @@
 <html lang="en"
       xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head}">
-   
+
 </head>
 <body>
+<div class="wrapper">
 
     <div>
         <nav th:replace="~{fragments/navbar}"></nav>
     </div>
 
 
-
-    <header class="hero-section text-white text-center">
-        <div class="container">
-            <h1 class="display-4">Welcome to FineBeard</h1>
-<!--            <th:block th:if="${}"-->
-            <p class="lead">Premium Grooming Products for the Modern Beardsman</p>
-            <a href="/shop/categories" class="btn btn-primary btn-lg">Shop Now</a>
+<!--    <header class="hero-section text-white text-center">-->
+<!--        <div class="container">-->
+<!--            <h1 class="display-4">Welcome to FineBeard</h1>-->
+<!--            &lt;!&ndash;            <th:block th:if="${}"&ndash;&gt;-->
+<!--            <p class="lead">Premium Grooming Products for the Modern Beardsman</p>-->
+<!--            <a href="/shop/categories" class="btn btn-primary btn-lg">Shop Now</a>-->
+<!--        </div>-->
+        <div class="hero-section">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h1 class="hero-title">Take Your Beard to the Next Level</h1>
+                    <p class="hero-subtitle">Quality grooming products for the modern gentleman.</p>
+                    <a href="/shop/categories" class="hero-button">Shop Now</a>
+                </div>
+            </div>
         </div>
-    </header>
+<!--    </header>-->
 
 
     <section id="products" class="dark-gray">
@@ -64,7 +73,9 @@
     <section id="about" class="py-5">
         <div class="container">
             <h2 class="text-center">About Us</h2>
-            <p class="text-center mt-4">At FineBeard, we believe in providing the best grooming products to help you look and feel your best. Our products are made with natural ingredients and crafted with care to ensure the highest quality. Join the FineBeard community and take your beard game to the next level.</p>
+            <p class="text-center mt-4">At FineBeard, we believe in providing the best grooming products to help you
+                look and feel your best. Our products are made with natural ingredients and crafted with care to ensure
+                the highest quality. Join the FineBeard community and take your beard game to the next level.</p>
         </div>
     </section>
 
@@ -92,11 +103,11 @@
         </div>
     </section>
 
+</div>
 
-    <div>
-        <nav th:replace="~{fragments/footer}"></nav>
-    </div>
-
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
+</div>
 
 </body>
 </html>

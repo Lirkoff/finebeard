@@ -4,6 +4,12 @@ html{
     font: 16px/1.5 'PT Sans Narrow', sans-serif;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    color: #D6EAF8;
+}
+
 @media screen and (min-width:400px){
     html{
         font-size: 14px;

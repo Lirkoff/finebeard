@@ -5,57 +5,55 @@
 
 </head>
 <body>
-<div>
-    <nav th:replace="~{fragments/navbar}"></nav>
-</div>
+<div class="wrapper">
+    <div>
+        <nav th:replace="~{fragments/navbar}"></nav>
+    </div>
 
-<div class="container-fluid">
-    <h2 class="text-center">Product</h2>
-    <div th:object="${productDetailDTO}" class="offers row mx-auto d-flex flex-row justify-content-center">
-        <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0" >
+    <div class="container-fluid">
+        <h2 class="text-center">Product</h2>
+        <div th:object="${productDetailDTO}" class="offers row mx-auto d-flex flex-row justify-content-center">
+            <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
 
-            <div class="card-body pb-1">
-                <p class="card-title" th:text="*{description}"></p>
+                <div class="card-body pb-1">
+                    <p class="card-title" th:text="*{description}"></p>
+                </div>
+                <ul class="offer-details list-group list-group-flush">
+                    <li class="list-group-item">
+
+                        <div class="card-text">
+                            <span>Brand:</span>
+                            <th:block th:text="*{brand}"> Brand</th:block>
+                        </div>
+                        <div class="card-text">
+                            <span>Model:</span>
+                            <th:block th:text="*{model}"> Model</th:block>
+                        </div>
+                        <div class="card-text">
+                            <span>Price</span>
+                            <th:block th:text="*{price}"> 9999999</th:block>
+                        </div>
+
+                    </li>
+                </ul>
+                <div class="card-body" sec:authorize="hasRole('ADMIN')">
+                    <form th:method="delete"
+                          th:action="@{/product/{productUUID}(productUUID=*{id})}">
+                        <input id="deleteProduct" type="submit" value="Delete" class="link card-link btn-primary"/>
+                    </form>
+                </div>
+
             </div>
-            <ul class="offer-details list-group list-group-flush">
-                <li class="list-group-item">
-
-                    <div class="card-text">
-                        <span>Brand:</span>
-                        <th:block th:text="*{brand}"> Brand</th:block>
-                    </div>
-                    <div class="card-text">
-                        <span>Model:</span>
-                        <th:block th:text="*{model}"> Model</th:block>
-                    </div>
-                    <div class="card-text">
-                        <span>Price</span>
-                        <th:block th:text="*{price}"> 9999999</th:block>
-                    </div>
-
-                </li>
-            </ul>
-            <div class="card-body" sec:authorize="hasRole('ADMIN')">
-                <form  th:method="delete"
-                       th:action="@{/product/{productUUID}(productUUID=*{id})}">
-                    <input id="deleteProduct" type="submit" value="Delete" class="link card-link btn-primary"/>
-                </form>
+            <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+                <img th:src="*{imageUrl}" class="card-img-top" alt="Solar image">
             </div>
-
-        </div>
-        <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
-            <img th:src="*{imageUrl}" class="card-img-top"  alt="Solar image">
         </div>
     </div>
+
 </div>
-
-
-
-
 <div>
     <nav th:replace="~{fragments/footer}"></nav>
 </div>
-
 
 </body>
 </html>

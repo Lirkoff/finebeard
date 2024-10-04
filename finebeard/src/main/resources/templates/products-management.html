@@ -5,30 +5,32 @@
 <head th:replace="~{fragments/head}">
 </head>
 <body sec:authorize="hasRole('MASTER')">
-<div>
-    <nav th:replace="~{fragments/navbar}"></nav>
-</div>
-
-<!-- Main Content -->
-<div class="container product-manage-container">
-    <h2 class="product-manage-header">Manage Products</h2>
-<!--    <p class="text-center">Choose an action to manage your products.</p>-->
-    <div class="product-manage-btns">
-        <button class="btn btn-success product-manage-btn">
-            <a href="/products/add">Create</a>
-        </button>
-        <button class="btn btn-danger product-manage-btn">
-            <a href="/products/remove">Remove</a>
-        </button>
-        <button class="btn btn-primary product-manage-btn">
-            <a href="/products/change">Change</a>
-        </button>
+<div class="wrapper">
+    <div>
+        <nav th:replace="~{fragments/navbar}"></nav>
     </div>
-</div>
 
+    <!-- Main Content -->
+    <div class="container product-manage-container">
+        <h2 class="product-manage-header">Manage Products</h2>
+        <!--    <p class="text-center">Choose an action to manage your products.</p>-->
+        <div class="product-manage-btns">
+            <button class="btn btn-success product-manage-btn">
+                <a href="/products/add">Create</a>
+            </button>
+            <button class="btn btn-danger product-manage-btn">
+                <a href="/products/remove">Remove</a>
+            </button>
+            <button class="btn btn-primary product-manage-btn">
+                <a href="/products/change">Change</a>
+            </button>
+        </div>
+    </div>
+
+
+</div>
 <div>
     <nav th:replace="~{fragments/footer}"></nav>
 </div>
-
 </body>
 </html>
