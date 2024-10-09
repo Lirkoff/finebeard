@@ -24,6 +24,7 @@ public class AppInit implements CommandLineRunner {
             for (ProductCategoryEnum value : ProductCategoryEnum.values()) {
                 CategoryEntity category = new CategoryEntity();
                 category.setName(value);
+                category.setImageUrl(category.getName().getDisplayName());
                 categoryRepository.save(category);
             }
         }

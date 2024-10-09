@@ -11,62 +11,37 @@
         <nav th:replace="~{fragments/navbar}"></nav>
     </div>
 
-
-<!--    <header class="hero-section text-white text-center">-->
-<!--        <div class="container">-->
-<!--            <h1 class="display-4">Welcome to FineBeard</h1>-->
-<!--            &lt;!&ndash;            <th:block th:if="${}"&ndash;&gt;-->
-<!--            <p class="lead">Premium Grooming Products for the Modern Beardsman</p>-->
-<!--            <a href="/shop/categories" class="btn btn-primary btn-lg">Shop Now</a>-->
-<!--        </div>-->
-        <div class="hero-section">
-            <div class="hero-overlay">
-                <div class="hero-content">
-                    <h1 class="hero-title">Take Your Beard to the Next Level</h1>
-                    <p class="hero-subtitle">Quality grooming products for the modern gentleman.</p>
-                    <a href="/shop/categories" class="hero-button">Shop Now</a>
-                </div>
+    <div class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 class="hero-title">Take Your Beard to the Next Level</h1>
+                <p class="hero-subtitle">Quality grooming products for the modern gentleman.</p>
+                <a href="/shop/categories" class="hero-button">Shop Now</a>
             </div>
         </div>
-<!--    </header>-->
+    </div>
 
 
     <section id="products" class="dark-gray">
         <div class="container">
             <h2 class="text-center">Our Products</h2>
-            <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="img/product1.jpg" class="card-img-top" alt="Product 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Beard Oil</h5>
-                            <p class="card-text">Nourish and hydrate your beard with our premium beard oil.</p>
-                            <a href="#" class="btn btn-dark">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="img/product2.jpg" class="card-img-top" alt="Product 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Beard Balm</h5>
-                            <p class="card-text">Style and control your beard with our all-natural beard balm.</p>
-                            <a href="#" class="btn btn-dark">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="img/product3.jpg" class="card-img-top" alt="Product 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Beard Shampoo</h5>
-                            <p class="card-text">Keep your beard clean and fresh with our gentle beard shampoo.</p>
-                            <a href="#" class="btn btn-dark">Buy Now</a>
+            <div class="products-container">
+                <div class="row mt-4">
+                    <div class="col-md-4" th:each="product : ${products}">
+                        <div class="card" th:class="|card|" th:style="'background-image: url(' + @{${product.imageUrl}} + ');'">
+<!--                            <img src=@{${product.imageUrl}} class="card-img-top" alt="Product 1">-->
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${product.brand.name.displayName}">Beard Oil</h5>
+                                <p class="card-text" th:text="${product.description}">Nourish and hydrate...</p>
+                                <p class="card-text" th:text="${product.price}">15.00</p>
+                                <a href="#" class="hero-button btn btn-dark d-flex justify-content-center mt-auto">Buy Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 
 

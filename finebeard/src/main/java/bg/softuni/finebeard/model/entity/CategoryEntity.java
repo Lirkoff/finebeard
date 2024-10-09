@@ -14,6 +14,8 @@ public class CategoryEntity extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ProductCategoryEnum name;
 
+    private String imageUrl;
+
 
     public ProductCategoryEnum getName() {
         return name;
@@ -24,5 +26,14 @@ public class CategoryEntity extends BaseEntity{
         return this;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public CategoryEntity setImageUrl(String imageUrl) {
+        this.imageUrl = "../images/categories/" +
+                imageUrl +
+                ".png";
+        return this;
+    }
 }

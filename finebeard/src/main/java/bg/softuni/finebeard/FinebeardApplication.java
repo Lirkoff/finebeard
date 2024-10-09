@@ -23,7 +23,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 		}
 )
 @EnableScheduling
-//@EnableCaching
+@EnableCaching
 @SpringBootApplication
 public class FinebeardApplication {
 

@@ -152,6 +152,12 @@ body{
     border-radius: 30px;
 }
 
+.card-shop {
+    /*background: url("../images/beard-blog.jpg") no-repeat center center;*/
+
+    border-radius: 30px;
+}
+
 /* Contact Section */
 #contact form {
     max-width: 600px;
