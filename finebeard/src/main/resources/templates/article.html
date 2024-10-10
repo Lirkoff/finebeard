@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
+
+</head>
+<body>
+<div class="wrapper">
+
+    <div>
+        <nav th:replace="~{fragments/navbar}"></nav>
+    </div>
+
+    <div class="container mt-4">
+        <article class="blog-article card">
+            <div class="card-body">
+                <h1 class="card-title" th:text="${blogArticle.title}">Article Title</h1>
+                <h5 class="card-subtitle mb-2 text-muted" th:text="${blogArticle.author}">Author Name</h5>
+                <p class="card-text" th:text="${blogArticle.content}">Article content goes here...</p>
+<!--                <p class="text-muted" th:text="${blogArticle.imageUrl}">Published Date</p>-->
+            </div>
+        </article>
+    </div>
+
+</div>
+
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
+</div>
+</body>
+</html>

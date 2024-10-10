@@ -40,6 +40,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/", "/users/login","/users/login-error","/users/register").permitAll()
                         .requestMatchers("/shop/**").permitAll()
+                        .requestMatchers("/blog/**").permitAll()
                         .requestMatchers("/about", "/blog", "/help").permitAll()
                         .requestMatchers("/api/currency/convert/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/shop/**").permitAll()

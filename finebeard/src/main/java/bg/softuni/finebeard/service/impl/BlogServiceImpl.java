@@ -1,11 +1,12 @@
 package bg.softuni.finebeard.service.impl;
 
-import bg.softuni.finebeard.model.entity.BlogArticle;
+import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 import bg.softuni.finebeard.repository.BlogRepository;
 import bg.softuni.finebeard.service.BlogService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -17,19 +18,22 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogArticle> getAllArticles() {
+    public List<BlogArticleEntity> getAllArticles() {
         return List.of();
     }
 
 
     @Override
-    public BlogArticle getArticleById(Long id) {
-        return null;
+    public BlogArticleEntity getArticleByUuid(UUID uuid) {
+
+        return blogRepository.getBlogArticleEntitiesByUuid(uuid);
     }
 
     @Override
-    public BlogArticle saveArticle(BlogArticle article) {
-        return null;
+    public UUID saveArticle(BlogArticleEntity article) {
+        article.setUuid(UUID.randomUUID());
+
+        return blogRepository.save(article).getUuid();
     }
 
     @Override
@@ -38,7 +42,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void updateBlogArticle(Long id, BlogArticle updatedBlogArticle) {
+    public void updateBlogArticle(Long id, BlogArticleEntity updatedBlogArticleEntity) {
 
     }
 }

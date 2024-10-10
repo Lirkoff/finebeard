@@ -1,17 +1,21 @@
 package bg.softuni.finebeard.web;
 
 
-import bg.softuni.finebeard.model.entity.BlogArticle;
+import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 import bg.softuni.finebeard.service.BlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
+@RequestMapping("/blog")
 public class BlogController {
-    
+
 
     private final BlogService blogService;
 
@@ -19,36 +23,62 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @GetMapping("/blog/{id}")
-    public String getBlogPost(@PathVariable("id") Long id, Model model) {
-        BlogArticle blogPost = blogService.getArticleById(id);
-        model.addAttribute("blogPost", blogPost);
-        return "blogPost";
+
+    @GetMapping("")
+    public String getAllBlogArticles(Model model) {
+        List<BlogArticleEntity> blogArticleEntities = blogService.getAllArticles();
+        model.addAttribute("blogArticles", blogArticleEntities);
+        return "blog";
+    }
+    
+    
+    @GetMapping("/add")
+    public String getAddArticlePage(Model model) {
+        model.addAttribute("blogArticle", new BlogArticleEntity());
+        return "add-article";
     }
 
-    @GetMapping("/blog")
-    public String getAllBlogPosts(Model model) {
-        List<BlogArticle> blogPosts = blogService.getAllArticles();
-        model.addAttribute("blogPosts", blogPosts);
-        return "blogList";
+
+    @PostMapping("/add")
+    public String createAndRedirectBlogArticle(@ModelAttribute BlogArticleEntity blogArticleEntity,
+                                               BindingResult bindingResult,
+                                               RedirectAttributes rAtt) {
+        if (bindingResult.hasErrors()) {
+            rAtt.addFlashAttribute("blogArticleEntity", blogArticleEntity);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.blogArticleEntity", bindingResult);
+            return "redirect:/blog/add";
+        }
+
+        UUID newArticle = blogService.saveArticle(blogArticleEntity);
+
+        return "redirect:/blog/" + newArticle;
     }
 
-    @PostMapping("/blog")
-    public String createBlogPost(@RequestBody BlogArticle blogArticle) {
-        blogService.saveArticle(blogArticle);
-        return "redirect:/blogs";
+
+    @GetMapping("/{uuid}")
+    public String getBlogPost(@PathVariable("uuid") UUID uuid, Model model) {
+        BlogArticleEntity blogArticleEntity = blogService.getArticleByUuid(uuid);
+        model.addAttribute("blogArticle", blogArticleEntity);
+        return "article";
     }
 
-    @PutMapping("/blog/{id}")
-    public String updateBlogPost(@PathVariable("id") Long id, @RequestBody BlogArticle updatedBlogArticle) {
-        blogService.updateBlogArticle(id, updatedBlogArticle);
+//    @PostMapping("/{uuid}")
+//    public String createBlogArticle(@RequestBody BlogArticleEntity blogArticleEntity) {
+//        blogService.saveArticle(blogArticleEntity);
+//        return "redirect:/blog";
+//    }
+
+    @PutMapping("/{uuid}")
+    public String updateBlogPost(@PathVariable("uuid") Long id, @RequestBody BlogArticleEntity updatedBlogArticleEntity) {
+        blogService.updateBlogArticle(id, updatedBlogArticleEntity);
         return "redirect:/blog/" + id;
     }
 
-    @DeleteMapping("/blog/{id}")
+
+    @DeleteMapping("/{id}")
     public String deleteBlogPost(@PathVariable("id") Long id) {
         blogService.deleteArticleById(id);
-        return "redirect:/blogs";
+        return "redirect:/blog";
     }
-    
+
 }

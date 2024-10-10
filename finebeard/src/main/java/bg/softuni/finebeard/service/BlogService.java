@@ -1,18 +1,19 @@
 package bg.softuni.finebeard.service;
 
-import bg.softuni.finebeard.model.entity.BlogArticle;
+import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface BlogService {
 
-    List<BlogArticle> getAllArticles();
+    List<BlogArticleEntity> getAllArticles();
 
-    BlogArticle getArticleById(Long id);
+    BlogArticleEntity getArticleByUuid(UUID uuid);
 
-    BlogArticle saveArticle(BlogArticle article);
+    UUID saveArticle(BlogArticleEntity article);
 
     void deleteArticleById(Long id);
 
-    void updateBlogArticle(Long id, BlogArticle updatedBlogArticle);
+    void updateBlogArticle(Long id, BlogArticleEntity updatedBlogArticleEntity);
 }
