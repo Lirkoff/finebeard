@@ -12,8 +12,7 @@ public enum ProductCategoryEnum {
     GROWTH_PRODUCTS("Growth products"),
     SHAVING_CREAMS_AND_GELS("Shaving creams and Gels"),
     AFTERSHAVES_AND_POST_SHAVE_CARE("Aftershaves and Post-Shave care"),
-    ACCESSORIES("Accessories"),
-    EDUCATIONAL_RESOURCES("Educational resources");
+    ACCESSORIES("Accessories");
 
     private final String displayName;
 

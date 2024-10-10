@@ -21,7 +21,7 @@
                         <form th:action="@{/shop/categories/{categoryName}(categoryName=${category.name.displayName})}"
                               method="post" class="d-flex justify-content-center mt-auto">
                             <input type="hidden" name="categoryId" th:value="${category.id}"/>
-                            <button type="submit" class="btn btn-primary">View</button>
+                            <button type="submit" class="shop-button">View</button>
                         </form>
                     </div>
                 </div>

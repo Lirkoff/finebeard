@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 public class BlogServiceImpl implements BlogService {
-    private BlogRepository blogRepository;
+    private final BlogRepository blogRepository;
 
     public BlogServiceImpl(BlogRepository blogRepository) {
         this.blogRepository = blogRepository;
@@ -19,7 +19,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<BlogArticleEntity> getAllArticles() {
-        return List.of();
+        return blogRepository.findAll();
     }
 
 

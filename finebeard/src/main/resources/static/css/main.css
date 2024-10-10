@@ -2,7 +2,7 @@
 @import url('typography.css');
 
 
-body{
+body {
     background-color: #76A2B4;
 }
 
@@ -31,7 +31,7 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(52, 73, 94, 0.5); /* Charcoal gray with transparency */
+    background: rgba(52, 73, 94, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +39,7 @@ body{
 
 .hero-content {
     text-align: center;
-    color: #D6EAF8; /* Soft blue */
+    color: #D6EAF8;
     padding: 0 20px;
 }
 
@@ -47,13 +47,13 @@ body{
     font-size: 3em;
     font-weight: bold;
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow to help text stand out */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
     font-size: 1.5em;
     margin-top: 10px;
-    color: #ffffff; /* White for better contrast */
+    color: #ffffff;
 }
 
 /* Button Styling */
@@ -62,8 +62,8 @@ body{
     margin-top: 20px;
     padding: 15px 30px;
     font-size: 1.2em;
-    color: #ffffff; /* White text */
-    background-color: #EC6958; /* Coral color for the button */
+    color: #ffffff;
+    background-color: #EC6958;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
@@ -71,7 +71,7 @@ body{
 }
 
 .hero-button:hover {
-    background-color: #c0392b; /* Darker coral on hover for a nice effect */
+    background-color: #c0392b;
 }
 
 /*.hero-section .container {*/
@@ -152,10 +152,63 @@ body{
     border-radius: 30px;
 }
 
+.card-blog {
+    /*background: url("../images/beard-blog.jpg") no-repeat center center;*/
+    border-radius: 30px;
+    margin-bottom: 30px;
+    background-color: #EC6958;
+}
+
+
+.card-blog .card-title {
+    font-size: 1.25rem;
+}
+
+.card-blog .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+
 .card-shop {
     /*background: url("../images/beard-blog.jpg") no-repeat center center;*/
-
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     border-radius: 30px;
+    height: 100%;
+}
+
+.card-body {
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 73, 94, 0.6);
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-shop .card-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    font-size: 1.5em;
+    /*margin-top: 3px;*/
+    color: #ffffff;
+}
+
+.shop-button {
+    display: inline-block;
+    /*margin-top: 5px;*/
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #EC6958;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    /*transition: background-color 0.3s ease;*/
 }
 
 /* Contact Section */
@@ -323,7 +376,6 @@ footer p {
 }
 
 
- /*Set the logo container to fix it in the top-left corner */
 .logo-container {
     position: absolute;
     top: 5px;
@@ -331,7 +383,6 @@ footer p {
     z-index: 100;
 }
 
-/* Style the logo itself */
 .logo {
     width: 110px;
     height: 110px;
