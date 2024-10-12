@@ -64,20 +64,25 @@ public class ProductController {
 
         UUID newProductUUID = productService.addProduct(addProductDTO);
 
-        return "redirect:/products/" + newProductUUID;
+
+        String category = addProductDTO.category().getDisplayName();
+
+        String redirectUrl = "redirect:/shop/categories/" + category + "/products/" + newProductUUID;
+
+        return redirectUrl;
     }
 
 
-    @GetMapping("/{uuid}")
-    public String details(@PathVariable("uuid") UUID uuid, Model model) {
-        ProductDetailDTO productDetailDTO = productService
-                .getProductDetail(uuid)
-                .orElseThrow(() -> new ObjectNotFoundException("Product with uuid " + uuid + " not found!"));
-
-        model.addAttribute("productDetailDTO", productDetailDTO);
-
-        return "product-details";
-    }
+//    @GetMapping("/{uuid}")
+//    public String details(@PathVariable("uuid") UUID uuid, Model model) {
+//        ProductDetailDTO productDetailDTO = productService
+//                .getProductDetail(uuid)
+//                .orElseThrow(() -> new ObjectNotFoundException("Product with uuid " + uuid + " not found!"));
+//
+//        model.addAttribute("productDetailDTO", productDetailDTO);
+//
+//        return "product-details";
+//    }
 
 //    @DeleteMapping("/{uuid}")
 //    public String  delete(@PathVariable("uuid") UUID uuid) {

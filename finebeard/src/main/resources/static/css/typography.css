@@ -36,6 +36,11 @@ html, body {
 
 h1, h2, h3, h4, h5, h6{
     font: 1em/1.2 'PT Serif', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    /*margin-top: 3px;*/
+    color: #ffffff;
 }
 
 h1{

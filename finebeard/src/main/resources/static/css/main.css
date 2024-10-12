@@ -100,6 +100,12 @@ body {
     font-size: 25px;
 }
 
+.product-image {
+    /*background: url("../images/2.webp");*/
+    /*height: 150px;*/
+    /*width: 150px;*/
+}
+
 
 /* Products Section */
 #products .card {
@@ -170,7 +176,8 @@ body {
 }
 
 
-.card-shop {
+.card-shop,
+.card-blog {
     /*background: url("../images/beard-blog.jpg") no-repeat center center;*/
     position: relative;
     align-items: center;
@@ -183,20 +190,26 @@ body {
 .card-body {
     width: 100%;
     height: 100%;
-    background: rgba(52, 73, 94, 0.6);
+    background: rgba(52, 73, 94, 0.7);
     border-radius: 30px;
     align-items: center;
     justify-content: center;
 }
 
-.card-shop .card-title {
+.card-shop .card-title,
+.blog-article-card .card-title{
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-    font-size: 1.5em;
     /*margin-top: 3px;*/
     color: #ffffff;
 }
+
+.blog-article-card .card-body{
+    /*background-color: rgba(52, 73, 94, 0.5);*/
+    margin-bottom: 25px;
+}
+
 
 .shop-button {
     display: inline-block;

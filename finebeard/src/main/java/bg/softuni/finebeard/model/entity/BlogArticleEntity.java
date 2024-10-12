@@ -1,5 +1,6 @@
 package bg.softuni.finebeard.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
@@ -15,10 +16,12 @@ public class BlogArticleEntity extends BaseEntity{
     @NotNull
     private UUID uuid;
 
+
     private String title;
 
 
     private String author;
+
 
     private String content;
 

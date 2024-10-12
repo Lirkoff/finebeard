@@ -9,6 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +32,8 @@ public class BlogController {
     public String getAllBlogArticles(Model model) {
         List<BlogArticleEntity> blogArticleEntities = blogService.getAllArticles();
         model.addAttribute("blogArticles", blogArticleEntities);
+
+
         return "blog";
     }
     
@@ -35,6 +41,8 @@ public class BlogController {
     @GetMapping("/add")
     public String getAddArticlePage(Model model) {
         model.addAttribute("blogArticle", new BlogArticleEntity());
+
+
         return "add-article";
     }
 
@@ -51,14 +59,53 @@ public class BlogController {
 
         UUID newArticle = blogService.saveArticle(blogArticleEntity);
 
+        Path filePath = Paths.get(blogArticleEntity.getContent());
+
+        String articleContent = "";
+
+        try {
+            articleContent = new String(Files.readAllBytes(filePath));
+        } catch (IOException e) {
+            articleContent = "Could not read the file. Error: " + e.getMessage();
+        }
+
+        rAtt.addAttribute("articleContent", articleContent);
+
         return "redirect:/blog/" + newArticle;
     }
 
 
     @GetMapping("/{uuid}")
-    public String getBlogPost(@PathVariable("uuid") UUID uuid, Model model) {
+    public String getBlogPost(@PathVariable("uuid") UUID uuid,
+                              @ModelAttribute("articleContent") String articleContent,
+                              Model model) {
+
         BlogArticleEntity blogArticleEntity = blogService.getArticleByUuid(uuid);
         model.addAttribute("blogArticle", blogArticleEntity);
+
+
+        return "article";
+    }
+
+    @PostMapping("/{uuid}")
+    public String getBlogPost(@PathVariable("uuid") UUID uuid,
+                              Model model) {
+
+        BlogArticleEntity blogArticleEntity = blogService.getArticleByUuid(uuid);
+        model.addAttribute("blogArticle", blogArticleEntity);
+
+        Path filePath = Paths.get(blogArticleEntity.getContent());
+
+        String articleContent = "";
+
+        try {
+            articleContent = new String(Files.readAllBytes(filePath));
+        } catch (IOException e) {
+            articleContent = "Could not read the file. Error: " + e.getMessage();
+        }
+
+        model.addAttribute("articleContent", articleContent);
+
         return "article";
     }
 

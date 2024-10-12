@@ -58,6 +58,7 @@ mail:
   password: ${MAIL_PASSWORD}
 
 finebeard:
+  default.master.pass: ${MASTER_PASS}
   remember.me.key: ${REMEMBER_ME_KEY}
   thymeleaf: # Thymeleaf
     cache: false

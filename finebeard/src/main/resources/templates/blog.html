@@ -9,30 +9,19 @@
         <nav th:replace="~{fragments/navbar}"></nav>
     </div>
 
-    <!--    <section class="blog-intro-section">-->
-    <!--        <div class="container text-center text-white">-->
-    <!--            <h1 class="display-4">FineBeard Blog</h1>-->
-    <!--            <p class="lead">Stay updated with the latest beard care tips, trends, and advice from the experts.</p>-->
-    <!--        </div>-->
-    <!--    </section>-->
-
 
     <section class="blog-posts my-5">
         <div class="container text-center my-5">
-            <h1 class="display-4">FineBeard Blog</h1>
+            <h1 class="text-center mb-5">FineBeard Blog</h1>
             <p class="lead">Stay updated with the latest beard care tips, trends, and advice from the experts.</p>
-            <div class="row">
-                <div class="col-md-4" th:each="blogArticle : ${blogArticles}">
-                    <div class="card-blog mb-4 shadow-sm"
+            <div class="row g-1">
+                <div class="col-xs-12 col-sm-6 col-md-3 mb-3" th:each="blogArticle : ${blogArticles}">
+                    <div class="card-blog h-100 d-flex flex-column"
                          th:class="|card-blog|"
                          th:style="|background: url('@{${blogArticle.imageUrl}}') no-repeat center center; background-size: cover;|">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${blogArticle.title}">Top 5 Beard Care Tips for
                                 Beginners</h5>
-                            <p class="card-text" th:text="${blogArticle.content}">If you're new to beard grooming, these
-                                essential tips will get you
-                                started on the right foot. Learn how to properly care for your beard to keep it looking
-                                sharp.</p>
                             <form th:action="@{/blog/{uuid}(uuid=${blogArticle.uuid})}"
                                   method="post" class="d-flex justify-content-center mt-auto">
                                 <button type="submit" class="btn btn-primary">View</button>

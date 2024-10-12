@@ -14,7 +14,7 @@
     <div class="hero-section">
         <div class="hero-overlay">
             <div class="hero-content">
-                <h1 class="hero-title">Take Your Beard to the Next Level</h1>
+                <h1 class="hero-title mb-5">Take Your Beard to the Next Level</h1>
                 <p class="hero-subtitle">Quality grooming products for the modern gentleman.</p>
                 <a href="/shop/categories" class="hero-button">Shop Now</a>
             </div>
@@ -28,8 +28,9 @@
             <div class="products-container">
                 <div class="row mt-4">
                     <div class="col-md-4" th:each="product : ${products}">
-                        <div class="card" th:class="|card|" th:style="'background-image: url(' + @{${product.imageUrl}} + ');'">
-<!--                            <img src=@{${product.imageUrl}} class="card-img-top" alt="Product 1">-->
+                        <div class="card"
+                             th:class="|card|"
+                             th:style="|background: url('@{${product.imageUrl}}') no-repeat center center; background-size: cover;|">
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${product.brand.name.displayName}">Beard Oil</h5>
                                 <p class="card-text" th:text="${product.description}">Nourish and hydrate...</p>
