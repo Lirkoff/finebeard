@@ -31,7 +31,7 @@ public class ProductsRotationServiceImpl implements ProductsRotationService {
 
     // Schedule the method to run every 1 minute (60000 ms)
     @Override
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 7200000)
     public void rotateProducts() {
         List<ProductEntity> allProducts = productRepository.findAll();
         if (allProducts.isEmpty()) {

@@ -10,40 +10,26 @@
     </div>
 
 
-    <section class="blog-posts my-5">
+    <section class="blog-posts">
         <div class="container text-center my-5">
-            <h1 class="text-center mb-5">FineBeard Blog</h1>
-            <p class="lead">Stay updated with the latest beard care tips, trends, and advice from the experts.</p>
-            <div class="row g-1">
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-3" th:each="blogArticle : ${blogArticles}">
+            <h1 class="text-center">FineBeard Blog</h1>
+            <h6 class="lead my-5">Stay updated with the latest beard care tips, trends, and advice from the experts.</h6>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-12 mb-3 content-center" th:each="blogArticle : ${blogArticles}">
                     <div class="card-blog h-100 d-flex flex-column"
                          th:class="|card-blog|"
                          th:style="|background: url('@{${blogArticle.imageUrl}}') no-repeat center center; background-size: cover;|">
                         <div class="card-body">
-                            <h5 class="card-title" th:text="${blogArticle.title}">Top 5 Beard Care Tips for
+                            <h5 class="card-title my-5" th:text="${blogArticle.title}">Top 5 Beard Care Tips for
                                 Beginners</h5>
                             <form th:action="@{/blog/{uuid}(uuid=${blogArticle.uuid})}"
                                   method="post" class="d-flex justify-content-center mt-auto">
-                                <button type="submit" class="btn btn-primary">View</button>
+                                <button type="submit" class="btn btn-primary my-2">View</button>
                             </form>
                         </div>
                     </div>
                 </div>
 
-
-                <!--                <nav aria-label="Page navigation example">-->
-                <!--                    <ul class="pagination justify-content-center">-->
-                <!--                        <li class="page-item disabled">-->
-                <!--                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>-->
-                <!--                        </li>-->
-                <!--                        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-                <!--                        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-                <!--                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                <!--                        <li class="page-item">-->
-                <!--                            <a class="page-link" href="#">Next</a>-->
-                <!--                        </li>-->
-                <!--                    </ul>-->
-                <!--                </nav>-->
             </div>
         </div>
     </section>

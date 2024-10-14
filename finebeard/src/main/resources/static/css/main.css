@@ -60,7 +60,7 @@ body {
 .hero-button {
     display: inline-block;
     margin-top: 20px;
-    padding: 15px 30px;
+    padding: 10px 30px;
     font-size: 1.2em;
     color: #ffffff;
     background-color: #EC6958;
@@ -81,6 +81,7 @@ body {
 /*.hero-section .btn {*/
 /*    margin-top: 20px;*/
 /*}*/
+
 
 .content {
     /*flex: 1 0 auto;*/
@@ -197,7 +198,7 @@ body {
 }
 
 .card-shop .card-title,
-.blog-article-card .card-title{
+.blog-article-card .card-title {
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -205,7 +206,7 @@ body {
     color: #ffffff;
 }
 
-.blog-article-card .card-body{
+.blog-article-card .card-body {
     /*background-color: rgba(52, 73, 94, 0.5);*/
     margin-bottom: 25px;
 }
@@ -240,9 +241,11 @@ body {
     margin-top: 30px;
 }
 
-/*.container {*/
-/*    height: 5rem;*/
 
+/*.navbar .container #nav{*/
+/*    width: 100%;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
 /*}*/
 
 
@@ -273,6 +276,16 @@ footer {
     text-align: center;
 }
 
+footer a {
+    font-size: 1.5rem;
+    transition: color 0.3s;
+    margin-right: 10px;
+}
+
+/*footer a:hover {*/
+/*    color: #f0a500;*/
+/*}*/
+
 footer p {
     margin: 0;
     color: whitesmoke;
@@ -297,6 +310,10 @@ footer p {
     z-index: 1;
 }
 
+/*#navbarNav {*/
+/*    margin-left: 600px;*/
+/*}*/
+
 #nav {
     list-style: none inside;
     margin: 0;
@@ -311,15 +328,112 @@ footer p {
     background: inherit;
 }
 
+#nav #profile {
+    display: block;
+    position: relative;
+    float: left;
+}
+
+#profile .dropdown-menu {
+    left: -45px;
+    right: auto;
+}
+
+
+#profile .dropdown-menu .dropdown-item > .dropdown-menu{
+    left: 30px;
+    right: auto;
+}
+
+#nav #profile ul a,
+#nav #profile #logout {
+    display: block;
+    font-size: 25px;
+    text-decoration: none;
+    margin-top: 0;
+    padding-top: 0;
+    /*width: inherit;*/
+    line-height: 35px;
+}
+
+
 #nav li a {
     display: block;
     font-size: 25px;
-    padding: 14px 50px;
+    padding: 14px 30px;
     text-decoration: none;
     width: inherit;
     line-height: 35px;
     color: whitesmoke;
 }
+
+
+@media (max-width: 500px) {
+    html {
+        font-size: 14px;
+    }
+
+    .navbar .container {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar {
+        padding: 0;
+        margin: 0;
+        border-bottom: none;
+    }
+
+
+    #profile .dropdown-menu {
+        left: 0;
+        right: auto;
+    }
+
+
+    #profile .dropdown-menu .dropdown-item > .dropdown-menu{
+        left: 21px;
+        right: auto;
+    }
+
+
+    #nav #profile:hover .dropdown-menu,
+    #nav #profile #logout {
+        display: block;
+        font-size: 25px;
+        text-decoration: none;
+        width: 100%;
+        line-height: 35px;
+        padding: 0;
+        margin: 0;
+        background-color: #34495E;
+        border: none;
+    }
+
+    #nav #profile:hover .dropdown-menu li ul {
+        display: block;
+        font-size: 25px;
+        text-decoration: none;
+        width: 100%;
+        line-height: 35px;
+        padding-left: 15px;
+        margin-left: -21px;
+        background-color: #34495E;
+        border: none;
+    }
+
+    #nav #profile:hover .dropdown-menu li ul li ul li {
+        width: 100%;
+        line-height: 35px;
+        margin-left: -30px;
+        padding-left: 65px;
+        border: none;
+    }
+
+
+}
+
 
 #nav li li a {
     font-size: 100%;
@@ -327,7 +441,7 @@ footer p {
 
 
 /*#nav li:hover {*/
-/*    background: white;*/
+/*    background: red;*/
 /*}*/
 
 
@@ -340,13 +454,15 @@ footer p {
 
 /*#nav li:hover ul ul {*/
 /*    display: block;*/
-/*    background: #333;*/
+/*    !*background: #333;*!*/
 /*}*/
 
 
 #nav li:hover ul {
     display: block;
-    background: #333;
+    background-color: inherit;
+    border-color: transparent;
+    text-align: center;
 
 }
 
@@ -354,14 +470,19 @@ footer p {
     color: whitesmoke;
 }
 
+/*#nav li ul li a:hover {*/
+/*    color:red;*/
+/*}*/
+
+
 #nav li ul li ul {
     visibility: hidden;
     opacity: 0;
-    min-width: 5rem;
+    min-width: 1rem;
     position: absolute;
     transition: all 0.5s ease;
     margin: -2.5rem 4rem;
-    left: 2rem;
+    left: 1.5rem;
     display: none;
 }
 
@@ -380,17 +501,13 @@ footer p {
 }
 
 #nav #logout {
-    display: block;
-    padding: 14px 25px;
     width: 100%;
-    line-height: 35px;
     color: whitesmoke;
-    font-size: 25px;
 }
 
 
 .logo-container {
-    position: absolute;
+    /*position: absolute;*/
     top: 5px;
     left: 5px;
     z-index: 100;
@@ -401,6 +518,7 @@ footer p {
     height: 110px;
     border-radius: 60px;
 }
+
 
 
 
