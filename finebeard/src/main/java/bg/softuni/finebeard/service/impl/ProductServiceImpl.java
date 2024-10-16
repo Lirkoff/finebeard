@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
         return new ProductDetailDTO(
                 productEntity.getUuid().toString(),
                 productEntity.getDescription(),
-                productEntity.getBrand().getName().name(),
+                productEntity.getBrand().getName().getDisplayName(),
                 model.getName(),
                 productEntity.getImageUrl(),
                 productEntity.getPrice()

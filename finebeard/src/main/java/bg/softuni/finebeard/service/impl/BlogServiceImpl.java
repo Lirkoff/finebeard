@@ -3,6 +3,8 @@ package bg.softuni.finebeard.service.impl;
 import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 import bg.softuni.finebeard.repository.BlogRepository;
 import bg.softuni.finebeard.service.BlogService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogArticleEntity> getAllArticles() {
-        return blogRepository.findAll();
+    public Page<BlogArticleEntity> getAllArticles(Pageable pageable) {
+        return blogRepository.findAll(pageable);
     }
 
 

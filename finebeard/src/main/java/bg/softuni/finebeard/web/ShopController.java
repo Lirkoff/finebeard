@@ -12,7 +12,9 @@ import bg.softuni.finebeard.service.ShopService;
 import bg.softuni.finebeard.service.exception.ObjectNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,13 +61,14 @@ public class ShopController {
     @GetMapping("/categories/{categoryName}/products")
     public String allProductsInCategory(@PathVariable("categoryName") String categoryName,
                                         @ModelAttribute("categoryId") Long categoryId,
-                                        Model model,
-                                        Pageable pageable) {
+                                        Pageable pageable,
+                                        Model model) {
 
         try {
             Page<ProductEntity> products = shopService.getAllProducts(categoryId, pageable);
             model.addAttribute("products", products);
             model.addAttribute("categoryName", categoryName);
+            model.addAttribute("categoryId", categoryId);
 
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

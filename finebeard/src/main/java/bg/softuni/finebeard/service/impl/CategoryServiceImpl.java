@@ -1,6 +1,7 @@
 package bg.softuni.finebeard.service.impl;
 
 import bg.softuni.finebeard.model.entity.CategoryEntity;
+import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import bg.softuni.finebeard.repository.CategoryRepository;
 import bg.softuni.finebeard.service.CategoryService;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,13 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryEntity getById(Long categoryId) {
         return categoryRepository.findById(categoryId).orElse(null);
+    }
+
+    @Override
+    public Long getIdByName(String categoryName) {
+        ProductCategoryEnum categoryEnum = Arrays.stream(ProductCategoryEnum.values())
+                .min(Comparator.comparing(ProductCategoryEnum::getDisplayName)).get();
+
+        return categoryRepository.findByName(categoryEnum).get().getId();
     }
 }

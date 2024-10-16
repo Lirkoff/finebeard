@@ -3,6 +3,8 @@ package bg.softuni.finebeard.web;
 
 import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 import bg.softuni.finebeard.service.BlogService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,8 +31,9 @@ public class BlogController {
 
 
     @GetMapping("")
-    public String getAllBlogArticles(Model model) {
-        List<BlogArticleEntity> blogArticleEntities = blogService.getAllArticles();
+    public String getAllBlogArticles(Model model, Pageable pageable) {
+        Page<BlogArticleEntity> blogArticleEntities = blogService.getAllArticles(pageable);
+
         model.addAttribute("blogArticles", blogArticleEntities);
 
 

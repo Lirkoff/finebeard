@@ -12,6 +12,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  data:
+    web:
+      pageable:
+        default-page-size: 4
+        max-page-size: 10
   sql:
     init:
       mode: never
@@ -32,7 +37,7 @@ spring:
 
 logging:
   level:
-#    org.springframework: DEBUG
+    org.springframework: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
 

@@ -24,7 +24,7 @@
                                 Beginners</h5>
                             <form th:action="@{/blog/{uuid}(uuid=${blogArticle.uuid})}"
                                   method="post" class="d-flex justify-content-center mt-auto">
-                                <button type="submit" class="btn btn-primary my-2">View</button>
+                                <button type="submit" class="article-button">View</button>
                             </form>
                         </div>
                     </div>
@@ -33,6 +33,22 @@
             </div>
         </div>
     </section>
+
+    <div class="pagination-container">
+        <ul class="pagination justify-content-center">
+            <li th:if="${blogArticles.hasPrevious()}">
+                <a th:href="@{/blog(page=${blogArticles.number - 1}, size=${blogArticles.size})}">Previous</a>
+            </li>
+            <li th:each="pageNum : ${#numbers.sequence(0, blogArticles.totalPages - 1)}">
+                <a th:href="@{/blog(page=${pageNum}, size=${blogArticles.size})}"
+                   th:text="${pageNum + 1}"
+                   th:classappend="${pageNum == blogArticles.number} ? 'active' : ''">1</a>
+            </li>
+            <li th:if="${blogArticles.hasNext()}">
+                <a th:href="@{/blog(page=${blogArticles.number + 1}, size=${blogArticles.size})}">Next</a>
+            </li>
+        </ul>
+    </div>
 
 </div>
 <div>

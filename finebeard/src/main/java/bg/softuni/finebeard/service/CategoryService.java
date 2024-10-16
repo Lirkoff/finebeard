@@ -10,4 +10,6 @@ public interface CategoryService {
 
 
     CategoryEntity getById(Long categoryId);
+
+    Long getIdByName(String categoryName);
 }

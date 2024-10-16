@@ -8,6 +8,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface ShopService {
 
-    Page<ProductEntity> getAllProducts(Long categoryId, Pageable pageable);
+    Page<ProductEntity> getAllProducts(Long id, Pageable pageable);
 
 }

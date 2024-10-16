@@ -2,6 +2,7 @@ package bg.softuni.finebeard.repository;
 
 
 import bg.softuni.finebeard.model.entity.ProductEntity;
+import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,10 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     void deleteByUuid(UUID uuid);
 
     Page<ProductEntity> findAllByCategoryId(Long categoryId, Pageable pageable);
+
+
+
+//    Page<ProductEntity> findAllByCategoryName(ProductCategoryEnum categoryName, Pageable pageable);
+
+
 }
