@@ -30,17 +30,36 @@
                 <div class="quantity-section mt-4">
                     <label for="quantity" class="mr-2">Quantity:</label>
                     <div class="quantity-control w-25">
-                        <button class="btn btn-outline-light quantity-btn h-25 mb-1 bg-secondary" onclick="decreaseQuantity()">-</button>
-                        <input type="text" class="form-control quantity-input w-50" id="quantity" name="quantity" value="1">
-                        <button class="btn btn-outline-light quantity-btn h-25 mt-1 bg-secondary" onclick="increaseQuantity()">+</button>
+                        <button class="btn btn-outline-light quantity-btn h-25 mb-1 bg-secondary"
+                                onclick="decreaseQuantity()">-
+                        </button>
+                        <input type="text" class="form-control quantity-input w-50" id="quantity" name="quantity"
+                               value="1">
+                        <button class="btn btn-outline-light quantity-btn h-25 mt-1 bg-secondary"
+                                onclick="increaseQuantity()">+
+                        </button>
                     </div>
                 </div>
 
 
-                <button type="button" class="add-to-cart-button  mt-4"
+                <button type="button" class="add-to-cart-button mt-4"
                         th:onclick="'window.location.href=' + @{/cart/add} + '?productId=' + ${product.id} + '&quantity=' + document.getElementById('quantity').value">
                     Add to Cart
                 </button>
+
+                <form sec:authorize="hasRole('MASTER')"
+                      th:action="@{/products/delete/{uuid}(uuid=${productDetailDTO.id})}"
+                      th:method="delete" class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+
+
+                <form sec:authorize="hasRole('MASTER')"
+                      th:action="@{/products/update/{uuid}(uuid=${productDetailDTO.id})}"
+                      th:method="get" class="d-flex justify-content-center mt-4">
+                    <input type="hidden" name="product" value="${productDetailDTO}"/>
+                    <button type="submit" class="update-button">Update</button>
+                </form>
 
 
                 <div class="product-features mt-5">

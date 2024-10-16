@@ -14,9 +14,8 @@ public class BrandEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private BrandEnum name;
 
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "brand_id")
-    private List<ModelEntity> models;
+
+    private String model;
 
     public BrandEnum getName() {
         return name;
@@ -27,12 +26,12 @@ public class BrandEntity extends BaseEntity {
         return this;
     }
 
-    public List<ModelEntity> getModels() {
-        return models;
+    public String getModel() {
+        return model;
     }
 
-    public BrandEntity setModels(List<ModelEntity> models) {
-        this.models = models;
+    public BrandEntity setModel(String model) {
+        this.model = model;
         return this;
     }
 }

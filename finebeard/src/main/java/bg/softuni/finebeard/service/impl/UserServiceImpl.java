@@ -115,6 +115,7 @@ public class  UserServiceImpl implements UserService {
         userRepository.save(user.get());
     }
 
+
     private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
         return new UserEntity()
                 .setActive(false)

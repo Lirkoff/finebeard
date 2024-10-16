@@ -1,17 +1,17 @@
-insert into users (id, active, email, first_name, last_name, password)
-values (1, 1, 'master@example.com', 'Master', 'Masterov',
-        'ee9dae324dda56b899f9072f21f1c05ff7684b21ba6e7c3e4e459cfe27fc538a29eef78afc08e871006483e2848b33ab');
+-- insert into users (id, active, email, first_name, last_name, password)
+-- values (1, 1, 'master@example.com', 'Master', 'Masterov',
+--         'ee9dae324dda56b899f9072f21f1c05ff7684b21ba6e7c3e4e459cfe27fc538a29eef78afc08e871006483e2848b33ab');
 
+--
+-- insert into roles (id, role)
+-- VALUES (1, 'MASTER'),
+--        (2, 'ADMIN'),
+--        (3, 'USER');
 
-insert into roles (id, role)
-VALUES (1, 'MASTER'),
-       (2, 'ADMIN'),
-       (3, 'USER');
-
-insert into users_roles (user_id, role_id)
-VALUES (1, 1),
-       (1, 2),
-       (1, 3);
+-- insert into users_roles (user_id, role_id)
+-- VALUES (1, 1),
+--        (1, 2),
+--        (1, 3);
 
 
 insert into categories (id, image_url, name)
@@ -37,22 +37,6 @@ values (1, 'Beardbrand'),
        (6, 'Jack_Black'),
        (7, 'Bossman');
 
-
-insert into models (id, name, brand_id)
-VALUES (1, 'Model_A', 1),
-       (2, 'Model_B', 1),
-       (3, 'Model_C', 2),
-       (4, 'Model_D', 2),
-       (5, 'Model_E', 3),
-       (6, 'Model_F', 3),
-       (7, 'Model_G', 4),
-       (8, 'Model_H', 4),
-       (9, 'Model_I', 5),
-       (10, 'Model_J', 5),
-       (11, 'Model_K', 6),
-       (12, 'Model_L', 6),
-       (13, 'Model_M', 7),
-       (14, 'Model_N', 7);
 
 
 INSERT INTO blog_articles (id, author, content, image_url, title, uuid)

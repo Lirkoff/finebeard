@@ -1,6 +1,7 @@
 package bg.softuni.finebeard.service;
 
 import bg.softuni.finebeard.model.dto.UserRegistrationDTO;
+import bg.softuni.finebeard.model.entity.UserEntity;
 import org.springframework.security.core.Authentication;
 
 import java.util.Map;

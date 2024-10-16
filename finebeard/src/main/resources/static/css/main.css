@@ -295,7 +295,9 @@ body {
 }
 
 .contact-us-help-button,
-.add-to-cart-button {
+.add-to-cart-button,
+.delete-button,
+.update-button {
     display: inline-block;
     padding: 10px 40px;
     font-size: 1em;
@@ -305,6 +307,23 @@ body {
     font-weight: bold;
     border-radius: 5px;
 }
+
+
+.add-to-cart-button,
+.delete-button,
+.update-button {
+    display: block;
+    margin-right: auto;
+}
+
+.delete-button {
+    padding-right: 88px;
+}
+
+.update-button {
+    padding-right: 80px;
+}
+
 
 
 /* Contact Section */
@@ -507,6 +526,9 @@ footer p {
         padding: 5px 8px;
     }
 
+    .add-to-cart-button {
+        padding-right: 50px;
+    }
 
 }
 

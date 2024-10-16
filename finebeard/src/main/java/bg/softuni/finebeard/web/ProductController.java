@@ -2,6 +2,7 @@ package bg.softuni.finebeard.web;
 
 import bg.softuni.finebeard.model.dto.AddProductDTO;
 import bg.softuni.finebeard.model.dto.ProductDetailDTO;
+import bg.softuni.finebeard.model.entity.ProductEntity;
 import bg.softuni.finebeard.model.enums.BrandEnum;
 import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import bg.softuni.finebeard.service.BrandService;
@@ -16,10 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("/products")
@@ -73,25 +71,60 @@ public class ProductController {
     }
 
 
-//    @GetMapping("/{uuid}")
-//    public String details(@PathVariable("uuid") UUID uuid, Model model) {
-//        ProductDetailDTO productDetailDTO = productService
-//                .getProductDetail(uuid)
-//                .orElseThrow(() -> new ObjectNotFoundException("Product with uuid " + uuid + " not found!"));
-//
-//        model.addAttribute("productDetailDTO", productDetailDTO);
-//
-//        return "product-details";
-//    }
+    @DeleteMapping("/delete/{uuid}")
+    public String delete(@PathVariable("uuid") UUID uuid) {
 
-//    @DeleteMapping("/{uuid}")
-//    public String  delete(@PathVariable("uuid") UUID uuid) {
-//
-//        productService.deleteProduct(uuid);
-//
-//
-//        return "redirect:/products/all";
-//    }
+        productService.deleteProduct(uuid);
+
+
+        return "redirect:/shop/categories";
+    }
+
+    @GetMapping("/update/{uuid}")
+    public String update(@PathVariable("uuid") UUID uuid,
+                         Model model) {
+
+        ProductEntity product = productService.getByUuid(uuid);
+
+        model.addAttribute("product", product);
+
+
+        return "products-update";
+    }
+
+    @PatchMapping("/update/{uuid}")
+    public String update(@PathVariable("uuid") UUID uuid,
+                         @ModelAttribute ProductEntity product) {
+
+        ProductEntity existingProduct = productService.getByUuid(uuid);
+
+
+        if (existingProduct != null) {
+            if (product.getBrand().getModel() != null) {
+                existingProduct.getBrand().setModel(product.getBrand().getModel());
+            }
+            if (product.getPrice() != null) {
+                existingProduct.setPrice(product.getPrice());
+            }
+            if (product.getImageUrl() != null) {
+                existingProduct.setImageUrl(product.getImageUrl());
+            }
+            if (product.getDescription() != null) {
+                existingProduct.setDescription(product.getDescription());
+            }
+            productService.save(existingProduct);
+        }
+
+
+        try {
+            String categoryName = existingProduct.getCategory().getName().getDisplayName();
+            return "redirect:/shop/categories/" + categoryName + "/products/" + uuid;
+        } catch (NullPointerException e) {
+            return "redirect:/products//update/" + uuid;
+        }
+
+
+    }
 
 
 }

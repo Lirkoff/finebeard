@@ -100,6 +100,7 @@ public class ShopController {
 
         model.addAttribute("productDetailDTO", productDetailDTO);
 
+
         return "product-details";
     }
 
