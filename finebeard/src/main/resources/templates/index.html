@@ -35,7 +35,7 @@
                                 <h5 class="card-title" th:text="${product.brand.name.displayName}">Beard Oil</h5>
                                 <p class="card-text" th:text="${product.description}">Nourish and hydrate...</p>
                                 <p class="card-text" th:text="${product.price}">15.00</p>
-                                <a href="#" class="hero-button btn btn-dark d-flex justify-content-center mt-auto">Buy Now</a>
+                                <a th:href="@{/shop/categories/{categoryName}/products/{uuid}(categoryName=${product.category.name.displayName},uuid=${product.uuid})}" class="hero-button btn btn-dark d-flex justify-content-center mt-auto">Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
     <section id="about" class="py-5">
         <div class="container">
             <h2 class="text-center">About Us</h2>
-            <p class="text-center mt-4">At FineBeard, we believe in providing the best grooming products to help you
+            <p class="home-about-us text-center mt-4">At FineBeard, we believe in providing the best grooming products to help you
                 look and feel your best. Our products are made with natural ingredients and crafted with care to ensure
                 the highest quality. Join the FineBeard community and take your beard game to the next level.</p>
         </div>
@@ -74,7 +74,7 @@
                     <label for="message">Message</label>
                     <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
                 </div>
-                <button type="submit" class="btn btn-dark">Send Message</button>
+                <button type="submit" class="send-message-btn btn btn-dark">Send Message</button>
             </form>
         </div>
     </section>

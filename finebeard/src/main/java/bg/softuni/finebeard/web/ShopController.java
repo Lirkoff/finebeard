@@ -91,8 +91,7 @@ public class ShopController {
 
 
     @GetMapping("/categories/{categoryName}/products/{uuid}")
-    public String categoryProduct(@PathVariable("categoryName") String categoryName,
-                                  @ModelAttribute("uuid") UUID uuid,
+    public String categoryProduct(@PathVariable("uuid") UUID uuid,
                                   Model model) {
 
         ProductDetailDTO productDetailDTO = productService
