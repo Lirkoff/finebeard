@@ -9,10 +9,13 @@
     <th:block th:text="${username}">Pesho</th:block>
     !
 </h1>
-Welcome to FineBeard!
+<p>Welcome to FineBeard!</p>
 
-Please, follow the <a class="card-link" th:href="@{http://localhost:8080/user/activate(activation_code=*{activation_code})}">link</a> to activate your account!
+<p>Please, follow the <a class="card-link" th:href="@{${activation_link}}">link</a> to activate your account!</p>
+<p>Your activation code is valid for the next 24 hours.</th:block></p>
 
+
+<p>If you did not sign up for this account, please ignore this email.</p>
 
 </body>
 </html>

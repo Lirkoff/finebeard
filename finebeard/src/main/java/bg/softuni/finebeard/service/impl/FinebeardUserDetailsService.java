@@ -36,6 +36,7 @@ public class  FinebeardUserDetailsService implements UserDetailsService {
                 .withUsername(userEntity.getEmail())
                 .password(userEntity.getPassword())
                 .authorities(userEntity.getRoles().stream().map(FinebeardUserDetailsService::map).toList())
+                .disabled(!userEntity.isActive())
                 .build();
     }
 

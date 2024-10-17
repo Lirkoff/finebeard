@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.naming.ldap.PagedResultsControl;
 import java.security.SecureRandom;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
 
@@ -37,14 +38,14 @@ public class UserActivationServiceImpl implements UserActivationService {
     public void userRegistered(UserRegisteredEvent event) {
         String activationCode = createActivationCode(event.getUserEmail());
 
-        emailService.sendRegistrationEmail(event.getUserEmail(), event.getUserNames(),activationCode);
+        emailService.sendRegistrationEmail(event.getUserEmail(), event.getUserNames(), activationCode);
     }
 
     @Override
-    public void cleanUpObsoleteActivationLinks() {
-        //TODO: implement
+    public Long cleanUpObsoleteActivationLinks() {
+        Instant cutoff = Instant.now().minus(24, ChronoUnit.HOURS);
 
-//        System.out.println("Cleaning up obsolete activation links");
+        return userActivationCodeRepository.deleteByCreatedBefore(cutoff);
     }
 
     @Override

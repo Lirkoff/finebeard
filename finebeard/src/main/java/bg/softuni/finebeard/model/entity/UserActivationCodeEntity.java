@@ -10,12 +10,15 @@ import java.time.Instant;
 @Entity
 @Table(name = "user_activation_codes")
 public class UserActivationCodeEntity extends BaseEntity {
+
     private String activationCode;
 
     private Instant created;
 
     @ManyToOne
     private UserEntity user;
+
+
 
     public String getActivationCode() {
         return activationCode;

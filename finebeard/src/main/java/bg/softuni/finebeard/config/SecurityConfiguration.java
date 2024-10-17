@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/", "/users/login","/users/login-error","/users/register").permitAll()
+                        .requestMatchers("/", "/users/login","/users/login-error","/users/register", "users/activate/**").permitAll()
                         .requestMatchers("/shop/**").permitAll()
                         .requestMatchers("/blog/**").permitAll()
                         .requestMatchers("/about", "/blog", "/help").permitAll()

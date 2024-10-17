@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/head}">
+
+</head>
+<body>
+<div class="wrapper">
+    <div>
+        <nav th:replace="~{fragments/navbar}"></nav>
+    </div>
+
+    <div th:if="${message}" class="text-center m-auto">
+        <h5 th:text="${message}">User activation was successful!</h5>
+        <a href="/users/login" class="activation-button btn mt-5">Go to Login</a>
+    </div>
+
+    <div th:if="${error}" class="text-center m-auto">
+        <h5 th:text="${error}">User activation failed. Please try again.</h5>
+        <a href="/" class="activation-button btn mt-5">Go Home</a>
+    </div>
+</div>
+
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
+</div>
+
+</body>
+</html>

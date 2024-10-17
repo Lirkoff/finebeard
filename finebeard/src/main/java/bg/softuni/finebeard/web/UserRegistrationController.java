@@ -56,4 +56,19 @@ public class UserRegistrationController {
         return "redirect:/";
     }
 
+    @GetMapping("/activate/{activationCode}")
+    public String login(@PathVariable String activationCode,
+                        Model model) {
+        boolean isActivated = userService.activateUser(activationCode);
+
+        if (isActivated) {
+            model.addAttribute("message", "Your account was activated successfully!");
+        } else {
+            model.addAttribute("error", "Invalid or expired activation code!");
+        }
+
+        return "activation-result";
+
+    }
+
 }

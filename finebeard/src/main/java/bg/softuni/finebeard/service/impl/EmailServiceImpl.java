@@ -54,9 +54,10 @@ public class EmailServiceImpl implements EmailService {
 
         Context context = new Context();
 
-        context.setVariable("username", userName);
-        context.setVariable("activation_code", activationCode);
+        String activationLink = "http://localhost:8080/users/activate/" + activationCode;
 
+        context.setVariable("username", userName);
+        context.setVariable("activation_link", activationLink);
         return templateEngine.process("email/registration-email.html", context);
     }
 

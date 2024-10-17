@@ -1,14 +1,20 @@
 package bg.softuni.finebeard.service.impl;
 
+import bg.softuni.finebeard.model.dto.UserEmailRolesDTO;
 import bg.softuni.finebeard.model.dto.UserRegistrationDTO;
+import bg.softuni.finebeard.model.entity.UserActivationCodeEntity;
 import bg.softuni.finebeard.model.entity.UserEntity;
+import bg.softuni.finebeard.model.entity.UserRolesEntity;
 import bg.softuni.finebeard.model.enums.UserRoleEnum;
 import bg.softuni.finebeard.model.events.UserRegisteredEvent;
+import bg.softuni.finebeard.repository.UserActivationCodeRepository;
 import bg.softuni.finebeard.repository.UserRepository;
 import bg.softuni.finebeard.repository.UserRoleRepository;
 import bg.softuni.finebeard.service.UserService;
 
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,8 +22,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -28,17 +36,19 @@ public class  UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final ApplicationEventPublisher appEventPublisher;
     private final UserDetailsService finebeardUserDetailsService;
+    private final UserActivationCodeRepository userActivationCodeRepository;
 
     public UserServiceImpl(UserRepository userRepository,
                            UserRoleRepository userRoleRepository,
                            PasswordEncoder passwordEncoder,
                            ApplicationEventPublisher appEventPublisher,
-                           UserDetailsService finebeardUserDetailsService) {
+                           UserDetailsService finebeardUserDetailsService, UserActivationCodeRepository userActivationCodeRepository) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.appEventPublisher = appEventPublisher;
         this.finebeardUserDetailsService = finebeardUserDetailsService;
+        this.userActivationCodeRepository = userActivationCodeRepository;
     }
 
     @Override
@@ -72,18 +82,20 @@ public class  UserServiceImpl implements UserService {
     }
 
     @Override
-    public TreeMap<String, String> getAllUsersNamesAndRoles() {
-        List<UserEntity> data = userRepository.findAll();
+    @Transactional
+    public Page<UserEmailRolesDTO> getAllUsersNamesAndRoles(Pageable pageable) {
+        Page<UserEntity> usersPage = userRepository.findAll(pageable);
 
-        TreeMap<String, String> result = new TreeMap<>();
 
-        data.forEach(e -> {
-            TreeSet<String> roles = new TreeSet<>();
-            e.getRoles().forEach(r -> roles.add(r.getRole().name()));
-            result.put(e.getEmail(), String.join(", ", roles));
+        Page<UserEmailRolesDTO> dtoPage = usersPage.map(user -> {
+            String roles = user.getRoles().stream()
+                    .map(r-> r.getRole().name())
+                    .sorted()
+                    .collect(Collectors.joining(","));
+            return new UserEmailRolesDTO(user.getEmail(), roles);
         });
 
-        return result;
+        return dtoPage;
     }
 
     @Override
@@ -113,6 +125,21 @@ public class  UserServiceImpl implements UserService {
         user.get().setEmail(newUserName);
 
         userRepository.save(user.get());
+    }
+
+    @Override
+    public boolean activateUser(String activationCode) {
+        UserActivationCodeEntity codeEntity = userActivationCodeRepository.getByActivationCode(activationCode);
+
+        if (codeEntity == null) {
+            return false;
+        }
+
+        codeEntity.getUser().setActive(true);
+        userRepository.save(codeEntity.getUser());
+        userActivationCodeRepository.delete(codeEntity);
+
+        return true;
     }
 
 

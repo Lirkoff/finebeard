@@ -1,6 +1,14 @@
 -- insert into users (id, active, email, first_name, last_name, password)
--- values (1, 1, 'master@example.com', 'Master', 'Masterov',
---         'ee9dae324dda56b899f9072f21f1c05ff7684b21ba6e7c3e4e459cfe27fc538a29eef78afc08e871006483e2848b33ab');
+-- values (2, true, 'user2@example.com', 'FirstName2', 'LastName2', 'password2'),
+--        (3, true, 'user3@example.com', 'FirstName3', 'LastName3', 'password3'),
+--        (4, true, 'user4@example.com', 'FirstName4', 'LastName4', 'password4'),
+--        (5, true, 'user5@example.com', 'FirstName5', 'LastName5', 'password5'),
+--        (6, true, 'user6@example.com', 'FirstName6', 'LastName6', 'password6'),
+--        (7, true, 'user7@example.com', 'FirstName7', 'LastName7', 'password7'),
+--        (8, true, 'user8@example.com', 'FirstName8', 'LastName8', 'password8'),
+--        (9, true, 'user9@example.com', 'FirstName9', 'LastName9', 'password9'),
+--        (10, true, 'user10@example.com', 'FirstName10', 'LastName10', 'password10'),
+--        (11, true, 'user11@example.com', 'FirstName11', 'LastName11', 'password11');
 
 --
 -- insert into roles (id, role)
@@ -8,10 +16,23 @@
 --        (2, 'ADMIN'),
 --        (3, 'USER');
 
+
+
 -- insert into users_roles (user_id, role_id)
--- VALUES (1, 1),
---        (1, 2),
---        (1, 3);
+-- values (2, 3),
+--        (3, 3),
+--        (3, 2),
+--        (4, 3),
+--        (5, 3),
+--        (5, 2),
+--        (6, 3),
+--        (7, 3),
+--        (7, 2),
+--        (8, 3),
+--        (9, 3),
+--        (9, 2),
+--        (10, 3),
+--        (11, 3);
 
 
 insert into categories (id, image_url, name)

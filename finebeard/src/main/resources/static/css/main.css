@@ -58,7 +58,8 @@ body {
 }
 
 /* Button Styling */
-.hero-button {
+.hero-button ,
+.activation-button{
     display: inline-block;
     margin-top: 20px;
     padding: 10px 30px;

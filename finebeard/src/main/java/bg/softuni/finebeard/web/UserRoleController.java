@@ -1,8 +1,11 @@
 package bg.softuni.finebeard.web;
 
+import bg.softuni.finebeard.model.dto.UserEmailRolesDTO;
 import bg.softuni.finebeard.model.dto.UserRoleManagementDTO;
 import bg.softuni.finebeard.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,12 +29,14 @@ public class UserRoleController {
     }
 
     @GetMapping("/management")
-    public String manageRoles(Model model) {
+    public String manageRoles(Pageable pageable, Model model) {
+
         if (!model.containsAttribute("userRoleManagementDTO")) {
             model.addAttribute("userRoleManagementDTO", new UserRoleManagementDTO(""));
         }
 
-        TreeMap<String,String> usersNamesAndRoles = userService.getAllUsersNamesAndRoles();
+
+        Page<UserEmailRolesDTO> usersNamesAndRoles = userService.getAllUsersNamesAndRoles(pageable);
 
         model.addAttribute("usersNamesAndRoles", usersNamesAndRoles);
 
