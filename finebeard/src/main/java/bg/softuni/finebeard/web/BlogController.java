@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -112,11 +111,6 @@ public class BlogController {
         return "article";
     }
 
-//    @PostMapping("/{uuid}")
-//    public String createBlogArticle(@RequestBody BlogArticleEntity blogArticleEntity) {
-//        blogService.saveArticle(blogArticleEntity);
-//        return "redirect:/blog";
-//    }
 
     @PutMapping("/{uuid}")
     public String updateBlogPost(@PathVariable("uuid") Long id, @RequestBody BlogArticleEntity updatedBlogArticleEntity) {

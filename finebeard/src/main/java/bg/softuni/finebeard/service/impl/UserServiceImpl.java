@@ -4,7 +4,6 @@ import bg.softuni.finebeard.model.dto.UserEmailRolesDTO;
 import bg.softuni.finebeard.model.dto.UserRegistrationDTO;
 import bg.softuni.finebeard.model.entity.UserActivationCodeEntity;
 import bg.softuni.finebeard.model.entity.UserEntity;
-import bg.softuni.finebeard.model.entity.UserRolesEntity;
 import bg.softuni.finebeard.model.enums.UserRoleEnum;
 import bg.softuni.finebeard.model.events.UserRegisteredEvent;
 import bg.softuni.finebeard.repository.UserActivationCodeRepository;
@@ -99,7 +98,8 @@ public class  UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUserIfNotExists(String email, String names) {
+    public void createUserIfDoesNotExist(String email, String names) {
+
         // Create manually user in the DB
         // password not necessary
     }

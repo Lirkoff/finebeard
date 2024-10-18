@@ -10,7 +10,6 @@ import bg.softuni.finebeard.service.exception.ObjectNotFoundException;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
-import javax.naming.ldap.PagedResultsControl;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

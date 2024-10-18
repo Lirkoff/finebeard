@@ -1,25 +1,16 @@
 package bg.softuni.finebeard.web;
 
-import bg.softuni.finebeard.model.dto.AddProductDTO;
 import bg.softuni.finebeard.model.dto.ProductDetailDTO;
-import bg.softuni.finebeard.model.entity.CategoryEntity;
 import bg.softuni.finebeard.model.entity.ProductEntity;
-import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
-import bg.softuni.finebeard.repository.CategoryRepository;
 import bg.softuni.finebeard.service.CategoryService;
 import bg.softuni.finebeard.service.ProductService;
 import bg.softuni.finebeard.service.ShopService;
 import bg.softuni.finebeard.service.exception.ObjectNotFoundException;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;

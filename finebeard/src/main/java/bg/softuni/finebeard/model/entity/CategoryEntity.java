@@ -4,7 +4,6 @@ import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.List;
 
 @Entity
 @Table(name = "categories")

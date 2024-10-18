@@ -1,26 +1,17 @@
 package bg.softuni.finebeard.init;
 
-import bg.softuni.finebeard.model.dto.UserRegistrationDTO;
-import bg.softuni.finebeard.model.entity.BrandEntity;
-import bg.softuni.finebeard.model.entity.CategoryEntity;
+
 import bg.softuni.finebeard.model.entity.UserEntity;
 import bg.softuni.finebeard.model.entity.UserRolesEntity;
-import bg.softuni.finebeard.model.enums.BrandEnum;
-import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import bg.softuni.finebeard.model.enums.UserRoleEnum;
-import bg.softuni.finebeard.repository.BrandRepository;
-import bg.softuni.finebeard.repository.CategoryRepository;
+
 import bg.softuni.finebeard.repository.UserRepository;
 import bg.softuni.finebeard.repository.UserRoleRepository;
-import bg.softuni.finebeard.service.UserService;
-import ch.qos.logback.classic.encoder.JsonEncoder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 
 
 @Component
@@ -33,10 +24,7 @@ public class AppInit implements CommandLineRunner {
     private final UserRoleRepository userRoleRepository;
 
 
-    public AppInit(CategoryRepository categoryRepository,
-                   BrandRepository brandRepository,
-                   UserService userService,
-                   @Value("${finebeard.default.master.pass}") String masterPassword,
+    public AppInit(@Value("${finebeard.default.master.pass}") String masterPassword,
                    UserRepository userRepository,
                    PasswordEncoder encoder, UserRoleRepository userRoleRepository) {
         this.masterPassword = masterPassword;

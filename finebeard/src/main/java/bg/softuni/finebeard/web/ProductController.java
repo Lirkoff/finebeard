@@ -1,14 +1,10 @@
 package bg.softuni.finebeard.web;
 
 import bg.softuni.finebeard.model.dto.AddProductDTO;
-import bg.softuni.finebeard.model.dto.ProductDetailDTO;
 import bg.softuni.finebeard.model.entity.ProductEntity;
 import bg.softuni.finebeard.model.enums.BrandEnum;
 import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
-import bg.softuni.finebeard.service.BrandService;
-import bg.softuni.finebeard.service.CategoryService;
 import bg.softuni.finebeard.service.ProductService;
-import bg.softuni.finebeard.service.exception.ObjectNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

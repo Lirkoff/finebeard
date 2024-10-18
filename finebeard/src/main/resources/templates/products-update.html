@@ -63,38 +63,3 @@
 
 </body>
 </html>
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en"-->
-<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.w3.org/1999/xhtml">-->
-<!--<head th:replace="~{fragments/head}">-->
-
-<!--</head>-->
-<!--<body>-->
-<!--<div class="wrapper">-->
-<!--    <div>-->
-<!--        <nav th:replace="~{fragments/navbar}"></nav>-->
-<!--    </div>-->
-<!--    <h1>Edit Product</h1>-->
-<!--    <form th:action="@{/products/{uuid}(id=${product.id})}" th:object="${product}" method="post">-->
-<!--        &lt;!&ndash; Hidden input to trick the form into a PUT method &ndash;&gt;-->
-<!--        <input type="hidden" name="_method" value="put"/>-->
-
-<!--        <label for="name">Name:</label>-->
-<!--        <input type="text" th:field="*{brand}" id="name"/>-->
-
-<!--        <label for="price">Price:</label>-->
-<!--        <input type="number" step="0.01" th:field="*{price}" id="price"/>-->
-
-<!--        <button type="submit">Update Product</button>-->
-<!--    </form>-->
-<!--</div>-->
-<!--<div>-->
-<!--    <nav th:replace="~{fragments/footer}"></nav>-->
-<!--</div>-->
-
-<!--</body>-->
-<!--</html>-->

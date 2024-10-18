@@ -7,7 +7,6 @@ import org.hibernate.annotations.JdbcTypeCode;
 
 import java.math.BigDecimal;
 import java.sql.Types;
-import java.util.Optional;
 import java.util.UUID;
 
 @Entity

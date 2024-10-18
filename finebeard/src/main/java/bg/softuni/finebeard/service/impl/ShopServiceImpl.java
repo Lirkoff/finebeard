@@ -1,8 +1,6 @@
 package bg.softuni.finebeard.service.impl;
 
-import bg.softuni.finebeard.model.entity.CategoryEntity;
 import bg.softuni.finebeard.model.entity.ProductEntity;
-import bg.softuni.finebeard.model.enums.ProductCategoryEnum;
 import bg.softuni.finebeard.repository.ProductRepository;
 import bg.softuni.finebeard.service.MonitoringService;
 import bg.softuni.finebeard.service.ShopService;
@@ -11,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Comparator;
 
 @Service
 public class ShopServiceImpl implements ShopService {

@@ -3,8 +3,6 @@ package bg.softuni.finebeard.model.entity;
 import bg.softuni.finebeard.model.enums.BrandEnum;
 import jakarta.persistence.*;
 
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "brands")

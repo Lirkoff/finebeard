@@ -1,6 +1,5 @@
 package bg.softuni.finebeard.service.schedulers;
 
-import bg.softuni.finebeard.model.dto.ProductDetailDTO;
 import bg.softuni.finebeard.model.entity.ProductEntity;
 import bg.softuni.finebeard.repository.ProductRepository;
 import bg.softuni.finebeard.service.HomepageService;
@@ -29,7 +28,6 @@ public class ProductsRotationServiceImpl implements ProductsRotationService {
     }
 
 
-    // Schedule the method to run every 1 minute (60000 ms)
     @Override
     @Scheduled(fixedRate = 7200000)
     public void rotateProducts() {
