@@ -116,7 +116,7 @@ public class ProductController {
             String categoryName = existingProduct.getCategory().getName().getDisplayName();
             return "redirect:/shop/categories/" + categoryName + "/products/" + uuid;
         } catch (NullPointerException e) {
-            return "redirect:/products//update/" + uuid;
+            return "redirect:/products/update/" + uuid;
         }
 
 

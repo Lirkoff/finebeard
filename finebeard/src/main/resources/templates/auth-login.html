@@ -17,10 +17,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header text-center">
-                            <h2>Login</h2>
-                        </div>
                         <div class="card-body">
+                            <div class="text-center">
+                                <h2>Login</h2>
+                            </div>
                             <form th:method="post"
                                   th:action="@{/users/login}">
                                 <div class="form-group">
@@ -46,15 +46,13 @@
                                 </p>
 
 
-                                <button type="submit" class="btn btn-dark btn-block">Login</button>
-                                <!--                            <div class="text-center mt-3">-->
-                                <!--                                <a href="#">Forgot password?</a>-->
-                                <!--                            </div>-->
+                                <button type="submit" class="login-button btn btn-block">Login</button>
+
                                 <div class="text-center mt-2">
-                                    <a href="/users/register">Create an account</a>
+                                    <a class="login-button-link" href="/users/register">Create an account</a>
                                 </div>
                                 <div class="text-center mt-2">
-                                    <a th:href="@{/oauth2/authorization/github}">
+                                    <a class="login-button-link" th:href="@{/oauth2/authorization/github}">
                                         Login with GitHub
                                     </a>
                                 </div>
@@ -66,11 +64,9 @@
         </div>
     </section>
 
-
-    <div>
-        <nav th:replace="~{fragments/footer}"></nav>
-    </div>
-
+</div>
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
 </div>
 </body>
 </html>

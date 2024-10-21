@@ -61,12 +61,7 @@
                                 <a class="nav-link" href="#" role="button">Admin</a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-item"><a sec:authorize="hasRole('MASTER')" href="/roles/management">Roles</a></li>
-                                    <li class="dropdown-item"><a href="#">Products</a>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-item"><a sec:authorize="hasRole('MASTER')" href="/products/add">Create</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    <li class="dropdown-item"><a sec:authorize="hasRole('MASTER')" href="/products/add">Products</a></li>
                                     <li class="dropdown-item"><a sec:authorize="hasRole('MASTER')" href="/blog/add">Articles</a></li>
                                 </ul>
                             </li>

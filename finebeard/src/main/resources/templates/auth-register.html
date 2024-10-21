@@ -17,10 +17,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header text-center">
-                            <h2>Register</h2>
-                        </div>
                         <div class="card-body">
+                            <div class="text-center">
+                                <h2>Register</h2>
+                            </div>
                             <form id="registration-form"
                                   th:action="@{/users/register}"
                                   th:method="POST">
@@ -64,8 +64,7 @@
                                         Confirm password is required!
                                     </p>
                                 </div>
-                                <!--                            <button type="submit" class="btn btn-dark btn-block">Register</button>-->
-                                <button class="g-recaptcha btn btn-dark btn-block"
+                                <button class="g-recaptcha btn btn-block"
                                         th:attr="data-sitekey=${@reCaptchaConfig.getSite()}"
                                         data-callback='onSubmit'
                                         data-action='submit'>Register
@@ -79,12 +78,6 @@
         </div>
     </section>
 
-    <div>
-        <nav th:replace="~{fragments/footer}"></nav>
-    </div>
-
-
-
 
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
@@ -94,8 +87,11 @@
     </script>
 
 
-
 </div>
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
+</div>
+
 
 </body>
 </html>

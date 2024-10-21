@@ -38,10 +38,10 @@ spring:
 
 logging:
   level:
-    org.springframework: DEBUG
+#    org.springframework: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
-    io.github.resilience4j: DEBUG
+#    io.github.resilience4j: DEBUG
 
 open.exchange.rates:
   schema: https

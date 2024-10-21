@@ -13,7 +13,6 @@ body {
 }
 
 
-
 .hero-section {
     background: url('../images/4.webp') no-repeat center center;
     background-size: cover;
@@ -58,8 +57,13 @@ body {
 }
 
 
-.hero-button ,
-.activation-button{
+.hero-button,
+.activation-button,
+.login-button,
+.g-recaptcha,
+.add-product-button,
+.add-article-button,
+.profile-button {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 30px;
@@ -109,8 +113,6 @@ body {
 }
 
 
-
-
 #products .card {
     margin-bottom: 30px;
     background-color: #EC6958;
@@ -131,9 +133,6 @@ body {
     color: whitesmoke;
     text-shadow: 2px 2px 5px #333;
 }
-
-
-
 
 
 .hero-overlay {
@@ -172,9 +171,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-
-
 
 
 .blog-intro-section {
@@ -223,6 +219,7 @@ body {
     border-radius: 30px;
     height: 100%;
 }
+
 .card-categories-product {
     position: relative;
     align-items: center;
@@ -237,7 +234,7 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(52, 73, 94, 0.7);
-    border-radius: 30px;
+    border-radius: 28px;
     align-items: center;
     justify-content: center;
     color: whitesmoke;
@@ -251,7 +248,6 @@ body {
 }
 
 
-
 .card-shop .card-title,
 .blog-article-card .card-title {
     font-weight: bold;
@@ -263,7 +259,6 @@ body {
 .blog-article-card .card-body {
     margin-bottom: 25px;
 }
-
 
 
 .article-button,
@@ -320,8 +315,18 @@ body {
     padding-bottom: 50px;
 }
 
-.login-section .card {
+
+.profile-section .card,
+.add-articles-container .card,
+.add-products-container .card,
+.login-section .card,
+.roles-management-container .card {
     margin-top: 30px;
+    background: #34495E;
+}
+
+.roles-management-container {
+    width: 100%;
 }
 
 
@@ -396,21 +401,25 @@ footer p {
 }
 
 #nav #profile {
+    background-color: #34495E;
     display: block;
     position: relative;
     float: left;
 }
 
+
 #profile .dropdown-menu {
     left: -45px;
     right: auto;
+    background: transparent;
 }
 
 
-#profile .dropdown-menu .dropdown-item > .dropdown-menu{
+#profile .dropdown-menu .dropdown-item > .dropdown-menu {
     left: 30px;
     right: auto;
 }
+
 
 #nav #profile ul a,
 #nav #profile #logout {
@@ -422,7 +431,6 @@ footer p {
     /*width: inherit;*/
     line-height: 35px;
 }
-
 
 #nav li a {
     display: block;
@@ -459,7 +467,7 @@ footer p {
     }
 
 
-    #profile .dropdown-menu .dropdown-item > .dropdown-menu{
+    #profile .dropdown-menu .dropdown-item > .dropdown-menu {
         left: 21px;
         right: auto;
     }
@@ -519,7 +527,6 @@ footer p {
 }
 
 
-
 #nav ul {
     position: absolute;
     padding: 0;
@@ -529,10 +536,8 @@ footer p {
 
 #nav li:hover ul {
     display: block;
-    background-color: inherit;
     border-color: transparent;
     text-align: center;
-
 }
 
 #nav li ul li a {
@@ -641,6 +646,14 @@ footer p {
 .pagination-container a.disabled {
     color: #6c757d;
     cursor: not-allowed;
+}
+
+.login-button-link {
+    color: whitesmoke;
+}
+
+.login-button-link:hover {
+    color: #EC6958;
 }
 
 
