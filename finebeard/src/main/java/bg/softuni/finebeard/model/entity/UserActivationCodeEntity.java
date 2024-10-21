@@ -18,7 +18,16 @@ public class UserActivationCodeEntity extends BaseEntity {
     @ManyToOne
     private UserEntity user;
 
+    private boolean used;
 
+    public boolean isUsed() {
+        return used;
+    }
+
+    public UserActivationCodeEntity setUsed(boolean used) {
+        this.used = used;
+        return this;
+    }
 
     public String getActivationCode() {
         return activationCode;

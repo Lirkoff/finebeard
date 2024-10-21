@@ -127,20 +127,7 @@ public class  UserServiceImpl implements UserService {
         userRepository.save(user.get());
     }
 
-    @Override
-    public boolean activateUser(String activationCode) {
-        UserActivationCodeEntity codeEntity = userActivationCodeRepository.getByActivationCode(activationCode);
 
-        if (codeEntity == null) {
-            return false;
-        }
-
-        codeEntity.getUser().setActive(true);
-        userRepository.save(codeEntity.getUser());
-        userActivationCodeRepository.delete(codeEntity);
-
-        return true;
-    }
 
 
     private UserEntity map(UserRegistrationDTO userRegistrationDTO) {

@@ -20,6 +20,7 @@ java {
 	}
 }
 
+
 repositories {
 	mavenCentral()
 }
@@ -38,6 +39,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation 'io.github.resilience4j:resilience4j-spring-boot3:2.1.0'
+	implementation 'io.github.resilience4j:resilience4j-reactor:2.1.0'
+
 	implementation 'io.micrometer:micrometer-registry-prometheus'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	runtimeOnly 'com.mysql:mysql-connector-j'

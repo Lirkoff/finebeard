@@ -16,5 +16,5 @@ public interface UserService {
     Authentication login(String email);
     void changeUsername(String currentUserName, String newUserName);
 
-    boolean activateUser(String activationCode);
+
 }

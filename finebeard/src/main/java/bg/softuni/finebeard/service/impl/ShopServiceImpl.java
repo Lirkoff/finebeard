@@ -26,8 +26,6 @@ public class ShopServiceImpl implements ShopService {
     @Transactional
     public Page<ProductEntity> getAllProducts(Long categoryId, Pageable pageable) {
         monitoringService.logProductSearch();
-
-
         return productRepository
                 .findAllByCategoryId(categoryId,pageable);
     }

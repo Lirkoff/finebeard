@@ -38,9 +38,10 @@ spring:
 
 logging:
   level:
-#    org.springframework: DEBUG
+    org.springframework: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
+    io.github.resilience4j: DEBUG
 
 open.exchange.rates:
   schema: https
@@ -83,3 +84,10 @@ management:
       base-path: /actuator
       exposure:
         include: "*"
+
+resilience4j.ratelimiter:
+  instances:
+    activate-user:
+      limitForPeriod: 5
+      limitRefreshPeriod: 1m
+      timeoutDuration: 0
