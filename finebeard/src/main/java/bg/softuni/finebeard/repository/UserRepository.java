@@ -19,6 +19,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @EntityGraph(attributePaths = {"roles"})
     Page<UserEntity> findAll(Pageable pageable);
     
-
+    Optional<UserEntity> findByProviderId(String providerId);
     
 }

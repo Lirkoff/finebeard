@@ -28,7 +28,8 @@ spring:
           github:
             client-id: ${GITHUB_CLIENT:}
             client-secret: ${GITHUB_SECRET:}
-            scope: user:email
+            scope: read:user
+
 
   mvc:
     hiddenmethod:

@@ -2,6 +2,7 @@ package bg.softuni.finebeard.web;
 
 
 import bg.softuni.finebeard.service.UserService;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +25,23 @@ public class UserLoginController {
     }
 
 
-
     @PostMapping("/login-error")
     public String onFailure(Model model) {
         model.addAttribute("bad_credentials", true);
 
         return "auth-login";
+    }
+
+    @GetMapping("/email-required")
+    public String emailRequired() {
+
+        return "error/email-required";
+    }
+
+    @GetMapping("/existing-user")
+    public String emailExists() {
+
+        return "error/existing-user";
     }
 
 

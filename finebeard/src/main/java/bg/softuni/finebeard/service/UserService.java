@@ -2,6 +2,7 @@ package bg.softuni.finebeard.service;
 
 import bg.softuni.finebeard.model.dto.UserEmailRolesDTO;
 import bg.softuni.finebeard.model.dto.UserRegistrationDTO;
+import bg.softuni.finebeard.model.enums.AuthProvider;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
@@ -12,7 +13,7 @@ public interface UserService {
     void addUserRole(String email);
     void removeUserRole(String email);
     Page<UserEmailRolesDTO> getAllUsersNamesAndRoles(Pageable pageable);
-    void createUserIfDoesNotExist(String email, String names);
+    void createUserIfDoesNotExist(String email, String names, String providerId, AuthProvider authProvider);
     Authentication login(String email);
     void changeUsername(String currentUserName, String newUserName);
 

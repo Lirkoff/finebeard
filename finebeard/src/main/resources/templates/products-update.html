@@ -8,51 +8,61 @@
         <nav th:replace="~{fragments/navbar}"></nav>
     </div>
 
-    <div class="container my-5">
-        <h1 class="text-center mb-5">Update Product</h1>
-        <form th:method="POST"
-              th:action="@{/products/update/{uuid}(uuid=${product.uuid})}"
-              th:object="${product}">
-            <input type="hidden" name="_method" value="patch"/>
-            <div class="form-group">
-                <label th:text="${product.brand.name.displayName}" th:value="product.brand">Brand:</label>
-            </div>
+    <div class="update-product-container container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center mb-5">Update Product</h1>
+                        <form th:method="POST"
+                              th:action="@{/products/update/{uuid}(uuid=${product.uuid})}"
+                              th:object="${product}">
+                            <input type="hidden" name="_method" value="patch"/>
+                            <div class="form-group">
+                                <label class="fs-1 font-weight-bold">Brand: <th:block th:text="${product.brand.name.displayName}"></th:block></label>
+                            </div>
 
-            <div class="form-group">
-                <label for="model">Model:</label>
-                <input type="text" class="form-control" id="model" name="model"
-                       th:field="*{brand.model}" th:errorclass="bg-danger"
-                       placeholder="Enter model" required>
-                <small th:if="${#fields.hasErrors('brand.model')}"
-                       th:errors="*{brand.model}" class="text-danger"></small>
-            </div>
+                            <div class="form-group">
+                                <label for="model">Model:</label>
+                                <input type="text" class="form-control" id="model" name="model"
+                                       th:field="*{brand.model}" th:errorclass="bg-danger"
+                                       placeholder="Enter model" required>
+                                <small th:if="${#fields.hasErrors('brand.model')}"
+                                       th:errors="*{brand.model}" class="text-danger"></small>
+                            </div>
 
-            <div class="form-group">
-                <label for="imageUrl">Image URL:</label>
-                <input type="text" class="form-control" id="imageUrl" name="imageUrl"
-                       th:field="*{imageUrl}" th:errorclass="bg-danger"
-                       placeholder="Enter image URL" required>
-                <small th:if="${#fields.hasErrors('imageUrl')}"
-                       th:errors="*{imageUrl}" class="text-danger"></small>
+                            <div class="form-group">
+                                <label for="imageUrl">Image URL:</label>
+                                <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                                       th:field="*{imageUrl}" th:errorclass="bg-danger"
+                                       placeholder="Enter image URL" required>
+                                <small th:if="${#fields.hasErrors('imageUrl')}"
+                                       th:errors="*{imageUrl}" class="text-danger"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <textarea class="form-control" id="description" name="description"
+                                          th:field="*{description}" th:errorclass="bg-danger"
+                                          rows="3" placeholder="Enter description" required></textarea>
+                                <small th:if="${#fields.hasErrors('description')}"
+                                       th:errors="*{description}" class="text-danger"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price ($)</label>
+                                <input type="number" class="form-control" id="price" name="price"
+                                       th:field="*{price}" th:errorclass="bg-danger"
+                                       placeholder="Enter price" required>
+                                <small th:if="${#fields.hasErrors('price')}"
+                                       th:errors="*{price}" class="text-danger"></small>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="update-product-button btn">Update Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea class="form-control" id="description" name="description"
-                          th:field="*{description}" th:errorclass="bg-danger"
-                          rows="3" placeholder="Enter description" required></textarea>
-                <small th:if="${#fields.hasErrors('description')}"
-                       th:errors="*{description}" class="text-danger"></small>
-            </div>
-            <div class="form-group">
-                <label for="price">Price ($)</label>
-                <input type="number" class="form-control" id="price" name="price"
-                       th:field="*{price}" th:errorclass="bg-danger"
-                       placeholder="Enter price" required>
-                <small th:if="${#fields.hasErrors('price')}"
-                       th:errors="*{price}" class="text-danger"></small>
-            </div>
-            <button type="submit" class="btn btn-primary">Update Product</button>
-        </form>
+        </div>
     </div>
 
 

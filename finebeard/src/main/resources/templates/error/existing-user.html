@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/head}">
+
+</head>
+<body>
+<div class="wrapper">
+
+    <div>
+        <nav th:replace="~{fragments/navbar}"></nav>
+    </div>
+
+
+    <div class="text-center m-auto">
+        <h5>User with this email exists</h5>
+        <p>User with this email exists. Please, login to your account!</p>
+        <a href="/users/login" class="activation-button btn mt-5">Go to Login</a>
+    </div>
+
+
+</div>
+
+<div>
+    <nav th:replace="~{fragments/footer}"></nav>
+</div>
+
+</body>
+</html>

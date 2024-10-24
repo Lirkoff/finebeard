@@ -63,7 +63,8 @@ body {
 .g-recaptcha,
 .add-product-button,
 .add-article-button,
-.profile-button {
+.profile-button,
+.update-product-button {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 30px;
@@ -320,7 +321,8 @@ body {
 .add-articles-container .card,
 .add-products-container .card,
 .login-section .card,
-.roles-management-container .card {
+.roles-management-container .card,
+.update-product-container .card {
     margin-top: 30px;
     background: #34495E;
 }

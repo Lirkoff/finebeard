@@ -98,7 +98,6 @@ public class UserActivationServiceImpl implements UserActivationService {
     @Override
     @RateLimiterPerIp(name = "activateUser")
     public boolean activateUser(String activationCode, String ipAddress) {
-//        monitoringService.logActivationAttempts(activationCode,ipAddress);
 
         UserActivationCodeEntity codeEntity = userActivationCodeRepository.getByActivationCode(activationCode);
 

@@ -1,5 +1,6 @@
 package bg.softuni.finebeard.model.entity;
 
+import bg.softuni.finebeard.model.enums.AuthProvider;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -20,6 +21,7 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<UserRolesEntity> roles;
 
+    @Column(nullable = true)
     private String password;
 
     private String firstName;
@@ -27,6 +29,38 @@ public class UserEntity extends BaseEntity {
     private String lastName;
 
     private boolean active;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "auth_provider")
+    private AuthProvider authProvider;
+
+    @Column(name = "provider_id")
+    private String providerId;
+
+    public UserEntity setRoles(Set<UserRolesEntity> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public AuthProvider getAuthProvider() {
+        return authProvider;
+    }
+
+    public UserEntity setAuthProvider(AuthProvider authProvider) {
+        this.authProvider = authProvider;
+        return this;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public UserEntity setProviderId(String providerId) {
+        this.providerId = providerId;
+        return this;
+    }
+
+
 
     public Set<UserRolesEntity> getRoles() {
         return this.roles;
