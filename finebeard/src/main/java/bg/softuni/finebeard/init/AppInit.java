@@ -8,6 +8,7 @@ import bg.softuni.finebeard.model.enums.UserRoleEnum;
 import bg.softuni.finebeard.repository.UserActivationCodeRepository;
 import bg.softuni.finebeard.repository.UserRepository;
 import bg.softuni.finebeard.repository.UserRoleRepository;
+import bg.softuni.finebeard.service.impl.BlogServiceImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,21 +25,22 @@ public class AppInit implements CommandLineRunner {
     private final PasswordEncoder encoder;
     private final UserRoleRepository userRoleRepository;
     private final UserActivationCodeRepository userActivationCodeRepository;
+    private final BlogServiceImpl blogServiceImpl;
 
 
     public AppInit(@Value("${finebeard.default.master.pass}") String masterPassword,
                    UserRepository userRepository,
-                   PasswordEncoder encoder, UserRoleRepository userRoleRepository, UserActivationCodeRepository userActivationCodeRepository) {
+                   PasswordEncoder encoder, UserRoleRepository userRoleRepository, UserActivationCodeRepository userActivationCodeRepository, BlogServiceImpl blogServiceImpl) {
         this.masterPassword = masterPassword;
         this.userRepository = userRepository;
         this.encoder = encoder;
         this.userRoleRepository = userRoleRepository;
         this.userActivationCodeRepository = userActivationCodeRepository;
+        this.blogServiceImpl = blogServiceImpl;
     }
 
     @Override
     public void run(String... args) throws Exception {
-
         //DB init
 
         if (userRoleRepository.count() == 0) {

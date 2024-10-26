@@ -57,7 +57,8 @@ public class UserRoleController {
 
 
     @PostMapping("/management/removeAdmin")
-    public String removeAdmin(@Valid UserRoleManagementDTO userRoleManagementDTO, BindingResult bindingResult,
+    public String removeAdmin(@Valid UserRoleManagementDTO userRoleManagementDTO,
+                              BindingResult bindingResult,
                               RedirectAttributes rAtt) {
 
         if (bindingResult.hasErrors()) {

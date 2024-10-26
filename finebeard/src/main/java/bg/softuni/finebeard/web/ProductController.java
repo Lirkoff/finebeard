@@ -27,6 +27,7 @@ public class ProductController {
 
     @GetMapping("/add")
     public String add(Model model) {
+
         if (!model.containsAttribute("addProductDTO")) {
             model.addAttribute("addProductDTO", AddProductDTO.empty());
         }
@@ -90,7 +91,7 @@ public class ProductController {
 
     @PatchMapping("/update/{uuid}")
     public String update(@PathVariable("uuid") UUID uuid,
-                         @ModelAttribute ProductEntity product) {
+                         ProductEntity product) {
 
         ProductEntity existingProduct = productService.getByUuid(uuid);
 

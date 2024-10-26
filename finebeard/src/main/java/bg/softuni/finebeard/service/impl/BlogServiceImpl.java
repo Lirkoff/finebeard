@@ -1,5 +1,6 @@
 package bg.softuni.finebeard.service.impl;
 
+import bg.softuni.finebeard.model.dto.AddArticleDTO;
 import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 import bg.softuni.finebeard.repository.BlogRepository;
 import bg.softuni.finebeard.service.BlogService;
@@ -7,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 
@@ -32,19 +32,29 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public UUID saveArticle(BlogArticleEntity article) {
-        article.setUuid(UUID.randomUUID());
+    public BlogArticleEntity saveArticle(AddArticleDTO addArticleDTO) {
+        BlogArticleEntity article = map(addArticleDTO);
 
-        return blogRepository.save(article).getUuid();
+
+        return blogRepository.save(article);
     }
 
     @Override
     public void deleteArticleById(Long id) {
-
+        blogRepository.deleteById(id);
     }
 
     @Override
     public void updateBlogArticle(Long id, BlogArticleEntity updatedBlogArticleEntity) {
 
+    }
+
+    public BlogArticleEntity map(AddArticleDTO addArticleDTO) {
+        return new BlogArticleEntity()
+                .setAuthor(addArticleDTO.author())
+                .setTitle(addArticleDTO.title())
+                .setContentPath(addArticleDTO.contentPath())
+                .setImageUrl(addArticleDTO.imageUrl())
+                .setUuid(UUID.randomUUID());
     }
 }

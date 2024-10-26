@@ -1,5 +1,6 @@
 package bg.softuni.finebeard.service;
 
+import bg.softuni.finebeard.model.dto.AddArticleDTO;
 import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,7 @@ public interface BlogService {
 
     BlogArticleEntity getArticleByUuid(UUID uuid);
 
-    UUID saveArticle(BlogArticleEntity article);
+    BlogArticleEntity saveArticle(AddArticleDTO article);
 
     void deleteArticleById(Long id);
 

@@ -40,8 +40,10 @@ public class UserRegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO, BindingResult bindingResult,
-                           RedirectAttributes rAtt, @RequestParam("g-recaptcha-response") String reCaptchaResponse) {
+    public String register(@Valid @ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO,
+                           BindingResult bindingResult,
+                           RedirectAttributes rAtt,
+                           @RequestParam("g-recaptcha-response") String reCaptchaResponse) {
 
         boolean isBot = !reCaptchaService
                 .verify(reCaptchaResponse)

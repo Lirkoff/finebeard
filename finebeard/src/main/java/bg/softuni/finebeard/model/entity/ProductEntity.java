@@ -3,6 +3,7 @@ package bg.softuni.finebeard.model.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.annotations.JdbcTypeCode;
 
 import java.math.BigDecimal;
@@ -13,26 +14,27 @@ import java.util.UUID;
 @Table(name = "products")
 public class ProductEntity extends BaseEntity {
     @JdbcTypeCode(Types.VARCHAR)
-    @NotNull
+    @NotNull(message = "UUID cannot be null")
     private UUID uuid;
 
-    @NotNull
+    @NotNull(message = "Category cannot be null")
     @ManyToOne
     private CategoryEntity category;
 
-    @NotNull
+    @NotNull(message = "Brand cannot be null")
     @ManyToOne
     private BrandEntity brand;
 
 
-    @NotEmpty
+    @NotEmpty(message = "Description cannot be empty")
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @NotNull
+    @NotNull(message = "Price cannot be null")
+    @Positive(message = "Price should be a positive value!")
     private BigDecimal price;
 
-    @NotEmpty
+    @NotEmpty(message = "Image URL cannot be empty")
     private String imageUrl;
 
 

@@ -14,9 +14,9 @@ import jakarta.validation.constraints.NotNull;
 )
 public record UserRegistrationDTO(@NotEmpty String firstName,
                                   @NotEmpty String lastName,
-                                  @NotNull @Email @UniqueUserEmail String email,
-                                  String password,
-                                  String confirmPassword) {
+                                  @NotEmpty @Email @UniqueUserEmail String email,
+                                  @NotEmpty String password,
+                                  @NotEmpty String confirmPassword) {
 
     public static UserRegistrationDTO empty() {
         return new UserRegistrationDTO(null,null,null,null,null);
