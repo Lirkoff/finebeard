@@ -2,6 +2,7 @@ package bg.softuni.finebeard.model.entity;
 
 import bg.softuni.finebeard.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "roles")
@@ -11,6 +12,7 @@ public class UserRolesEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private UserRoleEnum role;
 
 

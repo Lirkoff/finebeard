@@ -1,18 +1,24 @@
 package bg.softuni.finebeard.model.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.Instant;
 
 @Entity
 public class ActivationAttemptEntity extends BaseEntity {
 
+    @NotEmpty
     private String activationCode;
 
+    @NotEmpty
     private String ipAddress;
 
+    @NotNull
     private Instant attemptTime;
 
+    @NotNull
     private boolean successful;
 
     public String getActivationCode() {

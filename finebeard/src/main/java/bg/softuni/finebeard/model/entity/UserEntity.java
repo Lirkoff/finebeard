@@ -2,6 +2,10 @@ package bg.softuni.finebeard.model.entity;
 
 import bg.softuni.finebeard.model.enums.AuthProvider;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +15,9 @@ import java.util.Set;
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
 
-    @Column(unique = true)
+    @Column(length = 100, nullable = false, unique = true)
+    @Size(max = 100, message = "Email must not exceed 100 characters")
+    @Email(message = "Email should be valid")
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -21,20 +27,25 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<UserRolesEntity> roles;
 
-    @Column(nullable = true)
+    @NotEmpty
     private String password;
 
+    @NotEmpty
     private String firstName;
 
+    @NotEmpty
     private String lastName;
 
+    @NotNull
     private boolean active;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "auth_provider")
+    @NotNull
     private AuthProvider authProvider;
 
     @Column(name = "provider_id")
+    @NotEmpty
     private String providerId;
 
     public UserEntity setRoles(Set<UserRolesEntity> roles) {

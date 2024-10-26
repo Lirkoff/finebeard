@@ -66,6 +66,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+
+
     private ProductDetailDTO mapAsDetails(ProductEntity productEntity) {
         return new ProductDetailDTO(
                 productEntity.getUuid().toString(),

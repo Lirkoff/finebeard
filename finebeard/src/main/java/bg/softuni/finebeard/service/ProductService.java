@@ -19,4 +19,6 @@ public interface ProductService {
     ProductEntity getByUuid(UUID uuid);
 
     void save(ProductEntity product);
+
+
 }

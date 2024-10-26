@@ -29,7 +29,8 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, OAuthSuccessHandler oAuthSuccessHandler, OAuthFailureHandler OAuthFailureHandler) throws Exception {
-        return httpSecurity.authorizeHttpRequests(
+        return httpSecurity.
+                authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()

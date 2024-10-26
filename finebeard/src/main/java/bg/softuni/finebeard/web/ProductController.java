@@ -12,13 +12,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import java.util.*;
 
-@Controller
+
 @RequestMapping("/products")
+@Controller
 public class ProductController {
     private final ProductService productService;
+
 
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -93,6 +94,8 @@ public class ProductController {
     public String update(@PathVariable("uuid") UUID uuid,
                          ProductEntity product) {
 
+
+
         ProductEntity existingProduct = productService.getByUuid(uuid);
 
 
@@ -119,6 +122,7 @@ public class ProductController {
         } catch (NullPointerException e) {
             return "redirect:/products/update/" + uuid;
         }
+
 
 
     }

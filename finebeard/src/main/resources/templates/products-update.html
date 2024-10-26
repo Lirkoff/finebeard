@@ -15,22 +15,20 @@
                     <div class="card-body">
                         <h1 class="text-center mb-5">Update Product</h1>
                         <form th:method="POST"
-                              th:action="@{/products/update/{uuid}(uuid=${product.uuid})}"
+                              th:action="@{/products/update/{uuid}(uuid=${uuid})}"
                               th:object="${product}">
                             <input type="hidden" name="_method" value="patch"/>
                             <div class="form-group">
                                 <label class="fs-1 font-weight-bold">Brand: <th:block th:text="${product.brand.name.displayName}"></th:block></label>
                             </div>
-
                             <div class="form-group">
                                 <label for="model">Model:</label>
-                                <input type="text" class="form-control" id="model" name="model"
-                                       th:field="*{brand.model}" th:errorclass="bg-danger"
+                                <input type="text" class="form-control" id="model"
+                                       th:field="*{brand.model}"
                                        placeholder="Enter model" required>
                                 <small th:if="${#fields.hasErrors('brand.model')}"
                                        th:errors="*{brand.model}" class="text-danger"></small>
                             </div>
-
                             <div class="form-group">
                                 <label for="imageUrl">Image URL:</label>
                                 <input type="text" class="form-control" id="imageUrl" name="imageUrl"
@@ -53,7 +51,7 @@
                                        th:field="*{price}" th:errorclass="bg-danger"
                                        placeholder="Enter price" required>
                                 <small th:if="${#fields.hasErrors('price')}"
-                                       th:errors="*{price}" class="text-danger"></small>
+                                       th:errors="*{price}" class="text-danger" ></small>
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="update-product-button btn">Update Product</button>

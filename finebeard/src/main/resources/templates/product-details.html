@@ -60,7 +60,6 @@
                 <form sec:authorize="hasRole('MASTER')"
                       th:action="@{/products/update/{uuid}(uuid=${productDetailDTO.id})}"
                       th:method="get" class="d-flex justify-content-center mt-4">
-                    <input type="hidden" name="product" value="${productDetailDTO}"/>
                     <button type="submit" class="update-button">Update</button>
                 </form>
 

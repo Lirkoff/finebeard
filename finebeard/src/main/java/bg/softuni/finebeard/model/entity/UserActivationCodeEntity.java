@@ -4,6 +4,8 @@ package bg.softuni.finebeard.model.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.Instant;
 
@@ -11,6 +13,7 @@ import java.time.Instant;
 @Table(name = "user_activation_codes")
 public class UserActivationCodeEntity extends BaseEntity {
 
+    @NotEmpty
     private String activationCode;
 
     private Instant created;
@@ -18,6 +21,7 @@ public class UserActivationCodeEntity extends BaseEntity {
     @ManyToOne
     private UserEntity user;
 
+    @NotNull
     private boolean used;
 
     public boolean isUsed() {
