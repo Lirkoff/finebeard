@@ -15,17 +15,47 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.*;
 
 
+/**
+ * Controller handling CRUD operations for products.
+ */
 @RequestMapping("/products")
 @Controller
 public class ProductController {
+    /**
+     * Service layer interface for managing products.
+     *
+     * This variable represents the dependency of ProductController on ProductService.
+     * It is responsible for handling business logic related to products, such as adding,
+     * deleting, fetching, and updating product details.
+     *
+     * Typical operations invoked through this service include:
+     * - Adding a new product to the system.
+     * - Retrieving detailed information about a specific product by its UUID.
+     * - Deleting a product from the system.
+     * - Updating an existing product's details.
+     * - Saving the state of a product.
+     */
     private final ProductService productService;
 
 
+    /**
+     * Constructs a ProductController with the given ProductService.
+     *
+     * @param productService the ProductService to be used by this controller
+     */
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
 
+    /**
+     * Handles the HTTP GET request to display the add product form. Adds necessary attributes
+     * for the product creation form to the model, such as an empty AddProductDTO and sorted
+     * lists of available brands and categories.
+     *
+     * @param model the model to which attributes are added for rendering the view
+     * @return the view name for adding a new product
+     */
     @GetMapping("/add")
     public String add(Model model) {
 
@@ -45,6 +75,14 @@ public class ProductController {
         return "products-add";
     }
 
+    /**
+     * Handles the addition of a new product.
+     *
+     * @param addProductDTO Data Transfer Object containing the details of the product to be added.
+     * @param bindingResult Result object holding the validation results for `addProductDTO`.
+     * @param rAtt RedirectAttributes used to pass attributes to the redirect URL.
+     * @return The URL to redirect to after the product is successfully added, or back to the add product page if errors occur.
+     */
     @PostMapping("/add")
     public String add(
             @Valid AddProductDTO addProductDTO,
@@ -69,6 +107,12 @@ public class ProductController {
     }
 
 
+    /**
+     * Deletes a product with the specified UUID and redirects to the shop categories page.
+     *
+     * @param uuid the UUID of the product to be deleted.
+     * @return a redirect instruction to the shop categories page.
+     */
     @DeleteMapping("/delete/{uuid}")
     public String delete(@PathVariable("uuid") UUID uuid) {
 
@@ -78,6 +122,13 @@ public class ProductController {
         return "redirect:/shop/categories";
     }
 
+    /**
+     * Handles GET requests to update a product.
+     *
+     * @param uuid the unique identifier of the product to update
+     * @param model the Spring Model object to add attributes to
+     * @return the view name for updating the product
+     */
     @GetMapping("/update/{uuid}")
     public String update(@PathVariable("uuid") UUID uuid,
                          Model model) {
@@ -93,6 +144,15 @@ public class ProductController {
         return "products-update";
     }
 
+    /**
+     * Handles HTTP PATCH requests to update an existing product identified by its UUID.
+     * If the product with the specified UUID exists, this method updates its details
+     * with any non-null values provided in the {@code product} parameter.
+     *
+     * @param uuid The UUID of the product to be updated.
+     * @param product The product entity containing updated values.
+     * @return A redirection URL to the updated product's details page, or a redirection URL back to the update form if the product's category is null.
+     */
     @PatchMapping("/update/{uuid}")
     public String update(@PathVariable("uuid") UUID uuid,
                          ProductEntity product) {
