@@ -6,17 +6,21 @@ import bg.softuni.finebeard.service.impl.FinebeardUserDetailsService;
 import bg.softuni.finebeard.service.oauth.OAuthFailureHandler;
 import bg.softuni.finebeard.service.oauth.OAuthSuccessHandler;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Configuration class for setting up application security.
+ *
+ * This class configures various security-related beans and settings for the application,
+ * including HTTP security rules, user details service, and password encoding.
+ */
 @Configuration
 public class SecurityConfiguration {
 
@@ -33,7 +37,6 @@ public class SecurityConfiguration {
                 authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-//                        .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/", "/users/login", "/users/login-error", "/users/register", "/users/activate/**", "/users/email-required", "/users/existing-user").permitAll()
                         .requestMatchers("/shop/**").permitAll()

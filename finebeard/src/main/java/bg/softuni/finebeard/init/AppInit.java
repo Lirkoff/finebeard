@@ -17,27 +17,25 @@ import org.springframework.stereotype.Component;
 
 
 
+/**
+ * AppInit is a Spring Component that implements CommandLineRunner to initialize the database
+ * with predefined roles and a master user account if they do not already exist.
+ */
 @Component
 public class AppInit implements CommandLineRunner {
-
-
     private final String masterPassword;
     private final UserRepository userRepository;
     private final PasswordEncoder encoder;
     private final UserRoleRepository userRoleRepository;
-    private final UserActivationCodeRepository userActivationCodeRepository;
-    private final BlogServiceImpl blogServiceImpl;
 
 
     public AppInit(@Value("${finebeard.default.master.pass}") String masterPassword,
                    UserRepository userRepository,
-                   PasswordEncoder encoder, UserRoleRepository userRoleRepository, UserActivationCodeRepository userActivationCodeRepository, BlogServiceImpl blogServiceImpl) {
+                   PasswordEncoder encoder, UserRoleRepository userRoleRepository) {
         this.masterPassword = masterPassword;
         this.userRepository = userRepository;
         this.encoder = encoder;
         this.userRoleRepository = userRoleRepository;
-        this.userActivationCodeRepository = userActivationCodeRepository;
-        this.blogServiceImpl = blogServiceImpl;
     }
 
     @Override

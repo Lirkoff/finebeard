@@ -9,6 +9,11 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 
+/**
+ * Configuration class for setting up JavaMailSender bean.
+ * This class configures the necessary properties for the JavaMailSender,
+ * including the mail server host, port, username, and password.
+ */
 @Configuration
 public class MailConfiguration {
 

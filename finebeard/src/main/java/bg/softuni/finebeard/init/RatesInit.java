@@ -10,6 +10,15 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Map;
 
 
+/**
+ * RatesInit is a Spring Component that initializes the exchange rates
+ * when the application starts. It implements the CommandLineRunner
+ * interface to execute code after the application context is loaded.
+ *
+ * This class uses a RestTemplate to fetch the latest exchange rates from
+ * the OpenExchangeRate API and refreshes the rates in the application
+ * using the CurrencyService.
+ */
 @Component
 public class RatesInit implements CommandLineRunner {
 

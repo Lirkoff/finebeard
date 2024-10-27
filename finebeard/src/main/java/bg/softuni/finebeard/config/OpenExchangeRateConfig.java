@@ -6,6 +6,10 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+/**
+ * Configuration class for managing settings related to the OpenExchangeRate service.
+ * This class is configured via properties prefixed with "open.exchange.rates".
+ */
 @Configuration
 @ConfigurationProperties(prefix = "open.exchange.rates")
 public class OpenExchangeRateConfig {

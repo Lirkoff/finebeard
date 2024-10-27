@@ -17,16 +17,44 @@ import java.util.Objects;
 import java.util.Optional;
 
 
+/**
+ * Implementation of the CurrencyService interface, providing methods for
+ * handling exchange rates and converting currency amounts.
+ */
 @Service
 public class CurrencyServiceImpl implements CurrencyService {
-
+    /**
+     * The LOGGER is used for logging messages within the CurrencyServiceImpl class.
+     * It is a static final instance of the Logger class, retrieved from LoggerFactory
+     * with the CurrencyServiceImpl class as the source.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyServiceImpl.class);
+
+    /**
+     * A repository interface for managing exchange rate entities. It provides CRUD operations and query methods for
+     * retrieving and manipulating exchange rate data stored in the database. This repository is used to interact with
+     * the persistent storage of exchange rate information.
+     */
     private final ExchangeRateRepository exchangeRateRepository;
 
+    /**
+     * Constructs a new instance of CurrencyServiceImpl with the provided ExchangeRateRepository.
+     *
+     * @param exchangeRateRepository the repository responsible for accessing exchange rate data
+     */
     public CurrencyServiceImpl(ExchangeRateRepository exchangeRateRepository) {
         this.exchangeRateRepository = exchangeRateRepository;
     }
 
+    /**
+     * Refreshes the exchange rates by updating the rates of specific currencies
+     * from the provided ExchangeRatesDTO object. This method attempts to fetch
+     * the exchange rates for "BGN" to "USD" and "BGN" to "EUR" and saves them
+     * in the repository if available.
+     *
+     * @param exchangeRatesDTO the data transfer object containing the base currency
+     *                         and the exchange rates to be updated
+     */
     @Override
     public void refreshRates(ExchangeRatesDTO exchangeRatesDTO) {
 
@@ -54,6 +82,12 @@ public class CurrencyServiceImpl implements CurrencyService {
         LOGGER.info("Rates refreshed...");
     }
 
+    /**
+     * Converts the specified amount to the target currency using the stored exchange rates.
+     *
+     * @param convertRequestDTO Object containing the target currency and the amount to be converted.
+     * @return A MoneyDTO object containing the converted currency and amount.
+     */
     @Override
     public MoneyDTO convert(ConvertRequestDTO convertRequestDTO) {
         ExchangeRateEntity exchangeRateEntity = exchangeRateRepository
@@ -66,6 +100,15 @@ public class CurrencyServiceImpl implements CurrencyService {
                 exchangeRateEntity.getRate().multiply(convertRequestDTO.amount()));
     }
 
+    /**
+     * Retrieves the exchange rate between two currencies based on the provided exchange rates data.
+     * The method supports converting between the base currency and other currencies, as well as between two non-base currencies.
+     *
+     * @param exchangeRatesDTO Contains the base currency and a map of exchange rates.
+     * @param from             The currency code to convert from.
+     * @param to               The currency code to convert to.
+     * @return An Optional containing the exchange rate if found, otherwise an empty Optional.
+     */
     private static Optional<BigDecimal> getExchangeRate(
             ExchangeRatesDTO exchangeRatesDTO,
             String from,
