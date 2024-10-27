@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "brands")
@@ -15,8 +18,7 @@ public class BrandEntity extends BaseEntity {
     @NotNull
     private BrandEnum name;
 
-    @NotEmpty(message = "Model should not be empty!")
-    private String model;
+
 
     public BrandEnum getName() {
         return name;
@@ -27,12 +29,6 @@ public class BrandEntity extends BaseEntity {
         return this;
     }
 
-    public String getModel() {
-        return model;
-    }
 
-    public BrandEntity setModel(String model) {
-        this.model = model;
-        return this;
-    }
+
 }

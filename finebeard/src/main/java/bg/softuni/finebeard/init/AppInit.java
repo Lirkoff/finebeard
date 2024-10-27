@@ -3,6 +3,7 @@ package bg.softuni.finebeard.init;
 
 import bg.softuni.finebeard.model.entity.UserEntity;
 import bg.softuni.finebeard.model.entity.UserRolesEntity;
+import bg.softuni.finebeard.model.enums.AuthProvider;
 import bg.softuni.finebeard.model.enums.UserRoleEnum;
 
 import bg.softuni.finebeard.repository.UserActivationCodeRepository;
@@ -57,7 +58,8 @@ public class AppInit implements CommandLineRunner {
                     .setEmail("master@example.com")
                     .setActive(true)
                     .setPassword(encoder.encode(masterPassword))
-                    .setRoles(userRoleRepository.getByRole(UserRoleEnum.MASTER));
+                    .setRoles(userRoleRepository.getByRole(UserRoleEnum.MASTER))
+                    .setAuthProvider(AuthProvider.LOCAL);
 
             userEntity.getRoles().add(userRoleRepository.getByRole(UserRoleEnum.ADMIN));
             userEntity.getRoles().add(userRoleRepository.getByRole(UserRoleEnum.USER));

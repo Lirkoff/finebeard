@@ -84,7 +84,10 @@ public class ProductController {
 
         ProductEntity product = productService.getByUuid(uuid);
 
+
         model.addAttribute("product", product);
+
+
 
 
         return "products-update";
@@ -100,8 +103,8 @@ public class ProductController {
 
 
         if (existingProduct != null) {
-            if (product.getBrand().getModel() != null) {
-                existingProduct.getBrand().setModel(product.getBrand().getModel());
+            if (product.getModel() != null) {
+                existingProduct.setModel(product.getModel());
             }
             if (product.getPrice() != null) {
                 existingProduct.setPrice(product.getPrice());

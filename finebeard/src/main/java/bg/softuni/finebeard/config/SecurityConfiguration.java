@@ -33,14 +33,14 @@ public class SecurityConfiguration {
                 authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
+//                        .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/", "/users/login", "/users/login-error", "/users/register", "/users/activate/**", "/users/email-required", "/users/existing-user").permitAll()
                         .requestMatchers("/shop/**").permitAll()
                         .requestMatchers("/blog/**").permitAll()
                         .requestMatchers("/about", "/blog", "/help").permitAll()
                         .requestMatchers("/api/currency/convert/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/shop/**").permitAll()
+                        .requestMatchers("/shop/**").permitAll()
                         .anyRequest().authenticated()
 
         ).formLogin(
@@ -51,6 +51,9 @@ public class SecurityConfiguration {
                             .passwordParameter("password")
                             .defaultSuccessUrl("/")
                             .failureForwardUrl("/users/login-error");
+//                            .failureHandler((request, response, exception) -> {
+//                                response.setStatus(401);
+//                            });
                 }
         ).logout(
                 logout -> {

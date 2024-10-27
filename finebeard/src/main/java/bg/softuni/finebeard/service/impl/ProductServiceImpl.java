@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -73,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
                 productEntity.getUuid().toString(),
                 productEntity.getDescription(),
                 productEntity.getBrand().getName().getDisplayName(),
-                productEntity.getBrand().getModel(),
+                productEntity.getModel(),
                 productEntity.getImageUrl(),
                 productEntity.getPrice()
 
@@ -83,7 +84,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductEntity map(AddProductDTO addProductDTO) {
 
         BrandEntity brand = brandRepository.findByName(addProductDTO.name())
-                .orElse(new BrandEntity().setName(addProductDTO.name())).setModel(addProductDTO.model());
+                .orElse(new BrandEntity().setName(addProductDTO.name()));
+
 
         CategoryEntity category = categoryRepository.findByName(addProductDTO.category())
                         .orElse(new CategoryEntity().setName(addProductDTO.category()));
@@ -95,6 +97,7 @@ public class ProductServiceImpl implements ProductService {
         return new ProductEntity()
                 .setUuid(UUID.randomUUID())
                 .setBrand(brand)
+                .setModel(addProductDTO.model())
                 .setCategory(category)
                 .setDescription(addProductDTO.description())
                 .setPrice(BigDecimal.valueOf(addProductDTO.price()))

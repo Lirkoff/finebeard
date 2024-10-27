@@ -45,7 +45,6 @@ public class UserEntity extends BaseEntity {
     private AuthProvider authProvider;
 
     @Column(name = "provider_id")
-    @NotEmpty
     private String providerId;
 
     public UserEntity setRoles(Set<UserRolesEntity> roles) {

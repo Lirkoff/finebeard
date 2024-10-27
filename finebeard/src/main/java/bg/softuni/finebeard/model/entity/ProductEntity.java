@@ -26,6 +26,9 @@ public class ProductEntity extends BaseEntity {
     private BrandEntity brand;
 
 
+    private String model;
+
+
     @NotEmpty(message = "Description cannot be empty")
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -92,5 +95,12 @@ public class ProductEntity extends BaseEntity {
         return this;
     }
 
+    public String getModel() {
+        return model;
+    }
 
+    public ProductEntity setModel(String model) {
+        this.model = model;
+        return this;
+    }
 }

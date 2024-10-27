@@ -24,10 +24,8 @@
                             <div class="form-group">
                                 <label for="model">Model:</label>
                                 <input type="text" class="form-control" id="model"
-                                       th:field="*{brand.model}"
+                                       th:field="*{model}"
                                        placeholder="Enter model" required>
-                                <small th:if="${#fields.hasErrors('brand.model')}"
-                                       th:errors="*{brand.model}" class="text-danger"></small>
                             </div>
                             <div class="form-group">
                                 <label for="imageUrl">Image URL:</label>
