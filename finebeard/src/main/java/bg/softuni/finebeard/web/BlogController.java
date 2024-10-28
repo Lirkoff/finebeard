@@ -4,6 +4,7 @@ package bg.softuni.finebeard.web;
 import bg.softuni.finebeard.model.dto.AddArticleDTO;
 import bg.softuni.finebeard.model.entity.BlogArticleEntity;
 import bg.softuni.finebeard.service.BlogService;
+import bg.softuni.finebeard.util.FileUtil;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -127,6 +128,8 @@ public class BlogController {
         BlogArticleEntity blogArticleEntity = blogService.getArticleByUuid(uuid);
         model.addAttribute("blogArticle", blogArticleEntity);
 
+
+
         return "article";
     }
 
@@ -186,12 +189,12 @@ public class BlogController {
      * @return the content of the article as a string, or an error message if the file cannot be read
      */
     private String readArticleContent(String contentPath) {
-        Path filePath = Paths.get(contentPath);
+
         String articleContent = "";
 
         try {
-            articleContent = new String(Files.readAllBytes(filePath));
-        } catch (IOException e) {
+            articleContent = FileUtil.readFileFromClasspath(contentPath);
+        } catch (NullPointerException e) {
             articleContent = "Could not read the file. Error: " + e.getMessage();
         }
         return articleContent;

@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.reactive.function.client.WebClient;
 
 
@@ -47,14 +46,5 @@ public class AppConfig {
                 .build();
     }
 
-    /**
-     * Bean definition for HiddenHttpMethodFilter.
-     *
-     * @return a new instance of HiddenHttpMethodFilter
-     */
-    @Bean
-    public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
-        return new HiddenHttpMethodFilter();
-    }
 
 }

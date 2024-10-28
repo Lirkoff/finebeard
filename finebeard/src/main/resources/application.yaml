@@ -30,7 +30,6 @@ spring:
             client-secret: ${GITHUB_SECRET:}
             scope: read:user
 
-
   mvc:
     hiddenmethod:
       filter:
@@ -39,10 +38,10 @@ spring:
 
 logging:
   level:
-#    org.springframework: DEBUG
+    org.springframework: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
-#    io.github.resilience4j: DEBUG
+    io.github.resilience4j: DEBUG
 
 open.exchange.rates:
   schema: https
@@ -53,8 +52,8 @@ open.exchange.rates:
   enabled: false
 
 google.recaptcha:
-  site: ${RECAPTCHA_SITE_KEY:test}
-  secret: ${RECAPTCHA_SITE_SECRET:test}
+  site: ${RECAPTCHA_SITE_KEY}
+  secret: ${RECAPTCHA_SITE_SECRET}
 
 mail:
   finebeard: "finebeard@example.com"
@@ -66,17 +65,17 @@ mail:
   password: ${MAIL_PASSWORD}
 
 finebeard:
-  default.master.pass: ${MASTER_PASS}
-  remember.me.key: ${REMEMBER_ME_KEY}
+  default.master.pass: ${MASTER_PASS:test}
+  remember.me.key: ${REMEMBER_ME_KEY:test}
   thymeleaf: # Thymeleaf
     cache: false
     mode: HTML
     encoding: UTF-8
     prefix: file:src/main/resources/templates/
 
-#server:
-#  error:
-#    include-message: always
+server:
+  error:
+    include-message: always
 management:
   server:
     port: 8080
