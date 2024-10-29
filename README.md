@@ -226,7 +226,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgements
 
+- **SoftUni** – For providing the educational platform and resources.
 - **ReCaptcha** – Google ReCAPTCHA for bot prevention.
 - **OpenExchangeRates API** – For currency conversion (planned feature).
 - **MailTrap** – For testing email services.
-- **SoftUni** – For providing the educational platform and resources.
