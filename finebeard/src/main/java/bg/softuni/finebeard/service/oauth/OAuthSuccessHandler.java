@@ -1,7 +1,6 @@
 package bg.softuni.finebeard.service.oauth;
 
 import bg.softuni.finebeard.model.enums.AuthProvider;
-import bg.softuni.finebeard.repository.UserRepository;
 import bg.softuni.finebeard.service.UserService;
 import bg.softuni.finebeard.service.exception.MissingEmailException;
 
@@ -19,14 +18,24 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 
+/**
+ * This class handles the successful OAuth2 authentication process.
+ *
+ * Extends SavedRequestAwareAuthenticationSuccessHandler to provide custom behavior upon
+ * successful authentication, specifically handling OAuth2 authentication tokens.
+ *
+ * The onAuthenticationSuccess method:
+ * - Retrieves user details from the provided OAuth2 token.
+ * - Creates a new user if they do not exist.
+ * - Logs in the user if they already exist.
+ * - Throws exceptions if necessary information (like email) is missing or user already exists.
+ */
 @Component
 public class OAuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
     private final UserService userService;
-    private final UserRepository userRepository;
 
-    public OAuthSuccessHandler(UserService userService, UserRepository userRepository){
+    public OAuthSuccessHandler(UserService userService){
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
     @Override

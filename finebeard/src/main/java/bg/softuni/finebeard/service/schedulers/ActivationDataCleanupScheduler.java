@@ -9,6 +9,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 
+/**
+ * Scheduler for cleaning up obsolete user activation data.
+ *
+ * <p>This component performs regular cleanup tasks to maintain the database by
+ * removing outdated activation codes and activation attempts.
+ * </p>
+ *
+ * <p>The cleanup tasks are scheduled to run at specified intervals using cron expressions.
+ * These tasks are executed in a transactional context to ensure data integrity during the cleanup process.
+ * </p>
+ *
+ * <p>The scheduler relies on the functionality provided by the {@link UserActivationService} to
+ * perform the actual cleanup operations.
+ * </p>
+ */
 @Component
 public class ActivationDataCleanupScheduler {
 

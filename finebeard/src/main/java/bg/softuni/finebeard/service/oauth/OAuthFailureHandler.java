@@ -11,6 +11,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * OAuthFailureHandler handles authentication failures during OAuth2 login attempts.
+ *
+ * This class is a Spring Component that implements the AuthenticationFailureHandler interface
+ * to handle different types of authentication exceptions, redirecting the user to appropriate
+ * error pages based on the specific exception type.
+ */
 @Component
 public class OAuthFailureHandler implements AuthenticationFailureHandler {
     @Override

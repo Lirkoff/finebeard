@@ -13,6 +13,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of the ProductsRotationService interface that is responsible for rotating products displayed on the homepage.
+ *
+ * This service rotates the products by randomly selecting a subset from the available products in the repository
+ * and updating the homepage to display these products. The rotation is scheduled to run at fixed intervals.
+ */
 @Service
 public class ProductsRotationServiceImpl implements ProductsRotationService {
 
@@ -28,6 +34,19 @@ public class ProductsRotationServiceImpl implements ProductsRotationService {
     }
 
 
+    /**
+     * Rotates the products displayed on the homepage by randomly selecting a subset
+     * from the available products in the repository and updating the homepage to display these products.
+     * This method is invoked at fixed intervals.
+     *
+     * The number of products to select is defined as 3, but if there are fewer products
+     * available, all available products will be selected.
+     *
+     * The method retrieves all available products, shuffles them to ensure random selection,
+     * and updates the homepage with the selected products by invoking the HomepageService.
+     *
+     * Logs the completion of the homepage update.
+     */
     @Override
     @Scheduled(fixedRate = 7200000)
     public void rotateProducts() {
