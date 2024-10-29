@@ -195,19 +195,19 @@ The project includes a `deployment` directory containing Docker-related files:
 
 ## Future Enhancements
 
-1. **	Shopping cart integration
+1. **Shopping cart integration**
 
 Add shopping cart API integration
 
-2. **	Payment Gateway Integration
+2. **Payment Gateway Integration**
 
 Add support for online payments using services like Stripe or PayPal.
 
-3. **	Product Reviews
+3. **Product Reviews**
 
 Enable users to leave reviews and ratings for products.
 
-4. **	Wishlist Functionality
+4. **Wishlist Functionality**
 
 Allow users to save products for later.
 
@@ -244,7 +244,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgements
 
 - **SoftUni** – For providing the educational platform and resources.
-- Resilience4j – For rate-limiting functionality.
+- **Resilience4j** – For rate-limiting functionality.
 - **ReCaptcha** – Google ReCAPTCHA for bot prevention.
 - **OpenExchangeRates API** – For currency conversion (planned feature).
 - **MailTrap** – For testing email services.
