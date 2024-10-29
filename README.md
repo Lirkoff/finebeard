@@ -10,6 +10,7 @@ FineBeard is an e-commerce platform dedicated to offering premium beard care pro
 - [Installation](#installation)
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 - [Deployment with Docker](#deployment-with-docker)
 - [Contributing](#contributing)
 - [License](#license)
@@ -156,7 +157,7 @@ The application uses several environment variables for configuration. These can 
 
   If the user repository is empty, an initial user (`master@example.com`) with the `MASTER` role is created. The password is set via the `MASTER_PASS` environment variable.
 
-  Screenshots
+## Screenshots
 
   ![изображение](https://github.com/user-attachments/assets/c00d4242-38f6-4b02-be2e-55443b5a407e)
 
