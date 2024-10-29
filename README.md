@@ -156,6 +156,11 @@ The application uses several environment variables for configuration. These can 
 
   If the user repository is empty, an initial user (`master@example.com`) with the `MASTER` role is created. The password is set via the `MASTER_PASS` environment variable.
 
+  Screenshots
+
+  ![изображение](https://github.com/user-attachments/assets/c00d4242-38f6-4b02-be2e-55443b5a407e)
+
+
 ## Deployment with Docker
 
 The project includes a `deployment` directory containing Docker-related files:
