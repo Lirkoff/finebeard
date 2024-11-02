@@ -30,7 +30,7 @@ public class ProductEntity extends BaseEntity {
 
 
     @NotEmpty(message = "Description cannot be empty")
-    @Column(columnDefinition = "TEXT")
+//    @Column(columnDefinition = "TEXT")
     private String description;
 
     @NotNull(message = "Price cannot be null")

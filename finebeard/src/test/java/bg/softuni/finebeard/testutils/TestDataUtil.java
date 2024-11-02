@@ -10,18 +10,5 @@ import java.math.BigDecimal;
 @Component
 public class TestDataUtil {
 
-    @Autowired
-    private ExchangeRateRepository exchangeRateRepository;
-
-    public void createExchangeRate(String currency, BigDecimal rate) {
-        exchangeRateRepository.save(
-                new ExchangeRateEntity()
-                        .setCurrency(currency)
-                        .setRate(rate)
-        );
-    }
-
-    public void cleanAllTestData() {
-        exchangeRateRepository.deleteAll();
-    }
+//
 }

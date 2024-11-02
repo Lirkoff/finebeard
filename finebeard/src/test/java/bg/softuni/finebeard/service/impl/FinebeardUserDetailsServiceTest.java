@@ -25,7 +25,6 @@ class FinebeardUserDetailsServiceTest {
 
     private FinebeardUserDetailsService serviceToTest;
 
-
     @Mock
     private UserRepository mockUserRepository;
 

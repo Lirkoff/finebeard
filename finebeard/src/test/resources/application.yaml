@@ -1,7 +1,7 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     defer-datasource-initialization: true
   sql:
     init:
@@ -10,6 +10,14 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${GITHUB_CLIENT:test}
+            client-secret: ${GITHUB_SECRET:test}
+            scope: read:user
 
 open.exchange.rates:
   schema: https
@@ -30,6 +38,7 @@ mail:
 
 finebeard:
   remember.me.key: test
+  default.master.pass: test
   thymeleaf: # Thymeleaf
     cache: false
     mode: HTML
@@ -37,3 +46,9 @@ finebeard:
     prefix: file:src/main/resources/templates/
 
 
+resilience4j.ratelimiter:
+  instances:
+    activate-user:
+      limitForPeriod: 5
+      limitRefreshPeriod: 1m
+      timeoutDuration: 0
