@@ -10,7 +10,9 @@ FineBeard is an e-commerce platform dedicated to offering premium beard care pro
 - [Installation](#installation)
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 - [Deployment with Docker](#deployment-with-docker)
+- [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -35,6 +37,7 @@ FineBeard is an e-commerce platform dedicated to offering premium beard care pro
 
 - **Monitoring and Services**
   - Logging of product search events.
+  - Rate-Limiting using Resilience4j to prevent abuse of activation attempts.
   - Currency conversion service (planned feature) using OpenExchangeRates API.
   - Email service for sending activation emails (using MailTrap for testing).
   - Schedulers for product rotation and cleaning obsolete activation data.
@@ -44,6 +47,7 @@ FineBeard is an e-commerce platform dedicated to offering premium beard care pro
 - **Backend**
   - Java 17
   - Spring Boot, Spring MVC, Spring Security, Spring Data JPA
+  - Resilience4j for rate-limiting
   - MySQL
   - Gradle for build automation
 
@@ -142,7 +146,7 @@ The application uses several environment variables for configuration. These can 
 
 - **User Registration**
 
-  Upon registration, users receive an activation email (tested using MailTrap). The activation service handles email sending, activation code generation, and account activation.
+  Upon registration, users receive an activation email (tested using MailTrap). The activation service handles email sending, activation code generation, and account activation. Rate-limiting on activation    attempts is enforced using Resilience4j to prevent abuse.
 
 - **OAuth Login**
 
@@ -156,7 +160,7 @@ The application uses several environment variables for configuration. These can 
 
   If the user repository is empty, an initial user (`master@example.com`) with the `MASTER` role is created. The password is set via the `MASTER_PASS` environment variable.
 
-  Screenshots
+## Screenshots
 
   ![изображение](https://github.com/user-attachments/assets/c00d4242-38f6-4b02-be2e-55443b5a407e)
 
@@ -189,14 +193,22 @@ The project includes a `deployment` directory containing Docker-related files:
 
 > **Note:** The Docker image of the app is pushed to Docker Hub, so there's no need to build it manually.
 
-Future Enhancements
-•	Shopping cart integration
+## Future Enhancements
+
+1. **Shopping cart integration**
+
 Add shopping cart API integration
-•	Payment Gateway Integration
+
+2. **Payment Gateway Integration**
+
 Add support for online payments using services like Stripe or PayPal.
-•	Product Reviews
+
+3. **Product Reviews**
+
 Enable users to leave reviews and ratings for products.
-•	Wishlist Functionality
+
+4. **Wishlist Functionality**
+
 Allow users to save products for later.
 
 ## Contributing
@@ -232,6 +244,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgements
 
 - **SoftUni** – For providing the educational platform and resources.
+- **Resilience4j** – For rate-limiting functionality.
 - **ReCaptcha** – Google ReCAPTCHA for bot prevention.
 - **OpenExchangeRates API** – For currency conversion (planned feature).
 - **MailTrap** – For testing email services.
