@@ -66,6 +66,8 @@ public class ProductServiceImpl implements ProductService {
         this.categoryRepository = categoryRepository;
     }
 
+
+
     /**
      * Adds a new product based on the provided data transfer object and returns the UUID of the created product.
      *

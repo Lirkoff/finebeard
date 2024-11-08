@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
 public class FileUtil {
+
     public static String readFileFromClasspath(String relativePath) {
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(FileUtil.class.getClassLoader().getResourceAsStream(relativePath), StandardCharsets.UTF_8))) {
